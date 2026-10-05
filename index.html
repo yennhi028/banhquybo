@@ -47,36 +47,57 @@
         #page2, #page3, #page4 {
             background: linear-gradient(135deg, var(--beige-light) 0%, var(--pink-pastel) 50%, var(--green-pastel) 100%);
             background-attachment: fixed;
-            justify-content: flex-start; padding-top: 80px; padding-bottom: 50px;
+            justify-content: flex-start; padding-top: 100px; padding-bottom: 50px;
         }
 
-        /* Nút Cố Định (Idea, Trở lại) */
-        .fixed-btn {
-            position: fixed; z-index: 1000; border: none; font-weight: bold;
-            background-color: var(--brown-dark); color: var(--white);
-            padding: 10px 18px; border-radius: 25px; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(139, 103, 74, 0.4); transition: 0.2s; font-size: 0.95rem;
+        /* ================= HEADER CỐ ĐỊNH ================= */
+        .mini-profile {
+            position: fixed; top: 20px; left: 15px;
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.85); padding: 5px 15px 5px 5px;
+            border-radius: 30px; z-index: 1000; border: 2px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);
         }
-        .fixed-btn:hover { transform: scale(1.05); }
-        #idea-btn { top: 20px; right: 20px; }
-        
+        .mini-profile img {
+            width: 35px; height: 35px; border-radius: 50%; object-fit: cover;
+            border: 2px solid var(--brown-dark);
+        }
+        .mini-profile span {
+            color: var(--brown-dark); font-weight: 800; font-size: 0.95rem;
+        }
+
         .back-btn { 
-            position: absolute; top: 20px; left: 15px; background: rgba(255, 255, 255, 0.9); 
-            color: var(--brown-dark); border: 2px solid var(--brown-dark); z-index: 100;
+            position: fixed; top: 20px; right: 15px; background: rgba(255, 255, 255, 0.9); 
+            color: var(--brown-dark); border: 2px solid var(--brown-dark); z-index: 1000;
             font-weight: bold; padding: 8px 15px; border-radius: 20px; cursor: pointer;
             box-shadow: 0 3px 8px rgba(0,0,0,0.2); transition: 0.2s;
         }
         .back-btn:hover { background: var(--brown-dark); color: var(--white); }
 
         /* ================= TRANG 1 ================= */
-        .home-container { text-align: center; z-index: 10; width: 95%; max-width: 600px; padding: 20px; }
-        .home-title { color: var(--brown-pastel); font-size: min(8.5vw, 2.8rem); margin: 5px 0 10px 0; white-space: nowrap; text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
-        .subtitle { color: var(--white); font-size: min(4.5vw, 1.4rem); margin-bottom: 30px; font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-        .btn-main { background-color: var(--brown-dark); color: var(--white); border: none; padding: 14px 35px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4); transition: 0.2s; width: 100%; max-width: 300px; display: inline-block;}
-        .btn-main:active { transform: scale(0.95); }
-        .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 10px; width: 100%; max-width: 400px; margin-inline: auto;}
-        .social-btn { flex: 1; padding: 10px 0; border-radius: 20px; text-decoration: none; text-align: center; color: white; font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .facebook { background-color: #1877F2; } .discord { background-color: #5865F2; } .ngl { background-color: #FF4F79; }
+        .home-container { text-align: center; z-index: 10; width: 95%; max-width: 600px; padding: 20px; margin-top: 30px;}
+        .home-title { 
+            font-size: min(9vw, 3.2rem); 
+            margin: 5px 0 15px 0; white-space: nowrap; font-weight: 800; letter-spacing: 1px;
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(252, 182, 159, 0.3);
+        }
+        .subtitle { color: #fcebeb; font-size: min(4.5vw, 1.3rem); margin-bottom: 35px; font-weight: 700; letter-spacing: 1px; text-shadow: 0 2px 5px rgba(0,0,0,0.6); }
+        .home-btn-main { 
+            background: linear-gradient(135deg, #e3c5a8 0%, #d4a373 100%); color: #ffffff; border: none; padding: 14px 35px; font-size: 1.1rem; 
+            border-radius: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4); transition: 0.3s; 
+            width: 100%; max-width: 300px; display: inline-block; text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .home-btn-main:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(212, 163, 115, 0.6); }
+        .home-btn-main:active { transform: scale(0.95); }
+
+        .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 12px; width: 100%; max-width: 400px; margin-inline: auto;}
+        .social-btn { flex: 1; padding: 12px 0; border-radius: 20px; text-decoration: none; text-align: center; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.2s; border: 2px solid transparent;}
+        .facebook { background: #A3C7D6; color: #2c3e50; } 
+        .discord { background: #BCA3C3; color: #2c3e50; } 
+        .ngl { background: #FADCE6; color: #2c3e50; } 
+        .social-btn:hover { border-color: #fff; transform: translateY(-3px); }
 
         /* ================= TRANG 2: KHO CHARACTER ================= */
         .archive-container { width: 98%; max-width: 1200px; margin: 0 auto; text-align: center; position: relative;}
@@ -121,14 +142,11 @@
         .char-time { font-size: 0.85rem; color: #888; margin-bottom: 5px; font-weight: 600; font-style: italic;}
         .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
         .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 5px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--white);}
-        
-        /* Note tự động xuống dòng */
         .char-note-mini { font-size: 0.9rem; color: var(--text-dark); font-weight: 600; font-style: italic; margin-top: 5px; white-space: pre-wrap;}
         
         .card-footer { display: flex; justify-content: flex-end; align-items: center; margin-top: 5px;}
         .char-action { font-size: 0.9rem; color: var(--brown-dark); background: transparent; border: 2px solid var(--brown-dark); padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;}
         .char-card:hover .char-action { background: var(--brown-dark); color: var(--white); }
-
 
         /* ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= */
         .profile-container {
@@ -157,7 +175,8 @@
 
         .profile-note {
             color: var(--text-dark); font-weight: 600; font-size: 1rem;
-            margin-bottom: 25px; text-align: center; font-style: italic; white-space: pre-wrap;
+            margin-bottom: 25px; text-align: center; font-style: italic;
+            white-space: pre-wrap; /* Giữ nguyên dấu xuống dòng cho Note */
         }
 
         /* Khung Cốt Truyện & Thu Gọn */
@@ -174,12 +193,12 @@
         
         .story-content {
             color: var(--text-dark); font-size: 1.05rem; line-height: 1.8;
-            white-space: pre-wrap; /* Giữ nguyên dấu xuống dòng */
+            white-space: pre-wrap; 
         }
 
         .text-collapsed {
             display: -webkit-box;
-            -webkit-line-clamp: 5; /* Hiển thị tối đa 5 dòng */
+            -webkit-line-clamp: 5; 
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -219,40 +238,33 @@
         }
         .copy-btn:hover { background: var(--brown-pastel); color: var(--white); }
 
-        /* ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= */
-        .wall-container { width: 100%; max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.8); border-radius: 25px; padding: 20px;}
-        .wall-header { text-align: center; margin-bottom: 20px; }
-        .idea-post { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); text-align: left; }
-        
-        /* Modal Góp Idea */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: var(--white); width: 90%; max-width: 450px; padding: 25px; border-radius: 25px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #999; }
-
     </style>
 </head>
 <body>
 
-    <button id="idea-btn" class="fixed-btn" onclick="goToPage3()">💡 Tường Idea</button>
+    <!-- Header Cố Định Mọi Trang -->
+    <div id="mini-profile" class="mini-profile">
+        <img src="https://cdn.discordapp.com/attachments/1547359339063419013/1556743965489766490/IMG_4341.jpg?backend=b2&ex=6ac5464c&is=6ac3f4cc&hm=8266184c7e524097dc8f10d731d3c4158002ae3bee90eee9bd7c06970bfb3206&" alt="Bơ Avatar">
+        <span>Bánh Quy Bơ</span>
+    </div>
 
     <!-- ================= TRANG 1 ================= -->
     <div id="page1" class="page active">
         <div class="home-container">
             <h1 class="home-title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
             <h2 class="subtitle">Welcome to Bơ’s little archive</h2>
-            <button class="btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
+            <button class="home-btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
             <div class="social-links">
-                <a href="#" target="_blank" class="social-btn facebook">Facebook</a>
-                <a href="#" target="_blank" class="social-btn discord">Discord</a>
-                <a href="#" target="_blank" class="social-btn ngl">NGL</a>
+                <a href="https://www.facebook.com/share/1HdUVzoc7j/?mibextid=wwXIfr" target="_blank" class="social-btn facebook">Facebook</a>
+                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fdiscord.com%2Fusers%2F1502669716873941283%3Ffbclid%3DIwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZA80Mzc2MjYzMTY5NzM3ODgAAR5DqtsIrAwoFrM_USRQoKJZ7bkoE9HJSAFRzG5xLm2yJFLma8v0hWpKPSaMmg_aem_GIxkncmG3_I0EIOWeLosfg&h=AUALvjeoRNT8EdH4qePUgz4cBGNvd8w40YMRw6dvqAMg_7EO9SdqU8B17_n-ihfzUpvMS3XdwOCUxE9ckpJu5fRBe2jpCVn_4UhWazx_6d4pTsfVZKddL-FRu7g10QTf6GqlK3INVqVq5xU&s=1" target="_blank" class="social-btn discord">Discord</a>
+                <a href="https://ngl.link/gocnhabo/pop" target="_blank" class="social-btn ngl">NGL</a>
             </div>
         </div>
     </div>
 
     <!-- ================= TRANG 2: DANH SÁCH NHÂN VẬT ================= -->
     <div id="page2" class="page">
-        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
+        <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="archive-container">
             <h1 class="archive-title">HỘP BÁNH QUY CỦA BƠ</h1>
@@ -287,7 +299,7 @@
 
     <!-- ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= -->
     <div id="page4" class="page">
-        <button class="fixed-btn back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
+        <button class="back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
         
         <div class="profile-container">
             <img id="profileImage" src="" alt="Profile Image" class="profile-img">
@@ -321,33 +333,6 @@
                 <button class="btn-chat" id="btnChat" onclick="verifyChat()">💬 Chat với chồng yêu</button>
                 <p id="noLinkText" class="error-text" style="color: #666; font-style: italic; margin-top: 10px;">Chưa có link 🔒</p>
             </div>
-        </div>
-    </div>
-
-    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= -->
-    <div id="page3" class="page">
-        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
-        <div class="wall-container">
-            <div class="wall-header">
-                <h2 class="archive-title" style="font-size: 1.8rem;">Babi thả ý tưởng, Bơ thả chữ ❀</h2>
-                <button class="btn-main" style="padding: 10px 20px; font-size: 1rem; margin-top: 10px; width: auto;" onclick="openIdeaForm()">+ Góp hạt cho Bơ</button>
-            </div>
-            <div id="ideaFeed"></div>
-        </div>
-    </div>
-
-    <!-- MODAL GÓP IDEA -->
-    <div id="ideaModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeIdeaForm()">&times;</span>
-            <h2 class="home-title" style="font-size: 1.8rem; text-shadow: none; text-align:center;">Góp Idea 🌰</h2>
-            <div style="margin-top:20px;">
-                <select id="ideaCategory" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 12px; border: 2px solid var(--beige-light); outline:none;">
-                    <option value="Bg">Bg</option><option value="Bl">Bl</option><option value="Gb">Gb</option><option value="Gl">Gl</option>
-                </select>
-                <textarea id="ideaText" style="width: 100%; height: 120px; padding: 12px; border-radius: 12px; border: 2px solid var(--beige-light); resize: none; outline:none; font-family:inherit;" placeholder="Ghi ý tưởng vào đây..."></textarea>
-            </div>
-            <button class="btn-main" style="width: 100%; margin-top:10px;" onclick="submitIdea()">Đăng Lên Tường ✨</button>
         </div>
     </div>
 
@@ -407,7 +392,7 @@
                 name: "Tiêu Mục Bạch",
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556726190352367706/IMG_4336.jpg?backend=b2&ex=6ac535be&is=6ac3e43e&hm=e42d50f6517e6bf60e11a5b788641b792fd2b9c49920377bd32d340f51a2af8f&",
                 tags: ["R18", "hài hước", "usủe bị muỗi cắn búm x char bác sĩ"],
-                note: "",
+                note: "Cre: Chuyển thể từ truyện sữa dâu khiêu gợi\nNote: Tính cách Yu-shin không giống 100% nguyên tác.",
                 postTime: "2026-10-06T00:45:00",
                 pass: "",
                 link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221MWRNayfSR7MeNhoFFee13GxxyQ3_1lFi%22%5D,%22action%22:%22open%22,%22userId%22:%22108629777368882580516%22,%22resourceKeys%22:%7B%7D%7D",
@@ -444,9 +429,9 @@
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754489892143226/IMG_4346.jpg?backend=b2&ex=6ac55019&is=6ac3fe99&hm=4cc978cb78b694301c69718230cb9194a672e412a88684ab3af8e8827f56bfa5&",
                 tags: ["Thanh mai trúc mã", "user bạch liên hoa", "ngọt", "size gap"],
                 note: "",
-                postTime: "2026-10-06T02:25:00",
+                postTime: "2026-10-06T02:30:00",
                 pass: "",
-                link: "", // HIỆN CHƯA CÓ LINK
+                link: "", // HIỆN LÀ CHƯA CÓ LINK
                 backstory: `Mười bảy năm thanh xuân của chúng tôi được gói gọn trong ba căn nhà sát vách, xây trên cùng một mảnh đất do ba người mẫu hậu — những người bạn thân từ thời cấp ba — quy hoạch từ thuở nào. Nhà Thẩm Tinh Dã bên trái, nhà {{user}} ở giữa, và bên phải là lãnh địa của Bùi Hựu Hiên. \n\nTừ những ngày còn đỏ hỏn mải réo khóc đòi sữa cho đến khi cắp sách đến trường, ba đứa đã dính lấy nhau như hình với bóng, bất chấp định lý muôn thuở rằng tình bạn ba người thường chẳng mấy khi bền lâu. Đáng tiếc, cái sự bền lâu ấy lại đi kèm với những màn nhức đầu gai óc từ hai tên kia.\n\nBùi Hựu Hiên từ hồi mẫu giáo đến tận cấp ba vẫn giữ vững phong độ của một "bạch nguyệt quang" trong mộng của các nữ sinh toàn trường. Cậu ta dịu dàng, hào hoa, lịch thiệp, đối xử với người khác ân cần như thể sinh ra để đi cứu rỗi thế giới. Nhưng định nghĩa về sự tử tế của Hựu Hiên khi áp lên người {{user}} bỗng chốc rẽ sang một hướng hoàn toàn khác.\n\nCậu ta có thể nhã nhặn với cả thế giới, nhưng với {{user}} thì đích thị là một thằng tâm thần. Người khác muốn chạm nhẹ vào góc áo cậu ta cũng khó, thế mà cứ gặp {{user}} là cậu ta tiện tay khoác vai bá cổ, vò bù tung mái tóc, rồi nở nụ cười dịu ngọt đến mức dù trong lòng {{user}} đang sôi sùng sục lửa giận, cái sự tức tối ấy cũng tự động tan biến như bọt xà phòng.\n\nTrái ngược hoàn toàn với vẻ hào hoa của Bùi Hựu Hiên, Thẩm Tinh Dã chính là định nghĩa của hai từ khó ưa" Nhắc lại phải nhấn mạnh là cực kỳ, rất, vô cùng khó ưa! \n\nCậu ta phóng khoáng đến mức vô tâm, tính tình bốc đồng, làm gì cũng chẳng thèm bận tâm đến cảm xúc của ai ngoài bản thân mình, lại thêm cái tính nết trẻ con. Hồi mẫu giáo, đứa nào trong lớp sụt sùi nước mắt thì chắc chắn 99% thủ phạm là Thẩm Tinh Dã\n\nLớn lên rồi, cái nết ấy của cậu ta chỉ có tiến hóa thêm chứ tuyệt đối không thụt lùi. {{user}} từng thề rằng với cái thái độ sống như muốn đấm vào mặt người khác ấy, Thẩm Tinh Dã thế nào cũng sẽ ế chổng mông đến già, cô đơn đến hết kiếp này.\n\nThế nhưng, đời không như là mơ. Vào tháng trước, ngay đầu học kỳ một lớp 11 của bọn họ lại đầy biến động, hai thằng bạn thân cùng lúc công khai người yêu trong một buổi chiều đẹp trời. \n\nĐiều khiến lồng ngực {{user}} thắt lại không phải là sự hụt hẫng vì bọn nó thoát ế, mà là một thứ cảm giác chua chát, bực bội đến vô cớ cứ cuộn trào lên từng đợt. {{user}} phải trơ mắt nhìn hai thằng bạn thân kề vai khoe hai bà chị trên khối mười hai, trong lòng bỗng dâng lên một thứ ác ý ngút trời cùng sự chê bai không giấu nổi. Nhìn nụ cười đắc ý của bọn nó mà {{user}} chỉ muốn lao vào bứt tóc, đấm mỗi người một cái, miệng lầm bầm rủa xả không ngừng: Đúng là hai thằng ranh không có mắt nhìn, lái máy bay bà già.`,
                 first: `…Còn nữa`
             },
@@ -456,7 +441,7 @@
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754484216987668/IMG_4347.jpg?backend=b2&ex=6ac55018&is=6ac3fe98&hm=f95e9d93c0aa25bd440a61fb1005f91b583e2b249fe8680bfd3e298ec91df07e&",
                 tags: ["Ngực user chảy sữa dâu", "bg", "ngọt", "R18"],
                 note: "Cre: Chuyển thể từ truyện sữa dâu khiêu gợi\nNote: Tính cách Yu-shin không giống 100% nguyên tác.",
-                postTime: "2026-10-06T02:30:00",
+                postTime: "2026-10-06T02:50:00",
                 pass: "",
                 link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2212OV04nlj4BMixG3H1GPkR5J-FAkoROre%22%5D,%22action%22:%22open%22,%22userId%22:%22101306474226281904519%22,%22resourceKeys%22:%7B%7D%7D",
                 backstory: `Ánh hoàng hôn của tuổi đôi mươi hắt lên ô cửa kính sát sàn của căn hộ tầng 15, nơi {{user}} đang cuộn mình trong chăn, đôi mày khẽ nhíu lại vì một cơn bứt rứt ngầm đang cào xé cơ thể. Từ năm lên hai mươi, cuộc đời của cô rẽ sang một hướng kỳ lạ.\n\nCơ thể cô mang theo một bí mật không thể nói ra, mỗi khi màn đêm buông xuống hoặc cảm xúc chao đảo, ngực cô lại tiết ra thứ sữa dâu ngọt ngào, nóng hổi—chính là vị sữa dâu mà cô từng nghiện đắm đuối từ bé đến lớn!\n\nĐó không chỉ là một sự phiền phức về thể xác, mà còn là ngọn lửa sy lính cứ âm ỉ cuộn trào bên trong, khiến cô luôn chìm trong cơn khát vô đáy và trống trải.\n\nĐã bao lần cô đến bệnh viện, đối diện ánh mắt bối rối của bác sĩ, để rồi nhận lại cái lắc đầu: “Hoàn toàn khỏe mạnh. Không có dị thường y khoa nào”\n\nVà trong cơn dằn vặt tột cùng của cơ thể, bóng hình duy nhất hiện lên trong tâm trí cô không ai khác chính là Kim Yoo Shin.\n\nHọ từng là thế giới của nhau. Thuở nhỏ, Yoo Shin là một cậu nhóc nhút nhát, hay mít ướt, mềm mại và đáng yêu như một né mèo con bị mắc mưa, luôn nấp sau lưng {{user}} để tìm kiếm sự bảo bọc. Thế nhưng, thời gian là một thứ tàn nhẫn.\n\nBây giờ, Yoo Shin ở tầng 30 của cùng một tòa officetel, chỉ cách cô mười lăm tầng lầu và chung một trường đại học. Nhưng khoảng cách giữa họ lại xa như cả dải Ngân Hà. Cậu thiếu niên ngày nào nay đã biến thành một nam thần khoa thể dục thể chất năm 3, một vận động viên boxing từng mang về huy chương cấp quốc gia, hoàn toàn trái ngược với vẻ yếu đuối thuở xưa.\n\nMỗi lần vô tình chạm mặt trong thang máy, không khí lại đặc quánh lại bởi sự ngượng ngùng. Họ chỉ lướt qua nhau như những kẻ xa lạ từng quen, trao nhau cái gật đầu xã giao lạnh lẽo, che giấu đi sự bối rối và xa cách.`,
