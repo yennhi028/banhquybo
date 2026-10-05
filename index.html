@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bơ's Little Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
     
     <style>
         /* ================= CẤU HÌNH GIAO DIỆN (CSS) ================= */
         :root {
-            --bg-color: #DDEBD5; /* Màu xanh lá pastel chủ đạo */
-            --color-title: #806044; /* Màu chữ BÁNH QUY BƠ */
-            --color-sub: #B89476; /* Màu chữ Welcome to... */
+            --bg-color: #DDEBD5; 
+            --color-title: #806044; 
+            --color-sub: #B89476; 
             --white: #ffffff;
         }
 
@@ -29,7 +29,7 @@
             min-height: 100vh;
         }
 
-        /* Nút phát nhạc nổi ở cả 2 trang */
+        /* Nút phát nhạc */
         #music-btn {
             position: fixed;
             top: 20px;
@@ -50,13 +50,14 @@
             transform: scale(1.05);
         }
 
-        /* Khung quản lý trang (Trang 1 / Trang 2) */
+        /* Khung quản lý trang */
         .page {
             display: none;
             min-height: 100vh;
-            padding: 50px 20px;
+            padding: 80px 20px 50px 20px;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             position: relative;
         }
         .page.active { display: flex; }
@@ -68,17 +69,21 @@
             width: 100%;
         }
 
-        /* Chữ (Typography) */
+        /* Chữ (Typography) - Đã sửa lỗi rớt dòng */
         .title {
             color: var(--color-title);
-            font-size: 2.5rem;
-            margin: 15px 0;
+            /* Tự động thu nhỏ theo màn hình để luôn trên 1 dòng */
+            font-size: min(9vw, 3rem); 
+            margin: 10px 0;
+            white-space: nowrap; 
         }
 
         .subtitle {
             color: var(--color-sub);
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            /* Tự động thu nhỏ theo màn hình để luôn trên 1 dòng */
+            font-size: min(4.5vw, 1.5rem); 
+            margin-bottom: 40px;
+            white-space: nowrap; 
         }
 
         .small-text {
@@ -93,7 +98,7 @@
             background-color: var(--color-title);
             color: var(--white);
             border: none;
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 1.2rem;
             border-radius: 30px;
             cursor: pointer;
@@ -119,16 +124,17 @@
             margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .social-btn {
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 20px;
             text-decoration: none;
             color: white;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: 0.2s;
         }
         .social-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
@@ -136,34 +142,40 @@
         .discord { background-color: #5865F2; }
         .ngl { background-color: #FF4F79; }
 
-        /* Ảnh Gấu trúc */
-        .panda-img {
-            width: 250px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Vật thể trang trí bay lơ lửng */
+        /* VẬT THỂ TRANG TRÍ (Stickers xịn xò có hiệu ứng) */
         .decor {
             position: absolute;
-            font-size: 2rem;
-            opacity: 0.8;
-            animation: float 4s ease-in-out infinite;
+            width: 60px; /* Kích thước ảnh dán */
+            opacity: 0.85;
             z-index: 0;
-            user-select: none;
+            pointer-events: none; /* Không che mất nút bấm */
         }
-        .d1 { top: 10%; left: 10%; animation-delay: 0s; }
-        .d2 { top: 20%; right: 15%; animation-delay: 1s; font-size: 2.5rem;}
-        .d3 { bottom: 15%; left: 20%; animation-delay: 2s; }
-        .d4 { bottom: 25%; right: 10%; animation-delay: 0.5s; font-size: 3rem;}
-        .d5 { top: 50%; left: 5%; animation-delay: 1.5s; }
-        .d6 { top: 40%; right: 5%; animation-delay: 2.5s; font-size: 2.5rem;}
-        .d7 { bottom: 5%; right: 25%; animation-delay: 1.2s;}
-
-        @keyframes float {
+        
+        /* Hiệu ứng chuyển động */
+        @keyframes float-spin {
             0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
+        @keyframes float-bounce {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+        @keyframes float-wobble {
+            0% { transform: translateY(0px) rotate(-10deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(-10deg); }
+        }
+
+        /* Vị trí và hiệu ứng cho từng món đồ */
+        .d1 { top: 12%; left: 10%; width: 50px; animation: float-spin 4s ease-in-out infinite; }
+        .d2 { top: 25%; right: 12%; width: 70px; animation: float-bounce 3.5s ease-in-out infinite; }
+        .d3 { bottom: 15%; left: 15%; width: 55px; animation: float-wobble 4s ease-in-out infinite; }
+        .d4 { bottom: 25%; right: 10%; width: 65px; animation: float-spin 5s ease-in-out infinite; }
+        .d5 { top: 40%; left: 5%; width: 50px; animation: float-bounce 4.5s ease-in-out infinite; }
+        .d6 { top: 35%; right: 5%; width: 60px; animation: float-wobble 3.8s ease-in-out infinite; }
+        .d7 { bottom: 5%; right: 20%; width: 55px; animation: float-bounce 4.2s ease-in-out infinite;}
 
         /* TRANG 2: TÌM KIẾM & DANH SÁCH */
         .back-btn {
@@ -237,7 +249,7 @@
         .modal-content {
             background: var(--white);
             width: 90%;
-            max-width: 550px;
+            max-width: 500px;
             padding: 30px;
             border-radius: 20px;
             position: relative;
@@ -297,82 +309,76 @@
             margin-right: 10px;
             outline: none;
             font-size: 1rem;
-            width: 60%;
+            width: 100%;
+            margin-bottom: 10px;
         }
         .pass-section input:focus { border-color: var(--color-sub); }
     </style>
 </head>
 <body>
 
-    <!-- ================= CẤU TRÚC TRANG WEB (HTML) ================= -->
-    
-    <!-- Nút phát nhạc (Luôn hiện) -->
+    <!-- ================= NÚT NHẠC ================= -->
     <button id="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
     <audio id="bg-music" loop>
-        <!-- Điền link nhạc mp3 của bạn vào chữ src="" bên dưới nhé -->
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- TRANG 1: TRANG CHỦ -->
+    <!-- ================= TRANG 1: TRANG CHỦ ================= -->
     <div id="page1" class="page active">
-        <!-- Đồ vật trang trí -->
-        <div class="decor d1">🌸</div>
-        <div class="decor d2">🍪</div>
-        <div class="decor d3">🎀</div>
-        <div class="decor d4">🥑</div>
+        <!-- Đồ vật trang trí dạng hình ảnh sticker xịn xò có animation -->
+        <img src="https://cdn-icons-png.flaticon.com/512/6122/6122729.png" class="decor d1" alt="hoa">
+        <img src="https://cdn-icons-png.flaticon.com/512/5779/5779532.png" class="decor d2" alt="bánh quy">
+        <img src="https://cdn-icons-png.flaticon.com/512/12300/12300062.png" class="decor d3" alt="nơ">
+        <img src="https://cdn-icons-png.flaticon.com/512/6575/6575975.png" class="decor d4" alt="bơ">
         
         <div class="container">
-            <!-- Ảnh Gấu trúc cầm bơ (Hãy thay bằng link ảnh của bạn) -->
-            <img src="https://i.imgur.com/KxTWeQ9.png" alt="Panda holding cookie and avocado" class="panda-img">
-            
-            <h1 class="title">✧.* BÁNH QUY BƠ *.✧</h1>
-            <h2 class="subtitle">⋆ ˚｡⋆୨୧ Welcome to Bơ’s little archive ୨୧⋆ ˚｡⋆</h2>
+            <!-- Chữ chuẩn không rớt dòng, đã xoá ngôi sao -->
+            <h1 class="title">BÁNH QUY BƠ</h1>
+            <h2 class="subtitle">Welcome to Bơ’s little archive</h2>
             
             <button class="btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
             
             <div class="social-links">
-                <!-- Dán link Facebook, Discord, NGL của bạn vào dấu # -->
-                <a href="#" target="_blank" class="social-btn facebook">Facebook</a>
-                <a href="#" target="_blank" class="social-btn discord">Discord</a>
-                <a href="#" target="_blank" class="social-btn ngl">NGL</a>
+                <!-- Đã thay đúng link cá nhân bạn cung cấp -->
+                <a href="https://www.facebook.com/share/1FJUsbWv1j/?mibextid=wwXIfr" target="_blank" class="social-btn facebook">Facebook</a>
+                <a href="https://discord.com/users/1502669716873941283" target="_blank" class="social-btn discord">Discord</a>
+                <a href="https://ngl.link/gocnhabo/pop" target="_blank" class="social-btn ngl">NGL</a>
             </div>
         </div>
     </div>
 
-    <!-- TRANG 2: KHO CHARACTER -->
+    <!-- ================= TRANG 2: KHO CHARACTER ================= -->
     <div id="page2" class="page">
-        <!-- Đồ vật trang trí: bánh quy, hoa, nơ, sao, giấy note, hũ bánh quy -->
-        <div class="decor d1">🍪</div>
-        <div class="decor d2">🌸</div>
-        <div class="decor d3">🎀</div>
-        <div class="decor d4">⭐</div>
-        <div class="decor d5">📝</div>
-        <div class="decor d6">🍯</div>
-        <div class="decor d7">🍪</div>
+        <!-- Đồ vật trang trí trang 2 -->
+        <img src="https://cdn-icons-png.flaticon.com/512/5779/5779532.png" class="decor d1" alt="bánh quy">
+        <img src="https://cdn-icons-png.flaticon.com/512/6122/6122729.png" class="decor d2" alt="hoa">
+        <img src="https://cdn-icons-png.flaticon.com/512/12300/12300062.png" class="decor d3" alt="nơ">
+        <img src="https://cdn-icons-png.flaticon.com/512/8202/8202657.png" class="decor d4" alt="sao">
+        <img src="https://cdn-icons-png.flaticon.com/512/7311/7311281.png" class="decor d5" alt="giấy note">
+        <img src="https://cdn-icons-png.flaticon.com/512/4680/4680977.png" class="decor d6" alt="hũ mật">
+        <img src="https://cdn-icons-png.flaticon.com/512/5779/5779532.png" class="decor d7" alt="bánh quy">
 
         <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="container">
-            <h1 class="title">✧ HỘP BÁNH QUY CỦA BƠ ✧</h1>
+            <h1 class="title">HỘP BÁNH QUY CỦA BƠ</h1>
             <p class="small-text">Mỗi chiếc bánh là một câu chuyện Bơ gửi gắm</p>
             
-            <!-- Tìm kiếm -->
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="🔍 Tìm chồng..." onkeyup="searchChar()">
             </div>
 
-            <!-- Nơi hiển thị danh sách nhân vật -->
             <div class="character-list" id="charList">
-                <!-- Danh sách tự động tạo bằng Code -->
+                <!-- Danh sách tự động -->
             </div>
         </div>
     </div>
 
-    <!-- KHUNG HIỂN THỊ THÔNG TIN CHARACTER CHI TIẾT (Bấm vào nhân vật sẽ hiện) -->
+    <!-- ================= MODAL THÔNG TIN TỪNG ANH CHỒNG ================= -->
     <div id="charModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modalName" class="title" style="margin-top: 0;">Tên Nhân Vật</h2>
+            <h2 id="modalName" class="title" style="margin-top: 0; font-size: 2rem;">Tên Nhân Vật</h2>
             
             <div id="modalTags" class="tags"></div>
             
@@ -388,51 +394,40 @@
 
             <div class="pass-section">
                 <input type="password" id="passInput" placeholder="Nhập pass để chat...">
-                <button class="btn-main small" onclick="checkPassword()">Mở Khóa Chat</button>
+                <button class="btn-main small" style="width: 100%;" onclick="checkPassword()">Mở Khóa Chat</button>
                 <p id="passError" style="color: #ff4757; font-weight: bold; display: none; margin-top: 10px;">Sai pass rồi, thử lại nhé 🥺!</p>
             </div>
 
             <div id="chatLinkSection" style="display: none; margin-top: 25px; text-align: center;">
-                <a href="#" id="modalLink" target="_blank" class="btn-main">💖 Vào Chat Ngay 💖</a>
+                <a href="#" id="modalLink" target="_blank" class="btn-main" style="width: 100%;">💖 Vào Chat Ngay 💖</a>
             </div>
         </div>
     </div>
 
-    <!-- ================= CHỨC NĂNG HOẠT ĐỘNG (JAVASCRIPT) ================= -->
+    <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // 1. DATA NHÂN VẬT CỦA BẠN (Thêm, sửa, xóa các anh chồng ở đây)
+        // DATA NHÂN VẬT (Bạn thay đổi nội dung ở đây nha)
         const characters = [
             {
                 id: 1,
                 name: "Taehyung Tổng Tài",
                 tags: ["Lạnh lùng", "Tổng tài", "Ngọt sủng"],
                 backstory: "Anh ta là người thừa kế của tập đoàn lớn nhất nước, nhưng lại luôn giấu đi sự ấm áp bên trong cái vỏ bọc lạnh lùng...",
-                first: "Cô lại làm đổ cà phê vào áo tôi nữa rồi đấy? Có biết nó đắt thế nào không, hả cô thư ký ngốc?",
-                pass: "bo123", // Mật khẩu của nhân vật này
+                first: "Cô lại làm đổ cà phê vào áo tôi nữa rồi đấy? Có biết nó đắt thế nào không?",
+                pass: "bo123", 
                 link: "https://link-chat-cua-ban.com/1"
             },
             {
                 id: 2,
                 name: "Sói Xám Dịu Dàng",
                 tags: ["Dịu dàng", "Thú nhân", "Fantasy"],
-                backstory: "Một con sói lang thang trong khu rừng phép thuật, luôn âm thầm bảo vệ bạn khỏi những nguy hiểm từ khi bạn còn bé tí.",
-                first: "Đừng sợ, tôi sẽ không làm tổn thương em đâu. Lại đây nào, trời sắp mưa rồi.",
+                backstory: "Một con sói lang thang trong khu rừng phép thuật, luôn âm thầm bảo vệ bạn.",
+                first: "Đừng sợ, tôi sẽ không làm tổn thương em đâu. Lại đây nào.",
                 pass: "bocute",
                 link: "https://link-chat-cua-ban.com/2"
-            },
-            {
-                id: 3,
-                name: "Thanh Mai Trúc Mã",
-                tags: ["Học đường", "Hài hước", "Tsundere"],
-                backstory: "Cậu bạn hàng xóm cãi nhau với bạn từ hồi cởi truồng tắm mưa, mồm mép độc địa nhưng hễ ai ăn hiếp bạn là lao ra bảo vệ.",
-                first: "Này con heo kia, bài tập toán hôm qua mượn vở chép chưa mà mặt cứ nghệt ra thế?",
-                pass: "12345",
-                link: "https://link-chat-cua-ban.com/3"
             }
-            // Mẫu thêm nhân vật mới (Nhớ có dấu phẩy ở trên trước khi dán vào)
         ];
 
-        // 2. CHỨC NĂNG BẬT/TẮT NHẠC
         let music = document.getElementById("bg-music");
         let isPlaying = false;
 
@@ -448,11 +443,10 @@
             isPlaying = !isPlaying;
         }
 
-        // 3. CHỨC NĂNG CHUYỂN TRANG
         function goToPage2() {
             document.getElementById('page1').classList.remove('active');
             document.getElementById('page2').classList.add('active');
-            renderCharacters(characters); // In danh sách nhân vật ra khi qua trang 2
+            renderCharacters(characters); 
         }
 
         function goToPage1() {
@@ -460,10 +454,9 @@
             document.getElementById('page1').classList.add('active');
         }
 
-        // 4. CHỨC NĂNG TẠO DANH SÁCH & TÌM KIẾM
         function renderCharacters(list) {
             const listDiv = document.getElementById('charList');
-            listDiv.innerHTML = ""; // Xóa danh sách cũ
+            listDiv.innerHTML = ""; 
             
             if(list.length === 0) {
                 listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--color-title); font-style: italic;'>Không tìm thấy chồng yêu nào cả 🥲</p>";
@@ -474,14 +467,13 @@
                 let div = document.createElement('div');
                 div.className = "char-card";
                 div.innerText = char.name;
-                div.onclick = () => openModal(char); // Bấm vào sẽ mở thẻ chi tiết
+                div.onclick = () => openModal(char); 
                 listDiv.appendChild(div);
             });
         }
 
         function searchChar() {
             let input = document.getElementById('searchInput').value.toLowerCase();
-            // Lọc nhân vật theo tên hoặc tag
             let filtered = characters.filter(char => 
                 char.name.toLowerCase().includes(input) || 
                 char.tags.join(" ").toLowerCase().includes(input)
@@ -489,7 +481,6 @@
             renderCharacters(filtered);
         }
 
-        // 5. CHỨC NĂNG BẢNG CHI TIẾT (MODAL) VÀ NHẬP PASS
         let currentChar = null;
 
         function openModal(char) {
@@ -497,7 +488,6 @@
             document.getElementById('charModal').style.display = "flex";
             document.getElementById('modalName').innerText = char.name;
             
-            // Xóa tags cũ và thêm tags mới
             let tagsDiv = document.getElementById('modalTags');
             tagsDiv.innerHTML = "";
             char.tags.forEach(tag => {
@@ -507,11 +497,9 @@
                 tagsDiv.appendChild(span);
             });
 
-            // Hiện Backstory và First Message
             document.getElementById('modalBackstory').innerText = char.backstory;
             document.getElementById('modalFirst').innerText = char.first;
             
-            // Reset ô nhập mật khẩu
             document.getElementById('passInput').value = "";
             document.getElementById('passError').style.display = "none";
             document.getElementById('chatLinkSection').style.display = "none";
@@ -521,7 +509,6 @@
             document.getElementById('charModal').style.display = "none";
         }
 
-        // Đóng khung nếu bấm ra ngoài vùng trắng
         window.onclick = function(event) {
             let modal = document.getElementById('charModal');
             if (event.target == modal) {
@@ -532,16 +519,9 @@
         function checkPassword() {
             let input = document.getElementById('passInput').value;
             if (input === currentChar.pass) {
-                // Nhập đúng pass
                 document.getElementById('passError').style.display = "none";
                 document.getElementById('chatLinkSection').style.display = "block";
-                document.getElementById('modalLink').href = currentChar.link; // Gắn link chat
+                document.getElementById('modalLink').href = currentChar.link; 
             } else {
-                // Nhập sai pass
                 document.getElementById('passError').style.display = "block";
-                document.getElementById('chatLinkSection').style.display = "none";
-            }
-        }
-    </script>
-</body>
-</html>
+                document.getElementById('chatLinkSection').style.display =
