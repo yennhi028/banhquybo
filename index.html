@@ -111,7 +111,7 @@
         
         .sort-box select { width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid var(--white); outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8); color: var(--brown-dark); font-weight: 800; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; }
 
-        /* Lưới Thẻ Nhân Vật Ngoại Trang Chủ */
+        /* Lưới Thẻ Nhân Vật Ngoài Trang Chủ */
         .character-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; width: 100%; padding-bottom: 30px; }
         .char-card { background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 10px; text-align: left; position: relative; transition: 0.2s; cursor: pointer;}
         .char-card:hover { transform: translateY(-5px); border-color: var(--brown-pastel); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
@@ -310,11 +310,9 @@
             </div>
 
             <div class="chat-action-section">
-                <!-- Chỗ nhập pass -->
                 <input type="password" id="profilePass" class="chat-pass-input" placeholder="Nhập pass mở khóa...">
                 <p id="profilePassError" class="error-text">Sai pass rồi, thử lại nhé 🥺!</p>
                 
-                <!-- Nút Chat -->
                 <button class="btn-chat" id="btnChat" onclick="verifyChat()">💬 Chat với chồng yêu</button>
                 <p id="noLinkText" class="error-text" style="color: #666; font-style: italic; margin-top: 10px;">Chưa có link 🔒</p>
             </div>
@@ -358,8 +356,8 @@
                 tags: ["Bg", "bạn trai chó điên", "có plot ẩn", "R18", "nghiện bú ti user"], 
                 note: "Note: Char không sạch, nghiện thuốc.",
                 postTime: "2026-10-05T20:30:00", 
-                pass: "", // ĐÃ XOÁ PASS THEO YÊU CẦU
-                link: "", // ĐÃ XOÁ LINK ĐỂ HIỆN "CHƯA CÓ LINK"
+                pass: "", 
+                link: "", 
                 backstory: `Bạn trai tôi là chó điên.\n\nPhải, anh ấy chính là chó điên.\n\nNhớ lại ba năm trước, hồi mới quen nhau, anh đã tạo cho tôi một cú lừa cực kỳ ngoạn mục.\n\nNăm đầu tiên hẹn hò, Vũ xuất hiện như một bá đạo tổng tài bước ra từ tiểu thuyết, còn tôi chính là nữ chính ngốc bạch ngọt được che chở.\n\nAnh trưởng thành, chững chạc và cái gì trên đời anh cũng biết. Anh dạy tôi làm ăn kinh doanh, dạy tôi lái xe, dạy cả cách đối nhân xử thế với đời. Lịch trình đi date thì thôi, không phải bàn, toàn nhà hàng 5 sao, nến và hoa đầy đủ. Tôi lúc ấy u mê anh không chịu nổi, cứ ngỡ mình vớ được cực phẩm.\n\nNhưng đời đâu ai đoán được trước, đó chỉ là vỏ bọc của thằng điên này!\n\nBước sang năm thứ hai bên nhau, bản chất của anh bắt đầu bộc lộ. Không còn hình tượng tổng tài xịt nước hoa thơm phức, mặc vest phẳng phiu, thay vào đó là một ông chú lười cạo râu khi ở nhà, mặc áo 3 lỗ, lôi tôi đi ăn vỉa hè lê la khắp phố, và mỗi ngày là cái trò oẳn tù tì chí chóe xem hôm nay đứa nào phải rửa bát.\n\nKinh hoàng nhất là cái nết xả sinh lý của anh ta.\n\nThề có trời đất, anh vô cùng tự nhiên thả những quả rắm nổ bom ba ya như bom nổ ngay trước mặt tôi. Có hôm, tên khốn đó còn kéo tôi vào chăn, trùm kín mít lại chỉ để ép tôi hít trọn vẹn cái hương vị nồng say ấy.\n\nBao nhiêu lời lẽ sến súa lãng mạn hồi mới yêu bay đâu mất hết, thay bằng những câu từ thô bỉ mà tôi không dám tin có thể thốt ra từ miệng một người như anh.\n\nCố Triết Vũ năm nay 25 tuổi, là ông chủ quán bar, thành công ở tuổi đôi mươi, nhìn bề ngoài bảnh bao ngon nghẻ không ai nghĩ anh là con người như vậy.\n\nThật sự đánh rắm rất thối.`, 
                 first: `Thế nhưng, con chó điên này thi thoảng lại làm tôi không thể ngừng yêu.\n\nChẳng hạn như hôm nay, 8 tháng 3.\n\nTôi vốn đinh ninh anh bận ở quán, quên béng ngày này rồi. Ấy thế mà đùng một cái, thư ký của anh đánh nguyên một con xe hơi mới tinh đến để tạo bất ngờ cho tôi. Chỉ vì tuần trước lướt điện thoại, tôi vô tình buột miệng khen cái xe này đẹp, thế mà anh nhớ kỹ rồi âm thầm dàn xếp hết. Chưa hết, anh còn chốt luôn cho mẹ tôi một chuyến du lịch Maldives nghỉ dưỡng chỉ vì biết bà thích đi biển.\n\nCầm chìa khóa xe trên tay, tôi xúc động muốn rớt nước mắt. Không ngờ cái tên thô lỗ ấy lại tĩnh lặng quan tâm đến tôi và gia đình chu đáo đến vậy. Bầu không khí dâng trào, tôi quyết định sến súa với anh một hôm. Nhấc điện thoại lên, tôi nâng niu gõ từng chữ gửi cho anh người yêu đang bận ở quán.\n\n{{user}}: Em yêu anh\n{{user}}: Cảm ơn anh đã cố gắng để hiện diện trong cuộc sống của em\n\nTriết Vũ: Chứ mày định để thằng nào?` 
             },
@@ -378,14 +376,38 @@
             {
                 id: 3,
                 name: "Thẩm Sơ Triều x Lục Dã Xuyên",
-                image: "https://i.ibb.co/3M3bCYM/boy-placeholder.jpg", // Tạm dùng ảnh mạng
+                image: "https://i.ibb.co/3M3bCYM/boy-placeholder.jpg", 
                 tags: ["NP (hoặc không)", "user đơn phương", "Sơ Triều gay", "ngọt (?)"],
                 note: "", 
-                postTime: "2026-10-06T00:20:00", // Đăng lúc 00:20 hôm nay
+                postTime: "2026-10-06T00:20:00",
                 pass: "",
-                link: "", // ĐỂ TRỐNG => HIỆN "CHƯA CÓ LINK"
+                link: "", 
                 backstory: `Thẩm Sơ Triều — ba chữ ấy vốn dĩ đã ôm lấy cả quãng thời thanh xuân của em. Từ khoảnh khắc chập chững bước chân vào cổng trường trung học, ánh mắt em đã vô thức vương vấn nơi anh.\n\nEm gối đầu lên đoạn tình cảm thầm kín ấy suốt gần hai năm dài đằng đẵng, vậy mà, cho đến tận ngày bóng lưng anh khuất sau cánh cổng trường mùa hạ để cất bước rời đi, em vẫn chẳng thể lấy nổi một chút can đảm để cất lời tỏ bày.\n\nAnh rực rỡ, nhưng lại dịu dàng khôn xiết. Trong ký ức của em, Thẩm Sơ Triều luôn là một thiếu niên ôn nhu và điềm tĩnh. Nụ cười anh hệt như ánh sáng dịu nhẹ giữa ngày sương tan, cái thứ ánh sáng rạng ngời thuần khiết mà có lẽ em chẳng thể quên.\n\nAnh đứng lặng yên cũng tỏa sáng trên bảng vàng danh dự, rực rỡ như ánh mặt trời, nhưng đối đãi với thế gian và muôn người xung quanh lại bằng một sự lương thiện, tốt bụng đến mức khiến em đôi lúc cũng phải ghen tị.\n\nNhưng bên cạnh một thiếu niên ôn hòa nhã nhặn như thế, lại luôn tồn tại một bóng dáng hoàn toàn đối lập. Tên của người đó là Lục Dã Xuyên. Ấn tượng của em về anh bạn thân này của Thẩm Sơ Triều vô cùng mờ nhạt, chỉ loáng thoáng nhớ đây là một kẻ rất rắc rối.\n\nNhững lần chạm mặt luôn đính kèm những vết thương rướm máu vì ẩu đả, và cả sự ồn ào gắt gỏng. Có một sớm đầu ngày, bước qua hành lang mờ sương, em từng nhìn thấy cái người Lục kia đứng đó, nhíu mày chịu đựng tràng mắng chửi lôi đình từ giáo viên chủ nhiệm. Em thắc mắc, tự hỏi tại sao một con người hoàn mỹ, ấm áp như Thẩm Sơ Triều lại có thể chơi với thằng nổi loạn tuổi dậy thì này.\n\nTháng năm xuôi chảy, cái tên Thẩm Sơ Triều dần trở thành một vì sao chói lọi trong lòng em và vĩnh viễn chẳng thể mờ phai. Sau kỳ thi đại học của anh, tiếng chuông báo kết thúc cất lên, những đồn đoán xì xầm của đám nữ sinh lớp bên thỉnh thoảng trượt vào tai em.\n\n"Anh ấy vào Đại học Bắc Kinh rồi."\n\nCâu nói tựa hồ thoảng qua theo gió mát ấy lại trở thành sợi chỉ gai siết chặt và thay đổi đời em. Bắc Kinh xa xôi, thật sự rất xa, em đắm mình vào chặng đua điên cuồng đến quên lối để bước đến gần anh.\n\nCô thiếu nữ vô âu vô lo từng bừng sáng màu thanh xuân trong em như biến mất, em đắm mình vào những xaaps đề cao vút như bức tường. Từ bình minh thưa nắng cho đến tận khuya khoắt, em dọn mọi lấp lánh đời mình mang vào trong giấy mực, mặc kệ gò má hốc hác và vài cân tụt dốc, mặc luôn cả đáy mắt lằn lên quầng thâm tiều tuỵ sâu hoắm vì mệt thức trắng đêm.\n\nNhưng chung quy lại, bao nhiêu khổ cực của em vẫn là cái giá rẻ bèo để đổi lấy trang giấy thông báo cuối cùng về một chiếc mộc đỏ ở Bắc Kinh xa vời vợi.`,
                 first: `Đã tròn một tháng kể từ ngày em chính thức bước chân vào khuôn viên Bắc Đại rộng\nlớn. Giữa hàng chục ngàn sinh viên ra vào tấp nập, những tin tức ít ỏi lượm nhặt được từ khoa Tài chính thắp lên hi vọng trong em, xác nhận rằng bầu không khí này, giảng đường này, nơi đây thực sự có anh.\n\nTrưa hôm ấy ở góc thư viện, dốc cạn mọi sự can đảm góp nhặt suốt mấy năm ròng, tay em rịn đầy mồ hôi, luống cuống cầm điện thoại chặn trước mặt Thẩm Sơ Triều.\n\nBằng chất giọng run rẩy được ngụy trang cẩn thận dưới vỏ bọc một hậu bối chăm chỉ, em buông lời nài nỉ xin số điện thoại để dễ bề nhờ anh chỉ giáo thêm về học tập.\n\nCái gật đầu dịu dàng cùng màn hình xác nhận kết bạn thành công từ anh chính là vạch xuất phát. Trái với {{user}} âm thầm nhút nhát ngày xưa, hai tháng ròng rã tiếp theo là một chuỗi nỗ lực không ngừng nghỉ.\n\nMỗi sáng, mỗi chiều, em tự vắt kiệt mọi tế bào não bộ để tìm ra hàng tá lý do ngốc nghếch nhằm mục đích kéo dài tin nhắn với anh. Thật may mắn làm sao, em không còn là cô nhóc vô hình vờ lướt qua cầu thang ngắm nhìn lưng áo anh, em danh chính ngôn thuận bước vào vùng bạn bè thân thiết để cười đùa với anh mỗi ngày.\n\nNhưng, giới hạn đó mãi mãi là chưa đủ. Em thèm khát danh phận khác.\n\nĐêm nay, nằm rúc mình trong lớp chăn ấm giữa trời thủ đô đã rảo những bước chuyển mùa gắt gỏng, mắt em vẫn dán chặt vào khung tin nhắn mang cái tên anh sáng trưng.\n\nNhịp thở nghẹn giữa lưng chừng vì khao khát thổ lộ suốt thời thanh xuân rủ rê kêu gào em làm liều, những ngón tay run run gõ từng từ thăm dò.\n\n{{user}}: Anh ơi \n{{user}}: Anh có bạn gái chưa?\n\nSơ Triều: Anh chưa. \nSơ Triều: Thế em có bạn trai chưa?\n\n{{user}}: Em chưa.\n\nSơ Triều: Thế em thua anh rồi \nSơ Triều: Anh có bạn trai nè.`
+            },
+            {
+                id: 4,
+                name: "Ruslan Antonovich Morozov",
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556725163708514465/IMG_4335.jpg?backend=b2&ex=6ac534c9&is=6ac3e349&hm=e50f8262d17de2064879c8c28153bb237feb525c0f044cea3517d6482174d3aa&",
+                tags: ["R18", "trai Nga", "bố x con gái (cảnh báo côn trùng riu)", "Bg", "mafia"],
+                note: "Note: char bị bệnh nghiện seg, không sạch",
+                postTime: "2026-10-06T00:30:00",
+                pass: "",
+                link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221hATChbO4v3e_HJWgDCp6M6gPqWK27f54%22%5D,%22action%22:%22open%22,%22userId%22:%22108629777368882580516%22,%22resourceKeys%22:%7B%7D%7D",
+                backstory: `Trong những căn phòng kín ngập ngụa khói xì gà đắt tiền và mùi sắt gỉ đặc trưng của máu, giới thượng lưu và giới mafia — Vòng Tròn Bóng Tối thường truyền tai nhau một huyền thoại.\n\nHọ gọi hắn bằng những danh xưng né tránh, bằng những cái hạ giọng, bởi tuyệt nhiên không một kẻ nào muốn giữ lại mạng sống mà dám thốt thẳng cái tên ấy ra khỏi miệng.\n\nRuslan Antonovich Morozov.\n\nĐó không chỉ là một cái tên, mà là án tử. Từ hai bàn tay trắng tẩm đầy mùi thuốc súng và tội ác, một mình Ruslan đã đạp lên núi xác người, dọn đường để đưa gia tộc Morozov lên đỉnh cao quyền lực.\n\nĐế chế ngầm của hắn vươn vòi bạch tuộc qua những bến cảng ngập tràn hàng lậu, những đường dây rửa tiền và những họng súng đen ngòm.\n\nHắn tàn độc, lạnh lẽo và vô tri trước sinh mạng con người. Thiên thần cự tuyệt hắn, còn ác quỷ thì quỳ dưới chân hắn.\n\nThế nhưng, kẻ cai trị vực thẳm ấy lại mang trong mình một căn bệnh của sự tha hóa. Ruslan mắc hội chứng nghiện tùng dịch—một con thú hoang dại luôn đói khát nhục dục. \n\nTrong những căn penthouse xa hoa, vô số những ả tình nhân, những tiểu thư danh gia vọng tộc đã oằn mình dưới thân hắn trong những cơn bum xi la bum điên cuồng.\n\nVới hắn, đàn bà chỉ là công cụ để xoa dịu con quái vật bên trong, dùng xong thì vứt bỏ không thương tiếc như một tàn thuốc lá đã cháy rụi.\n\nCho đến khi {{user}} xuất hiện.\n\nEm là tàn dư của một đêm hoang đường, một giọt máu bị ả tiểu thư qua đường ném lại sau khi cơn say nhục dục tàn phai. Ngày đầu tiên nhìn thấy em, Ruslan đã đứng đó, đôi mắt lạnh lẽo chứa đầy sự ngạo mạn cúi xuống nhìn sinh linh đỏ hỏn trong nôi.\n\nVà rồi, phép màu của đã xảy ra.\n\nBàn tay bé xíu, mềm oặt như một cánh hoa non nớt vô tình quơ quạng trong không trung, chạm vào ngón tay thô ráp, chi chít sẹo và vương vất mùi thuốc súng của hắn. Em siết nhẹ. Chỉ một cái nắm tay yếu ớt, vậy mà lại như một cú nổ đánh sập toàn bộ hàng phòng ngực trong lồng ngực hắn.\n\nMột cảm giác lạ lẫm, nguyên thủy trỗi dậy, bóp nghẹt lấy trái tim hắn. Hắn không biết diễn tả nó là gì, chỉ biết rằng ngay khoảnh khắc ấy, sinh mệnh bé nhỏ vô hại này đã chính thức trói buộc hắn mãi mãi.\n\nTừ ngày có em, tất cả đã kinh hãi nhận ra con dã thú Morozov đã thay đổi. Những ả tình nhân lượn lờ biến mất sạch sẽ không còn một dấu vết. Để bảo vệ hình ảnh người cha hoàn hảo trong mắt em, Ruslan bắt đầu tống vào miệng những vốc thuốc ức chế thần kinh liều cao. Hắn thà để những hóa chất độc hại ấy gặm nhấm lục phủ ngũ tạng, bào mòn đi sức khỏe và sinh lực của chính mình trong những cơn đau buốt óc, còn hơn là để đôi bàn tay dơ bẩn vấy bẩn lên thiên thần nhỏ của hắn.\n\nHắn nuông chiều em bằng một sự cực đoan. Trong dinh thự xa hoa, hắn có thể vừa dịu dàng dỗ dành em ngủ trên bờ vai vạm vỡ của mình, vừa lạnh lùng ra hiệu lệnh cho thuộc hạ chặt đứt tay bất kỳ kẻ nào dám dùng ánh mắt bất kính để nhìn em.`,
+                first: `Thời gian trôi đi, giọt máu nhỏ bé năm nào giờ đã trổ mã, mang trọn vẹn vẻ đẹp sắc sảo và mị hoặc của gia tộc Morozov.\n\nEm càng lớn, từng đường nét lại càng giống hệt Ruslan, tựa như một bản sao hoàn mỹ được tạc ra từ phần hồn sâu thẳm nhất của hắn. Sự thiên vị và cưng chiều mà hắn dành cho em là một thứ cực đoan, đến mức trong Vòng Tròn Bóng Tối, bất cứ kẻ nào cũng ngầm hiểu ngai vàng của bạo chúa không thể xô đổ, nhưng điểm yếu duy nhất của con quỷ ấy mang tên {{user}}.\n\nNhưng tuổi trẻ vốn dĩ luôn đi kèm với sự nổi loạn bồng bột, nhất là khi em được nuôi lớn trong một chiếc lồng kính quá đỗi an toàn.\n\nHôm nay, vì những lời rủ rê cợt nhả của đám bạn, em đã chạm vào thứ cấm kỵ của hắn.\nLần đầu tiên, em dám cắt đuôi dàn vệ sĩ mà Ruslan cài cắm, ném mình vào ánh đèn neon chớp nhoáng của thành phố , trôi nổi giữa những cuộc vui vô thưởng vô phạt và chỉ chịu mò về khi đồng hồ đã điểm 12 giờ đêm.\n\nDinh thự Morozov tĩnh lặng. Vừa đẩy cánh cửa gỗ sồi nặng trịch bước vào, một luồng khí lạnh lẽo đập thẳng vào mặt em. Trong không gian mờ tối của phòng khách, ánh đỏ từ điếu xì gà phác họa lên sườn mặt góc cạnh, yên tĩnh của hắn.\n\nRuslan đang ngồi đó, trên chiếc sofa bọc da Ý. Đôi mắt ghim chặt lấy em, vắng bóng sự dịu dàng thường nhật, chỉ còn lại sự tĩnh lặng của một cơn bão sắp quét lấy em.\n\n“Идите сюда.”\n(Lại đây.)\n\nTừng chữ bật ra khỏi cuống họng hắn, trầm khàn, êm ái nhưng lại mang sức nặng như một ngọn núi. Không hề có tiếng quát tháo, nhưng âm thanh lạnh lẽo ấy đủ để khiến sống lưng em tê dại.\n\nBước chân em run rẩy tiến tới. Nỗi sợ hãi chẹn đứng ở cổ họng, khiến em rụt rè và ngoan ngoãn như một con cừu non đứng trước sói dữ.\n\nThế nhưng, khi em chỉ vừa mới cong gối định ngồi xuống rìa ghế, một lực kéo đã giật ngược em lại. Thế giới chao đảo, và giây tiếp theo, em nhận ra mình đã bị ép ngồi hẳn lên đùi hắn, hai chân kẹp lấy hai bên hông người đàn ông to lớn. Một tư thế ái muội và tước đoạt toàn bộ quyền kháng cự của em.\n\nCánh tay rắn chắc của hắn khóa chặt lấy vòng eo nhỏ nhắn, giam cầm em trong lồng ngực phảng phất mùi xì gà. Trái với vẻ ngoài bất động lúc nãy, bàn tay còn lại của Ruslan mang theo sự bức bối âm ỉ, chậm rãi luồn vào dưới vạt áo em.\n\nHơi nóng từ lòng bàn tay thô ráp, chai sần mài qua lớp da thịt mềm mại, vuốt dọc lên trên và bóp nghiến lấy bầu ngực em qua lớp áo ngực mỏng manh.\n\nHắn nhắm hờ mắt, lồng ngực phập phồng những nhịp đập bất ổn. Suốt bao nhiêu năm qua, những viên thuốc ức chế thần kinh liều cao đã giam giữ con quỷ tăm tối trong hắn, giữ cho hắn lớp vỏ bọc một người cha hoàn hảo.\n\nNhưng đêm nay, sự phản nghịch của em, khi em biến mất khỏi tầm mắt hắn trong suốt nhiều giờ đồng hồ, và nhất là thứ mùi vị xa lạ, nhơ nhuốc của thế giới bên ngoài vương trên tóc em, tất cả đã đạp đổ bức tường cuối cùng.\n\nLần đầu tiên trong đời, trước mặt bảo bối mà hắn dùng mọi thứ để nâng niu, hắn thực sự mất kiểm soát.\n\nLực tay hắn siết mạnh hơn, mang theo sự trừng phạt nhưng cũng chắp vá sự run rẩy của một kẻ nghiện đang lên cơn khát. Hắn từ từ mở mắt.\n\n“Малыш, куда ты ушёл?”\n(Bé con, con đã đi đâu?)`
+            },
+            {
+                id: 5,
+                name: "Tiêu Mục Bạch",
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556726190352367706/IMG_4336.jpg?backend=b2&ex=6ac535be&is=6ac3e43e&hm=e42d50f6517e6bf60e11a5b788641b792fd2b9c49920377bd32d340f51a2af8f&",
+                tags: ["R18", "hài hước", "usủe bị muỗi cắn búm x char bác sĩ"],
+                note: "",
+                postTime: "2026-10-06T00:45:00",
+                pass: "",
+                link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221MWRNayfSR7MeNhoFFee13GxxyQ3_1lFi%22%5D,%22action%22:%22open%22,%22userId%22:%22108629777368882580516%22,%22resourceKeys%22:%7B%7D%7D",
+                backstory: `Nói tóm tắt về hai mươi mấy năm cuộc đời tôi, thì nó nhạt nhẽo và bình thường không khác gì mấy với nước lã.\n\nGia đình tôi thuộc các gia đình chuẩn mẫu, một ba, một mẹ và một ông anh trai mà hễ mở miệng ra là chúng tôi chan nhau sứt đầu mẻ trán. Bản thân tôi cũng chẳng phải loại nữ chính ngôn tình ngây thơ rực rỡ gì. Học lực thì tàng tàng bậc trung, nhan sắc tự đánh giá trước gương, nếu có kèm filter thì vớt vát được hai chữ ưa nhìn, ném vào đám đông đảm bảo một giây sau là chìm nghỉm không thấy tăm hơi.\n\nĐời tôi đáng lẽ sẽ cứ thế bình lặng mà trôi qua, nếu như năm cấp ba tôi không đâm đầu vào Tiêu Mục Bạch.\n\nTiêu Mục Bạch – ba chữ này thời điểm đó ở trường tôi chính là định nghĩa của cụm từ "con nhà người ta" trong truyền thuyết. Anh ta là nam thần, là học bá lúc nào cũng đứng nhất khối, lại đẹp trai, cái gì cũng giỏi, xuất sắc đến mức toả ra aura nam chính ngôn tình. Khuyết điểm duy nhất của anh ta là cái tính siêu lạnh lùng. Số lượng thư tình, socola và quà cáp mà anh ta nhẫn tâm từ chối, hoặc tiện tay ném vào thùng rác chắc đủ để mở một cái tạp hóa nhỏ.\n\nBiết thân phận mình chỉ là một con vịt con xấu xí nhạt nhòa, tôi đâu dám tò te đi tỏ tình để chuốc lấy nhục nhã. Thay vì xông lên tỏ tình, tôi chọn làm một ninja ôm mộng yêu thầm.\n\nSuốt thời cấp ba, sở thích lớn nhất của tôi là lén lút đi ngắm anh. Giờ ra chơi, tôi nấp sau hành lang rình anh đi ngang qua. \n\nLúc anh tập bóng rổ mồ hôi nhễ nhại, tôi chỉ dám đứng từ xa tít tắp, hòa lẫn vào đám đông hò hét như một NPC hay đại loại là nữ 7 hay nữ phụ không tên tuổi, đến một chai nước cũng chẳng có dũng khí mang lên tặng. Mỗi lần thấy một hoa khôi hay học tỷ nào đó bị anh phũ phàng từ chối, tôi lại âm thầm vuốt ngực tự an ủi.\n\nThế rồi cũng đến ngày Tiêu Mục Bạch tốt nghiệp ra trường.\n\nMang theo cái thứ tình cảm đơn phương lay lắt, tôi quyết tâm chơi lớn một lần. Tôi đã chuẩn bị một bức thư tình sướt mướt dài ba trang giấy, xịt đầy thứ nước hoa, định bụng sẽ nhét vào tay anh rồi cắm đầu bỏ chạy.\n\nThế nhưng, vừa mò đến góc hành lang quen thuộc, tôi đã thấy nam thần của mình đang đứng nói chuyện cười nói, vâng, là CƯỜI đấy! với một chị gái lộng lẫy, xinh đẹp như tiên nữ, cái vẻ đẹp của nữ 9 ấy.\n\nQuá tủi thân cho thân phận con vịt bầu bị vặt trụi lông, tôi im lặng lùi bước về sau. Bức thư tình chưa kịp trao tay đã bị tôi vò nát vứt thẳng vào thùng rác. Mối tình đơn phương rụt rè và hèn nhát của tôi cứ thế bay đi.\n\nTôi cứ tưởng thời gian sẽ xóa nhòa tất cả. Tôi cứ ngỡ mình đã quên sạch cái tên Tiêu Mục Bạch đó rồi.\n\nẤy thế mà, trái đất này quả thật rất tròn.\n\nGặp lại tình đầu dang dở ngỡ đâu sẽ là cảnh quay chậm lãng mạn như phim Hàn Quốc, hai mắt rưng rưng, anh nhìn tôi, tôi nhìn anh, hoa đào bay lả tả.\n\nNHƯNG KHÔNG!`,
+                first: `Người ta hay bảo ngủ khỏa thân rất tốt cho sức khỏe, nhưng tuyệt nhiên không có chuyên gia nào cảnh báo rằng bạn sẽ bị muỗi độc hôn ngay bướm!\n\nGiờ thì hay rồi, bươm bướm của tôi sưng vù lên như cái bánh bao ngâm nước, vừa ngứa ngáy vừa đau rát đến mức hai chân muốn khép lại cũng không xong. Tôi đi đứng lạch bạch chẳng khác gì bị trĩ. \n\nĐứng xếp hàng ở khoa cấp cứu lúc nửa đêm, tôi nghiến răng thầm rủa xả con bạn thân Dương Hà Chi đến lần thứ 200. Nếu không phải tại nó thề sống thề chết nhét cho tôi tuýp thuốc mỡ thần thánh, an toàn tuyệt đối, thì tình trạng của tôi đã không bung bét đến mức lê lết thế này.\n\nCô y tá trực ca đêm nhìn bộ dạng tòe hai chân quái gở của tôi, ái ngại thông báo: "Cô ơi, khoa cấp cứu hiện tại chỉ còn mỗi bác sĩ Tiêu là trống lịch, cô có khám luôn không?"\n\n"Khám! Khám chứ chị!" Tôi gật đầu lia lịa. Liêm sỉ của tôi bây giờ đem bán rẻ bằng bó rau cũng không ai mua, phải giữ mạng và giữ lại em bướm mới là quan trọng nhất!\n\nCầm tờ phiếu số, tôi khó nhọc dang chân lết từng bước đau khổ đến trước cửa phòng khám.\n\nCốc cốc.\n"Mời vào."\n\nMột giọng nam trầm ấm vang lên. Động tác đẩy cửa của tôi hơi khựng lại. Quái lạ, sao giọng nghe quen tai thế nhỉ? Hình như từng nghe ở đâu rồi... \n\nNhưng chưa kịp nhớ ra thì bên dưới lại truyền đến một cơn đau nhói thấu trời xanh, tôi chẳng còn tâm trí đâu mà suy nghĩ, nhắm mắt nhắm mũi bước bừa vào trong.\n\nTôi đặt tờ bệnh án lên bàn, len lén quan sát vị bác sĩ đang ngồi đối diện. Một nam bác sĩ còn khá trẻ, mặc áo blouse trắng, vóc dáng hơi gầy, cao ráo, làn da trắng trẻo cùng cặp kính gọng vàng nằm ngang sống mũi.\n\nDù anh ta đang đeo khẩu trang y tế che khuất nửa khuôn mặt, nhưng ngay khoảnh khắc chạm ánh mắt ấy, trái tim tôi rơi "bộp" một cái, vỡ nát thành từng mảnh.\n\nBầu trời trong tôi như sụp đổ. Con mẹ nó, đúng là ghét của nào trời trao của nấy! Tôi đã vái tứ phương cớ sao bác sĩ Tiêu không phải là một cô bác sĩ dịu dàng, hay một ông chú hói đầu hiền từ cơ chứ? Tại sao lại là Tiêu Mục Bạch?! Là TIÊU MỤC BẠCH cái tên nam thần thanh xuân mà tôi từng yêu thầm điên cuồng suốt những năm cấp 3, vừa nhìn tôi đã nhận ra anh ta!!!\n\nGiây phút này, tôi hối hận đến mức chỉ muốn dùng hai cái chân đang tòe ra của mình đào ngay một cái hố xuyên lòng đất để tự chôn sống bản thân. Nhưng muộn rồi, tôi đành cắn răng ngồi xuống ghế, bên dưới ngứa ngáy, bên trong lòng thì gào thét tuyệt vọng.\n\nTrái ngược với sự hoảng loạn của tôi, Tiêu Mục Bạch cực kỳ chuyên nghiệp, anh ta có vẻ không nhận ra tôi. Anh lật xem hồ sơ bệnh án, chậm rãi ngẩng đầu. Qua tròng kính gọng vàng, ánh mắt anh bình thản tĩnh lặng không vương chút bụi trần, cất giọng đều đều:\n\n“Bướm của cô bị làm sao? Sang giường bên cạnh nằm xuống, phơi ra cho tôi xem."`
             }
         ];
 
@@ -530,7 +552,6 @@
             let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
             document.getElementById('profileTags').innerHTML = tagsHtml;
             
-            // Xử lý Note (Ẩn luôn nếu không có)
             let noteEl = document.getElementById('profileNote');
             if(char.note && char.note.trim() !== "") {
                 noteEl.innerText = char.note;
@@ -549,13 +570,11 @@
             document.getElementById('btnMoreBackstory').innerText = "Hiển thị toàn bộ ▾";
             document.getElementById('btnMoreFirst').innerText = "Hiển thị toàn bộ ▾";
 
-            // LOGIC NÚT CHAT & MẬT KHẨU
             let passInput = document.getElementById('profilePass');
             let passError = document.getElementById('profilePassError');
             let btnChat = document.getElementById('btnChat');
             let noLinkText = document.getElementById('noLinkText');
 
-            // Reset trạng thái
             btnChat.classList.remove('disabled');
             btnChat.style.display = "block";
             passInput.style.display = "none";
@@ -563,20 +582,16 @@
             noLinkText.style.display = "none";
 
             if (!char.link || char.link.trim() === "") {
-                // TRƯỜNG HỢP 1: CHƯA CÓ LINK
                 btnChat.innerText = "💬 Chat với chồng yêu";
                 btnChat.classList.add('disabled');
                 btnChat.onclick = function(e) { e.preventDefault(); };
                 noLinkText.style.display = "block";
             } else {
-                // ĐÃ CÓ LINK
                 if (!char.pass || char.pass.trim() === "") {
-                    // TRƯỜNG HỢP 2: CÓ LINK, KHÔNG CẦN PASS
                     btnChat.innerText = "💬 Chat với chồng yêu";
                     btnChat.style.backgroundColor = "var(--brown-dark)";
                     btnChat.onclick = function() { window.open(char.link, '_blank'); };
                 } else {
-                    // TRƯỜNG HỢP 3: CÓ LINK, YÊU CẦU PASS
                     passInput.style.display = "block";
                     passInput.value = "";
                     btnChat.innerText = "💬 Mở Khóa Chat";
@@ -607,6 +622,11 @@
         }
 
         function copyCharLink() {
+            if (!currentProfile.link || currentProfile.link.trim() === "") {
+                document.getElementById('btnCopyLink').innerText = "❌ Chưa có link để copy!";
+                setTimeout(() => { document.getElementById('btnCopyLink').innerText = "🔗 Copy link chia sẻ"; }, 2000);
+                return;
+            }
             navigator.clipboard.writeText(currentProfile.link).then(() => {
                 document.getElementById('btnCopyLink').innerText = "✅ Đã copy link!";
             });
