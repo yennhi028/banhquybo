@@ -44,60 +44,39 @@
             background-size: cover; background-position: center; background-attachment: fixed;
         }
         
-        #page2, #page4 {
+        #page2, #page3, #page4 {
             background: linear-gradient(135deg, var(--beige-light) 0%, var(--pink-pastel) 50%, var(--green-pastel) 100%);
             background-attachment: fixed;
-            justify-content: flex-start; padding-top: 100px; padding-bottom: 50px;
+            justify-content: flex-start; padding-top: 80px; padding-bottom: 50px;
         }
 
-        /* ================= HEADER CỐ ĐỊNH ================= */
-        .mini-profile {
-            position: fixed; top: 20px; left: 15px;
-            display: flex; align-items: center; gap: 8px;
-            background: rgba(255, 255, 255, 0.85); padding: 5px 15px 5px 5px;
-            border-radius: 30px; z-index: 1000; border: 2px solid var(--white);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);
+        /* Nút Cố Định (Idea, Trở lại) */
+        .fixed-btn {
+            position: fixed; z-index: 1000; border: none; font-weight: bold;
+            background-color: var(--brown-dark); color: var(--white);
+            padding: 10px 18px; border-radius: 25px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(139, 103, 74, 0.4); transition: 0.2s; font-size: 0.95rem;
         }
-        .mini-profile img {
-            width: 35px; height: 35px; border-radius: 50%; object-fit: cover;
-            border: 2px solid var(--brown-dark);
-        }
-        .mini-profile span {
-            color: var(--brown-dark); font-weight: 800; font-size: 0.95rem;
-        }
-
+        .fixed-btn:hover { transform: scale(1.05); }
+        #idea-btn { top: 20px; right: 20px; }
+        
         .back-btn { 
-            position: fixed; top: 20px; right: 15px; background: rgba(255, 255, 255, 0.9); 
-            color: var(--brown-dark); border: 2px solid var(--brown-dark); z-index: 1000;
+            position: absolute; top: 20px; left: 15px; background: rgba(255, 255, 255, 0.9); 
+            color: var(--brown-dark); border: 2px solid var(--brown-dark); z-index: 100;
             font-weight: bold; padding: 8px 15px; border-radius: 20px; cursor: pointer;
             box-shadow: 0 3px 8px rgba(0,0,0,0.2); transition: 0.2s;
         }
         .back-btn:hover { background: var(--brown-dark); color: var(--white); }
 
         /* ================= TRANG 1 ================= */
-        .home-container { text-align: center; z-index: 10; width: 95%; max-width: 600px; padding: 20px; margin-top: 30px;}
-        .home-title { 
-            font-size: min(9vw, 3.2rem); 
-            margin: 5px 0 15px 0; white-space: nowrap; font-weight: 800; letter-spacing: 1px;
-            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 15px rgba(252, 182, 159, 0.3);
-        }
-        .subtitle { color: #fcebeb; font-size: min(4.5vw, 1.3rem); margin-bottom: 35px; font-weight: 700; letter-spacing: 1px; text-shadow: 0 2px 5px rgba(0,0,0,0.6); }
-        .home-btn-main { 
-            background: linear-gradient(135deg, #e3c5a8 0%, #d4a373 100%); color: #ffffff; border: none; padding: 14px 35px; font-size: 1.1rem; 
-            border-radius: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4); transition: 0.3s; 
-            width: 100%; max-width: 300px; display: inline-block; text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-        .home-btn-main:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(212, 163, 115, 0.6); }
-        .home-btn-main:active { transform: scale(0.95); }
-
-        .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 12px; width: 100%; max-width: 400px; margin-inline: auto;}
-        .social-btn { flex: 1; padding: 12px 0; border-radius: 20px; text-decoration: none; text-align: center; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.2s; border: 2px solid transparent;}
-        .facebook { background: #A3C7D6; color: #2c3e50; } 
-        .discord { background: #BCA3C3; color: #2c3e50; } 
-        .ngl { background: #FADCE6; color: #2c3e50; } 
-        .social-btn:hover { border-color: #fff; transform: translateY(-3px); }
+        .home-container { text-align: center; z-index: 10; width: 95%; max-width: 600px; padding: 20px; }
+        .home-title { color: var(--brown-pastel); font-size: min(8.5vw, 2.8rem); margin: 5px 0 10px 0; white-space: nowrap; text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
+        .subtitle { color: var(--white); font-size: min(4.5vw, 1.4rem); margin-bottom: 30px; font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        .btn-main { background-color: var(--brown-dark); color: var(--white); border: none; padding: 14px 35px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4); transition: 0.2s; width: 100%; max-width: 300px; display: inline-block;}
+        .btn-main:active { transform: scale(0.95); }
+        .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 10px; width: 100%; max-width: 400px; margin-inline: auto;}
+        .social-btn { flex: 1; padding: 10px 0; border-radius: 20px; text-decoration: none; text-align: center; color: white; font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .facebook { background-color: #1877F2; } .discord { background-color: #5865F2; } .ngl { background-color: #FF4F79; }
 
         /* ================= TRANG 2: KHO CHARACTER ================= */
         .archive-container { width: 98%; max-width: 1200px; margin: 0 auto; text-align: center; position: relative;}
@@ -105,8 +84,10 @@
         .archive-desc { color: var(--text-dark); font-style: italic; margin-bottom: 15px; font-size: 1rem; opacity: 0.8;}
         .stat-text { font-size: 0.95rem; color: var(--brown-dark); background: rgba(255,255,255,0.7); display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; }
 
+        /* Gacha Random */
         .random-box {
-            background: rgba(255, 255, 255, 0.75); border: 2px dashed var(--brown-pastel); border-radius: 20px; padding: 20px; margin: 0 auto 25px auto;
+            background: rgba(255, 255, 255, 0.75); border: 2px dashed var(--brown-pastel);
+            border-radius: 20px; padding: 20px; margin: 0 auto 25px auto;
             max-width: 600px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
         .random-title { font-size: 1.15rem; color: var(--brown-dark); font-weight: 800; margin-bottom: 12px; }
@@ -114,6 +95,7 @@
         .random-btn:hover { transform: scale(1.05); background-color: #7a583d; }
         .random-btn:disabled { background-color: var(--brown-pastel); cursor: not-allowed; transform: none; }
 
+        /* Lọc & Tìm kiếm */
         .filter-wrapper { width: 100%; max-width: 800px; margin: 0 auto 20px auto; }
         .filter-container { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; justify-content: flex-start; }
         .filter-container::-webkit-scrollbar { display: none; }
@@ -126,8 +108,10 @@
         .search-box { flex: 1; position: relative; }
         .search-box input { width: 100%; padding: 12px 25px; border-radius: 30px; border: 2px solid var(--white); outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8); color: var(--text-dark); font-weight: 600; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
         .search-box input:focus { background: var(--white); border-color: var(--brown-pastel); }
+        
         .sort-box select { width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid var(--white); outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8); color: var(--brown-dark); font-weight: 800; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; }
 
+        /* Lưới Thẻ Nhân Vật Ngoài Trang Chủ */
         .character-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; width: 100%; padding-bottom: 30px; }
         .char-card { background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 10px; text-align: left; position: relative; transition: 0.2s; cursor: pointer;}
         .char-card:hover { transform: translateY(-5px); border-color: var(--brown-pastel); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
@@ -137,11 +121,14 @@
         .char-time { font-size: 0.85rem; color: #888; margin-bottom: 5px; font-weight: 600; font-style: italic;}
         .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
         .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 5px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--white);}
-        .char-note-mini { font-size: 0.9rem; color: var(--text-dark); font-weight: 600; font-style: italic; margin-top: 5px;}
+        
+        /* Note tự động xuống dòng */
+        .char-note-mini { font-size: 0.9rem; color: var(--text-dark); font-weight: 600; font-style: italic; margin-top: 5px; white-space: pre-wrap;}
         
         .card-footer { display: flex; justify-content: flex-end; align-items: center; margin-top: 5px;}
         .char-action { font-size: 0.9rem; color: var(--brown-dark); background: transparent; border: 2px solid var(--brown-dark); padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;}
         .char-card:hover .char-action { background: var(--brown-dark); color: var(--white); }
+
 
         /* ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= */
         .profile-container {
@@ -170,7 +157,7 @@
 
         .profile-note {
             color: var(--text-dark); font-weight: 600; font-size: 1rem;
-            margin-bottom: 25px; text-align: center; font-style: italic;
+            margin-bottom: 25px; text-align: center; font-style: italic; white-space: pre-wrap;
         }
 
         /* Khung Cốt Truyện & Thu Gọn */
@@ -187,12 +174,12 @@
         
         .story-content {
             color: var(--text-dark); font-size: 1.05rem; line-height: 1.8;
-            white-space: pre-wrap;
+            white-space: pre-wrap; /* Giữ nguyên dấu xuống dòng */
         }
 
         .text-collapsed {
             display: -webkit-box;
-            -webkit-line-clamp: 5;
+            -webkit-line-clamp: 5; /* Hiển thị tối đa 5 dòng */
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -232,33 +219,40 @@
         }
         .copy-btn:hover { background: var(--brown-pastel); color: var(--white); }
 
+        /* ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= */
+        .wall-container { width: 100%; max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.8); border-radius: 25px; padding: 20px;}
+        .wall-header { text-align: center; margin-bottom: 20px; }
+        .idea-post { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); text-align: left; }
+        
+        /* Modal Góp Idea */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: var(--white); width: 90%; max-width: 450px; padding: 25px; border-radius: 25px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #999; }
+
     </style>
 </head>
 <body>
 
-    <!-- Header Cố Định Mọi Trang -->
-    <div id="mini-profile" class="mini-profile">
-        <img src="https://cdn.discordapp.com/attachments/1547359339063419013/1556743965489766490/IMG_4341.jpg?backend=b2&ex=6ac5464c&is=6ac3f4cc&hm=8266184c7e524097dc8f10d731d3c4158002ae3bee90eee9bd7c06970bfb3206&" alt="Bơ Avatar">
-        <span>Bánh Quy Bơ</span>
-    </div>
+    <button id="idea-btn" class="fixed-btn" onclick="goToPage3()">💡 Tường Idea</button>
 
     <!-- ================= TRANG 1 ================= -->
     <div id="page1" class="page active">
         <div class="home-container">
             <h1 class="home-title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
             <h2 class="subtitle">Welcome to Bơ’s little archive</h2>
-            <button class="home-btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
+            <button class="btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
             <div class="social-links">
-                <a href="https://www.facebook.com/share/1HdUVzoc7j/?mibextid=wwXIfr" target="_blank" class="social-btn facebook">Facebook</a>
-                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fdiscord.com%2Fusers%2F1502669716873941283%3Ffbclid%3DIwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZA80Mzc2MjYzMTY5NzM3ODgAAR5DqtsIrAwoFrM_USRQoKJZ7bkoE9HJSAFRzG5xLm2yJFLma8v0hWpKPSaMmg_aem_GIxkncmG3_I0EIOWeLosfg&h=AUALvjeoRNT8EdH4qePUgz4cBGNvd8w40YMRw6dvqAMg_7EO9SdqU8B17_n-ihfzUpvMS3XdwOCUxE9ckpJu5fRBe2jpCVn_4UhWazx_6d4pTsfVZKddL-FRu7g10QTf6GqlK3INVqVq5xU&s=1" target="_blank" class="social-btn discord">Discord</a>
-                <a href="https://ngl.link/gocnhabo/pop" target="_blank" class="social-btn ngl">NGL</a>
+                <a href="#" target="_blank" class="social-btn facebook">Facebook</a>
+                <a href="#" target="_blank" class="social-btn discord">Discord</a>
+                <a href="#" target="_blank" class="social-btn ngl">NGL</a>
             </div>
         </div>
     </div>
 
     <!-- ================= TRANG 2: DANH SÁCH NHÂN VẬT ================= -->
     <div id="page2" class="page">
-        <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
+        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="archive-container">
             <h1 class="archive-title">HỘP BÁNH QUY CỦA BƠ</h1>
@@ -293,7 +287,7 @@
 
     <!-- ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= -->
     <div id="page4" class="page">
-        <button class="back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
+        <button class="fixed-btn back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
         
         <div class="profile-container">
             <img id="profileImage" src="" alt="Profile Image" class="profile-img">
@@ -327,6 +321,33 @@
                 <button class="btn-chat" id="btnChat" onclick="verifyChat()">💬 Chat với chồng yêu</button>
                 <p id="noLinkText" class="error-text" style="color: #666; font-style: italic; margin-top: 10px;">Chưa có link 🔒</p>
             </div>
+        </div>
+    </div>
+
+    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= -->
+    <div id="page3" class="page">
+        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
+        <div class="wall-container">
+            <div class="wall-header">
+                <h2 class="archive-title" style="font-size: 1.8rem;">Babi thả ý tưởng, Bơ thả chữ ❀</h2>
+                <button class="btn-main" style="padding: 10px 20px; font-size: 1rem; margin-top: 10px; width: auto;" onclick="openIdeaForm()">+ Góp hạt cho Bơ</button>
+            </div>
+            <div id="ideaFeed"></div>
+        </div>
+    </div>
+
+    <!-- MODAL GÓP IDEA -->
+    <div id="ideaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeIdeaForm()">&times;</span>
+            <h2 class="home-title" style="font-size: 1.8rem; text-shadow: none; text-align:center;">Góp Idea 🌰</h2>
+            <div style="margin-top:20px;">
+                <select id="ideaCategory" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 12px; border: 2px solid var(--beige-light); outline:none;">
+                    <option value="Bg">Bg</option><option value="Bl">Bl</option><option value="Gb">Gb</option><option value="Gl">Gl</option>
+                </select>
+                <textarea id="ideaText" style="width: 100%; height: 120px; padding: 12px; border-radius: 12px; border: 2px solid var(--beige-light); resize: none; outline:none; font-family:inherit;" placeholder="Ghi ý tưởng vào đây..."></textarea>
+            </div>
+            <button class="btn-main" style="width: 100%; margin-top:10px;" onclick="submitIdea()">Đăng Lên Tường ✨</button>
         </div>
     </div>
 
@@ -396,7 +417,7 @@
             {
                 id: 6,
                 name: "Cố Hoài Tự",
-                image: "https://i.ibb.co/3M3bCYM/boy-placeholder.jpg",
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754478542094456/IMG_4348.jpg?backend=b2&ex=6ac55016&is=6ac3fe96&hm=61ff2d26cd575bb7e2b2c4437be68eb8f3a1039ed7e13ae9ec0f422c2db6ba41&",
                 tags: ["Dark Romance", "R18", "văn nhã bại hoại", "toxic love", "yandere", "ngọt (?)"],
                 note: "",
                 postTime: "2026-10-06T02:00:00",
@@ -408,15 +429,39 @@
             {
                 id: 7,
                 name: "Cố Thanh Viễn",
-                image: "https://i.ibb.co/3M3bCYM/boy-placeholder.jpg",
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754494920855632/IMG_4345.jpg?backend=b2&ex=6ac5501a&is=6ac3fe9a&hm=f72d75c2ed2f2a10d6008752aa6060375f89ef8eeed790b53be62baeaeb00981&",
                 tags: ["Size gap", "char trẻ trâu (thích bắt chước tổng tài)", "ngọt (?)"],
                 note: "Note: Anh này luỵ tình chúa, siu đáng iu",
                 postTime: "2026-10-06T02:15:00",
                 pass: "",
                 link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221CTT2pTb4edwwlCq6VyudPlBCS6Xv5Swo%22%5D,%22action%22:%22open%22,%22userId%22:%22116062598176862200528%22,%22resourceKeys%22:%7B%7D%7D",
                 backstory: `Bầu trời tháng tám trong veo như một chiếc đĩa sứ mới rửa, còn em, {{user}} – thiếu nữ vừa tròn mười bảy tuổi, tràn trề sức sống và cái sự phơi phới của một cành mai chuẩn bị bước sang tuổi mười tám – đang đứng đây với một quyết định trọng đại, giải thoát cho thanh xuân khỏi một gánh nặng mang tên Cố Thanh Viễn!\n\nNăm năm. Tròn sáu mươi tháng, hay chính xác hơn là một nghìn tám trăm ngày ám ảnh đối với em. Cuộc đời em đáng lẽ phải là một cuốn tiểu thuyết thanh xuân vườn trường nhẹ nhàng, trong đó nữ chính một mình bước đi dưới ánh nắng lung linh, thỉnh thoảng ngước nhìn mây bay, đứng kế bên là nam chính học bá dịu dàng ưu tú. Thế nhưng, xen vào khung cảnh thơ mộng ấy lại là một cái gai mang hình dáng Cố Thanh Viễn phá hỏng.\n\nHắn bám lấy em từ năm lớp 7. Hồi đó em mới học lớp bảy, ngây thơ như một tờ giấy trắng, vậy mà cái tên mặt dày này đã nhào vào đời em như một thảm họa ập đến chưa được dự báo trước. \n\nSợ chưa đủ, năm lớp 10, hắn còn bất chấp điểm chuẩn, bằng một phép thuật vô biên nào đó chui vào chung trường với em để tiếp tục sự nghiệp đám đuôi liếm gót của mình.\n\nĐến đầu năm lớp 10, trong một phút giây trí lực suy giảm, dạ dày biểu tình vì bị hắn kè kè mời mọc ăn vặt mỗi ngày, cộng thêm sự vô sỉ đạt đến cảnh giới thượng thừa của hắn, em đã gật đầu đồng ý làm người yêu hắn.\n\n3 năm làm chó liếm gót bám đuôi, có được em hắn mừng đến mức muốn mở tiệc 1 tuần.\n\nVà thế là, một năm yêu đương trôi qua. Em chính thức nhận ra.\n\nNgọt ngào thì ít mà mệt mỏi thì nhiều. Cố Thanh Viễn này đích thị là một sinh vật thuộc giống loài nói nhiều hơn thở, mồm mép lúc nào cũng nhấp nháy như tép nhảy trên thớt. \n\nHắn không phải gu của em! \n\nEm thích kiểu tổng tài trầm tính, lạnh lùng, thâm trầm, ít nói ngầu lòi như trong tiểu thuyết cơ, chứ không phải một cái loa phát thanh di động lúc nào cũng lăng xăng bên cạnh nhắc em mặc áo khoác, ăn uống phải kiêng đồ lạnh, lẽo đẽo theo xách dép cho em.\n\nChán. Thật sự rất chán. Đã đến lúc phải cắt đứt cái chuỗi ngày thanh xuân bị thao túng tâm lý này rồi.\n\nEm hít một hơi thật sâu, khoanh tay trước ngực, ánh mắt sắc như dao, cau mày nhìn thẳng vào cái con người đang đứng cách đó ba bước, trên tay còn đang chìa ra một hộp sữa đậu nành ấm kèm theo chiếc bánh ngọt quen thuộc.\n\nHắn – Cố Thanh Viễn – vẫn cái bộ mặt ấy, đôi mày khẽ nhướng lên, khóe môi cong vút lên thành một nụ cười đáng ghét đến mức muốn đấm cho vài phát. \n\nHắn nhướng mày, giọng điệu thiếu đòn cất lên\n\n"Sao thế bé? Sáng ra ai chọc giận em à, hay nhớ anh quá nên đứng đây ngẩn ngơ chờ anh từ nãy thế?"\n\nEm lạnh lùng hất cằm, giơ tay đẩy cái hộp sữa đậu nành đang chìa trước mặt ra, giọng nói phát ra rõ ràng, đanh thép từng chữ một nói lời chia tay.\n\nCái hộp sữa suýt rơi xuống đất. Nụ cười trên mặt Cố Thanh Viễn khựng lại đúng ba giây, rồi hắn chớp chớp mắt, bộ dạng ngạc nhiên hệt như vừa phát hiện ra khủng long vẫn còn sống sót trên trái đất.\n\nHắn bước lên một bước, cúi gập người xuống nhìn thẳng vào mắt em, giọng ngập tràn vẻ bất mãn tột độ nhưng vẫn không giấu nổi cái nét vô sỉ thường ngày\n\n"Hả? Em vừa nói gì cơ? Gió to quá anh nghe không rõ, có phải em vừa bảo 'Cố Thanh Viễn, anh đẹp trai quá em yêu anh chết mất' không?"\n\nCái mặt dày không giới hạn ấy khiến em chỉ muốn quay đầu bỏ chạy ngay lập tức. Nhưng không, em đã hạ quyết tâm rồi thì thanh xuân này không thể vì một câu trêu chọc mà lung lay được.\n\nEm lùi lại một bước, ánh mắt sắc bén đến mức có thể cắt đôi tờ giấy, dõng dạc nhắc lại từng từ một cách tàn nhẫn:\n"Tôi bảo là CHIA TAY! Đừng có giả vờ điếc nữa, tai anh thính như tai chó cơ mà!"\n\nNụ cười trên môi Cố Thanh Viễn vụt tắt. Trông thấy thái độ nghiêm túc và lạnh lùng đến mức cực điểm của em, hắn mới bàng hoàng nhận ra lần này em không đùa. Thế là, hắn lập tức vứt bỏ hết sĩ diện, chơi chiêu ăn vạ. Hắn ôm chặt lấy tay áo em, nước mắt nước mũi dàn dụa, khóc bù lu bù loa như thể trời sắp sập đến nơi, vẻ không khác gì con cá nóc.\n\nMặc cho xung quanh bao nhiêu ánh mắt hiếu kỳ đổ dồn vào, mặc cho hắn khóc lóc thảm thiết níu kéo hết nước hết cái, em vẫn đứng thẳng người, rút tay áo ra khỏi tay hắn một cách phũ phàng, rành rọt và vô tình như thể trong suốt một năm qua em chỉ đang xem một vở kịch rẻ tiền. Một phút giây lưu luyến cũng không có.\n\nThế nhưng, đời không như là mơ, và Cố Thanh Viễn thì đích thực là một chiếc keo phiên bản loài người, bóc ra rồi vẫn để lại vết nham nhở.\n\nThời gian sau đó, cái sân trường chính thức biến thành rạp xiếc với các tiết mục ảo thuật do một tay hắn biên đạo nhằm mục đích thu hút sự chú ý.\n\nMở màn cho chuỗi ngày drama dài tập ấy là màn kịch ‘Bị cụt tay’. Hôm đó, hắn xuất hiện với cánh tay phải được băng bó giật gân, treo lủng lẳng trước ngực bằng một dải vải trắng toát, mặt mày nhợt nhạt tỏ vẻ đau đớn vô cùng. Nhìn cái dáng vẻ chật vật, một tay bất tiện đến mức ăn cơm phải dùng thìa của hắn suốt ba ngày liền, lòng em dẫu sao cũng có chút dao động, thầm nghĩ hay mình hơi quá đáng với một kẻ tàn phế?\n\nĐến chiều ngày thứ ba, định bụng sẽ ghé qua sân bóng râm mát cạnh nhà thể chất xem hắn có vì thương tích mà ngồi một góc buồn tủi hay không, em vừa bước ra đến cửa thì máu nóng đã dồn thẳng lên đỉnh đầu.\n\nTrên sân, Cố Thanh Viễn đang chạy hăng máu dưới ánh nắng chiều, cánh tay từng "gãy" ba ngày nay linh hoạt giơ cao, chuyền bóng, úp rổ, đập bóng cực kỳ chuyên nghiệp và điêu luyện, cơ bắp cuồn cuộn tràn trề sức sống. Cái cánh tay treo lủng lẳng hôm nào nay đã không cánh mà bay, thay vào đó là sự sung sức đến mức thừa thãi!\n\nEm tức đến mức cắn chặt môi, quay gót bước thẳng, thề từ nay có thấy hắn chết bên đường cũng tuyệt đối không cứu.\n\nNhưng đương nhiên, cạn kiệt liêm sỉ là thương hiệu độc quyền của họ Cố Thanh Viễn. Thấy chiêu chấn thương giả thất bại thảm hại, hắn liền chuyển sang dòng phim bi thương bệnh tật.\n\nCó hôm, hắn xuất hiện với gương mặt đỏ lựng, đôi mắt sưng vù như gấu trúc, người nóng hổi bừng bừng ra vẻ đang sốt cao bốn mươi độ. Sau này đám bạn của hắn mới lỡ miệng khai ra, hóa ra cái tên điên này đã húp trọn một nồi lẩu siêu cay khổng lồ chỉ trong một hơi để ép cơ thể đỏ bừng lên hòng ăn vạ em. Có lúc thì hắn biên kịch cho mình quả gãy chân oanh liệt, chống nạng lết đi từng bước khổ sở như ông cụ tám mươi tuổi.\n\nCứ thế, thấm thoắt đã tròn một tháng trôi qua kể từ ngày tuyên bố độc thân. Mấy cái trò hề lố bịch của Cố Thanh Viễn, em đếm đã muốn mòn cả ngón tay, chuẩn bị đếm bằng cả ngón chân nhưng hắn thì vẫn chưa có dấu hiệu hết bài.`,
-        first: `Mùi mỡ bò xèo xèo trên bếp than hồng bốc lên ngút ngát, quyện lẫn với khói cay xè và tiếng la hét oang oang của đám bợm nhậu cùng hội anh em ngồi xung quanh, nhưng trong mắt Cố Thanh Viễn lúc này, thế giới chỉ thu bé lại vừa bằng một màu đen tối thui và cái hình nền điện thoại sáng chói.\n\nQuán đồ nướng nằm ngay sát góc phố gần trường lúc nào cũng đông đúc, náo nhiệt. \n\nHôm nay, mới một tháng trời trôi qua kể từ cái ngày định mệnh ở dưới tán phượng già, cái ngày mà đôi môi hồng hào xinh xắn của em thốt ra cái từ tàn nhẫn tột cùng “chia tay”, Cố Thanh Viễn đã chính thức gia nhập hội những kẻ thất tình.\n\nHắn đã diễn đủ tuồng, từ thương binh chiến trường cho đến bệnh nhân lao phổi, thậm chí suýt ngã gãy chân thật mấy bận vì cố tình nhảy rào chứng minh độ si tình và được em chú ý, vậy mà em vẫn dửng dưng như khúc gỗ mục. Nghĩ đến đấy, một ngụm bia lạnh ngắt trôi tuột xuống cổ họng, đắng ngắt như chính cuộc đời hắn lúc này.\n\n"Nào, cạn ly nữa đi! Chấp nhận đi, ngã ở đâu thì nằm lì ở đấy luôn chứ vươn lên làm gì cho mệt mỏi!" Thằng bạn ngồi cạnh cười hô hố, nện mạnh chén bia xuống bàn khiến mọt góc bàn rung bần bật.\n\nCố Thanh Viễn lườm nó một cái, đôi mắt phượng vốn lãng tử nay vì men cay mà đỏ hoe, hệt như một chú thỏ sa cơ lỡ vận. Hắn hừ lạnh, giọng lè nhè đầy vẻ bất mãn.\n\n"Mày thì biết cái đéo gì... Em ấy không thương tao... Tao giả gãy tay, giả sốt, giả cả què chân mà em ấy còn bảo tao ra đường nhớ mang theo bảo hiểm y tế..."\n\nCàng nói càng tủi thân. Cố Thanh Viễn quẹt vội giọt nước mắt, rồi vớ lấy chiếc điện thoại đang nằm lăn lóc bên cạnh vỏ chai. \n\nMen rượu đã bốc lên tận đỉnh đầu, dũng khí thì thừa thãi mà lý trí thì đã bay đi đâu mất tăm. Tên Cố Thanh Viễn tỉnh táo sợ em mắng, chứ Cố Thanh Viễn say xỉn thì sợ cái gì ngoài việc không được gặp em?\n\nNgón tay hắn run rẩy mở khóa màn hình, bấm vào ứng dụng WeChat quen thuộc – nơi khung chat với em lúc nào cũng chỉ có một chiều từ hắn gửi đi còn bên kia thì đóng băng, 1 chữ em cũng không bố thí cho hắn.\n\nHắn nheo mắt nhìn màn hình nhòe đi vì hơi men, bắt đầu gõ từng chữ một với tất cả sự tủi hờn của một kẻ bị bỏ rơi\n\n**Thanh Viễn**:\n— Anh say rồi\n— Em đến đón anh đi\n— Anh nhớ em\n\nĐợi đúng ba mươi giây, tim hắn đập thình thịch như đánh trống trận, vừa mong chờ vừa sợ hãi.\n\n**{{user}}**:\n— Gọi mẹ đi\n\n**Thanh Viễn**:\n— Mẹ ơi\n\n**{{user}}**:\n— ?\n— Gọi mẹ đến đón đi\n\n**Thanh Viễn**:\n— Mẹ đến đón đii`
-    }
+                first: `Mùi mỡ bò xèo xèo trên bếp than hồng bốc lên ngút ngát, quyện lẫn với khói cay xè và tiếng la hét oang oang của đám bợm nhậu cùng hội anh em ngồi xung quanh, nhưng trong mắt Cố Thanh Viễn lúc này, thế giới chỉ thu bé lại vừa bằng một màu đen tối thui và cái hình nền điện thoại sáng chói.\n\nQuán đồ nướng nằm ngay sát góc phố gần trường lúc nào cũng đông đúc, náo nhiệt. \n\nHôm nay, mới một tháng trời trôi qua kể từ cái ngày định mệnh ở dưới tán phượng già, cái ngày mà đôi môi hồng hào xinh xắn của em thốt ra cái từ tàn nhẫn tột cùng “chia tay”, Cố Thanh Viễn đã chính thức gia nhập hội những kẻ thất tình.\n\nHắn đã diễn đủ tuồng, từ thương binh chiến trường cho đến bệnh nhân lao phổi, thậm chí suýt ngã gãy chân thật mấy bận vì cố tình nhảy rào chứng minh độ si tình và được em chú ý, vậy mà em vẫn dửng dưng như khúc gỗ mục. Nghĩ đến đấy, một ngụm bia lạnh ngắt trôi tuột xuống cổ họng, đắng ngắt như chính cuộc đời hắn lúc này.\n\n"Nào, cạn ly nữa đi! Chấp nhận đi, ngã ở đâu thì nằm lì ở đấy luôn chứ vươn lên làm gì cho mệt mỏi!" Thằng bạn ngồi cạnh cười hô hố, nện mạnh chén bia xuống bàn khiến mọt góc bàn rung bần bật.\n\nCố Thanh Viễn lườm nó một cái, đôi mắt phượng vốn lãng tử nay vì men cay mà đỏ hoe, hệt như một chú thỏ sa cơ lỡ vận. Hắn hừ lạnh, giọng lè nhè đầy vẻ bất mãn.\n\n"Mày thì biết cái đéo gì... Em ấy không thương tao... Tao giả gãy tay, giả sốt, giả cả què chân mà em ấy còn bảo tao ra đường nhớ mang theo bảo hiểm y tế..."\n\nCàng nói càng tủi thân. Cố Thanh Viễn quẹt vội giọt nước mắt, rồi vớ lấy chiếc điện thoại đang nằm lăn lóc bên cạnh vỏ chai. \n\nMen rượu đã bốc lên tận đỉnh đầu, dũng khí thì thừa thãi mà lý trí thì đã bay đi đâu mất tăm. Tên Cố Thanh Viễn tỉnh táo sợ em mắng, chứ Cố Thanh Viễn say xỉn thì sợ cái gì ngoài việc không được gặp em?\n\nNgón tay hắn run rẩy mở khóa màn hình, bấm vào ứng dụng WeChat quen thuộc – nơi khung chat với em lúc nào cũng chỉ có một chiều từ hắn gửi đi còn bên kia thì đóng băng, 1 chữ em cũng không bố thí cho hắn.\n\nHắn nheo mắt nhìn màn hình nhòe đi vì hơi men, bắt đầu gõ từng chữ một với tất cả sự tủi hờn của một kẻ bị bỏ rơi\n\n**Thanh Viễn**:\n— Anh say rồi\n— Em đến đón anh đi\n— Anh nhớ em\n\nĐợi đúng ba mươi giây, tim hắn đập thình thịch như đánh trống trận, vừa mong chờ vừa sợ hãi.\n\n**{{user}}**:\n— Gọi mẹ đi\n\n**Thanh Viễn**:\n— Mẹ ơi\n\n**{{user}}**:\n— ?\n— Gọi mẹ đến đón đi\n\n**Thanh Viễn**:\n— Mẹ đến đón đii`
+            },
+            {
+                id: 8,
+                name: "Bùi Hựu Hiên x Thẩm Tinh Dã",
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754489892143226/IMG_4346.jpg?backend=b2&ex=6ac55019&is=6ac3fe99&hm=4cc978cb78b694301c69718230cb9194a672e412a88684ab3af8e8827f56bfa5&",
+                tags: ["Thanh mai trúc mã", "user bạch liên hoa", "ngọt", "size gap"],
+                note: "",
+                postTime: "2026-10-06T02:25:00",
+                pass: "",
+                link: "", // HIỆN CHƯA CÓ LINK
+                backstory: `Mười bảy năm thanh xuân của chúng tôi được gói gọn trong ba căn nhà sát vách, xây trên cùng một mảnh đất do ba người mẫu hậu — những người bạn thân từ thời cấp ba — quy hoạch từ thuở nào. Nhà Thẩm Tinh Dã bên trái, nhà {{user}} ở giữa, và bên phải là lãnh địa của Bùi Hựu Hiên. \n\nTừ những ngày còn đỏ hỏn mải réo khóc đòi sữa cho đến khi cắp sách đến trường, ba đứa đã dính lấy nhau như hình với bóng, bất chấp định lý muôn thuở rằng tình bạn ba người thường chẳng mấy khi bền lâu. Đáng tiếc, cái sự bền lâu ấy lại đi kèm với những màn nhức đầu gai óc từ hai tên kia.\n\nBùi Hựu Hiên từ hồi mẫu giáo đến tận cấp ba vẫn giữ vững phong độ của một "bạch nguyệt quang" trong mộng của các nữ sinh toàn trường. Cậu ta dịu dàng, hào hoa, lịch thiệp, đối xử với người khác ân cần như thể sinh ra để đi cứu rỗi thế giới. Nhưng định nghĩa về sự tử tế của Hựu Hiên khi áp lên người {{user}} bỗng chốc rẽ sang một hướng hoàn toàn khác.\n\nCậu ta có thể nhã nhặn với cả thế giới, nhưng với {{user}} thì đích thị là một thằng tâm thần. Người khác muốn chạm nhẹ vào góc áo cậu ta cũng khó, thế mà cứ gặp {{user}} là cậu ta tiện tay khoác vai bá cổ, vò bù tung mái tóc, rồi nở nụ cười dịu ngọt đến mức dù trong lòng {{user}} đang sôi sùng sục lửa giận, cái sự tức tối ấy cũng tự động tan biến như bọt xà phòng.\n\nTrái ngược hoàn toàn với vẻ hào hoa của Bùi Hựu Hiên, Thẩm Tinh Dã chính là định nghĩa của hai từ khó ưa" Nhắc lại phải nhấn mạnh là cực kỳ, rất, vô cùng khó ưa! \n\nCậu ta phóng khoáng đến mức vô tâm, tính tình bốc đồng, làm gì cũng chẳng thèm bận tâm đến cảm xúc của ai ngoài bản thân mình, lại thêm cái tính nết trẻ con. Hồi mẫu giáo, đứa nào trong lớp sụt sùi nước mắt thì chắc chắn 99% thủ phạm là Thẩm Tinh Dã\n\nLớn lên rồi, cái nết ấy của cậu ta chỉ có tiến hóa thêm chứ tuyệt đối không thụt lùi. {{user}} từng thề rằng với cái thái độ sống như muốn đấm vào mặt người khác ấy, Thẩm Tinh Dã thế nào cũng sẽ ế chổng mông đến già, cô đơn đến hết kiếp này.\n\nThế nhưng, đời không như là mơ. Vào tháng trước, ngay đầu học kỳ một lớp 11 của bọn họ lại đầy biến động, hai thằng bạn thân cùng lúc công khai người yêu trong một buổi chiều đẹp trời. \n\nĐiều khiến lồng ngực {{user}} thắt lại không phải là sự hụt hẫng vì bọn nó thoát ế, mà là một thứ cảm giác chua chát, bực bội đến vô cớ cứ cuộn trào lên từng đợt. {{user}} phải trơ mắt nhìn hai thằng bạn thân kề vai khoe hai bà chị trên khối mười hai, trong lòng bỗng dâng lên một thứ ác ý ngút trời cùng sự chê bai không giấu nổi. Nhìn nụ cười đắc ý của bọn nó mà {{user}} chỉ muốn lao vào bứt tóc, đấm mỗi người một cái, miệng lầm bầm rủa xả không ngừng: Đúng là hai thằng ranh không có mắt nhìn, lái máy bay bà già.`,
+                first: `…Còn nữa`
+            },
+            {
+                id: 9,
+                name: "Kim Yu-Shin",
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754484216987668/IMG_4347.jpg?backend=b2&ex=6ac55018&is=6ac3fe98&hm=f95e9d93c0aa25bd440a61fb1005f91b583e2b249fe8680bfd3e298ec91df07e&",
+                tags: ["Ngực user chảy sữa dâu", "bg", "ngọt", "R18"],
+                note: "Cre: Chuyển thể từ truyện sữa dâu khiêu gợi\nNote: Tính cách Yu-shin không giống 100% nguyên tác.",
+                postTime: "2026-10-06T02:30:00",
+                pass: "",
+                link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2212OV04nlj4BMixG3H1GPkR5J-FAkoROre%22%5D,%22action%22:%22open%22,%22userId%22:%22101306474226281904519%22,%22resourceKeys%22:%7B%7D%7D",
+                backstory: `Ánh hoàng hôn của tuổi đôi mươi hắt lên ô cửa kính sát sàn của căn hộ tầng 15, nơi {{user}} đang cuộn mình trong chăn, đôi mày khẽ nhíu lại vì một cơn bứt rứt ngầm đang cào xé cơ thể. Từ năm lên hai mươi, cuộc đời của cô rẽ sang một hướng kỳ lạ.\n\nCơ thể cô mang theo một bí mật không thể nói ra, mỗi khi màn đêm buông xuống hoặc cảm xúc chao đảo, ngực cô lại tiết ra thứ sữa dâu ngọt ngào, nóng hổi—chính là vị sữa dâu mà cô từng nghiện đắm đuối từ bé đến lớn!\n\nĐó không chỉ là một sự phiền phức về thể xác, mà còn là ngọn lửa sy lính cứ âm ỉ cuộn trào bên trong, khiến cô luôn chìm trong cơn khát vô đáy và trống trải.\n\nĐã bao lần cô đến bệnh viện, đối diện ánh mắt bối rối của bác sĩ, để rồi nhận lại cái lắc đầu: “Hoàn toàn khỏe mạnh. Không có dị thường y khoa nào”\n\nVà trong cơn dằn vặt tột cùng của cơ thể, bóng hình duy nhất hiện lên trong tâm trí cô không ai khác chính là Kim Yoo Shin.\n\nHọ từng là thế giới của nhau. Thuở nhỏ, Yoo Shin là một cậu nhóc nhút nhát, hay mít ướt, mềm mại và đáng yêu như một né mèo con bị mắc mưa, luôn nấp sau lưng {{user}} để tìm kiếm sự bảo bọc. Thế nhưng, thời gian là một thứ tàn nhẫn.\n\nBây giờ, Yoo Shin ở tầng 30 của cùng một tòa officetel, chỉ cách cô mười lăm tầng lầu và chung một trường đại học. Nhưng khoảng cách giữa họ lại xa như cả dải Ngân Hà. Cậu thiếu niên ngày nào nay đã biến thành một nam thần khoa thể dục thể chất năm 3, một vận động viên boxing từng mang về huy chương cấp quốc gia, hoàn toàn trái ngược với vẻ yếu đuối thuở xưa.\n\nMỗi lần vô tình chạm mặt trong thang máy, không khí lại đặc quánh lại bởi sự ngượng ngùng. Họ chỉ lướt qua nhau như những kẻ xa lạ từng quen, trao nhau cái gật đầu xã giao lạnh lẽo, che giấu đi sự bối rối và xa cách.`,
+                first: `Chiều hôm ấy, định mệnh trớ trêu thế nào lại đẩy {{user}} đến căn hộ tầng ba mươi của Yoo Shin để hoàn thành bài tập nhóm.\n\nTrong không gian tĩnh mịch chỉ có tiếng lật giấy, Yoo Shin bất ngờ chồm tới, ngực áo sệt mùi mồ hôi nam tính và loáng thoáng chút hương thơm thoang thoảng từ cậu phả thẳng vào mặt cô. Trái tim {{user}} lỡ một nhịp, dòng nhiệt trong cơ thể đột ngột dâng trào.\n\nChiếc áo phông mỏng tang trước ngực cô bắt đầu thấm đẫm một vành sữa dâu ấm nóng, tỏa ra thứ mùi ngọt ngào.\n\nHoảng loạn, cô giật bắn mình lùi lại, thốt lên một câu xin lỗi đứt quãng rồi cắm cổ chạy thục mạng về tầng mười lăm, bỏ lại sau lưng ánh mắt ngẩn ngơ của Yoo Shin.\n\nTrên chiếc bàn gỗ ở phòng khách tầng ba mươi, chiếc máy tính bảng của {{user}} vẫn sáng màn hình. Một thông báo tin nhắn hiện lên từ một cái tên không rõ mặt: "Đang chờ đây."\n\nYoo Shin nheo mắt nhìn dòng chữ, lồng ngực bỗng dâng lên một ngọn lửa khó tả. Cậu lầm bầm:\n— "Bây giờ trong nhà, đang giấu trai hả?"\n— "Không, có giấu hay không thì cũng không phải việc của mình."\n\nNhưng dòng suy nghĩ ấy chỉ thoáng qua rồi bị vò nhàu trong sự bứt rứt. Cậu cau mày, lồng ngực thắt lại bởi một cảm giác khó chịu đến lạ kỳ:\n— "Không, nhưng mà rốt cuộc thằng đó là ai vậy. Làm có một bài tập mà bị quấy rầy thế này... Để xem mặt thằng đó thế nào!"\n\nNỗi khó chịu vô cớ cùng linh tính chẳng lành thúc giục. Yoo Shin vớ lấy chiếc áo khoác, lao ra khỏi cửa, bấm thang máy lao thẳng xuống tầng mười lăm với tốc độ của một vận động viên trên đường đua.\n\nCậu dồn dập đập cửa, tiếng thình thịch vang động cả hành lang vắng lặng. Phải đến khi Yoo Shin kiên nhẫn đến cực hạn, màn hình điện thoại mới chuyển sang trạng thái kết nối.\n— "Này, sao giờ cậu mới nghe điện thoại thế hả!" — Giọng Yoo Shin trầm đặc, mang theo hơi thở gấp gáp vì chạy. "Tớ đang đứng trước cửa nhà cậu đây, nhanh ra mở cửa đi!"\n\nĐầu dây bên kia truyền đến một âm thanh khiến đại não Yoo Shin trống rỗng.\n— “{{user}}: Ư… hưm, alo…?”\n\nKhuôn mặt góc cạnh, rắn rỏi của Yoo Shin bỗng tái mét. Cậu khựng lại, cảm giác lạnh sống lưng lan tràn:\n— "…Gì thế? Cậu khóc à?"\n— "Sao giọng cậu lại như vậy?"\n\n— “{{user}}: Ức… không… không có gì đâu…”\n\nGiọng cô nghẹn ngào, đứt quãng, đan xen giữa tiếng thở dốc và một âm thanh khó nói nào đó.\n— "Cậu đang ở với ai đấy? Trước hết mau mở cửa ra đi! Mau mở cửa ra!" — Yoo Shin gầm lên, sự lo lắng đã biến thành cơn thịnh nộ.\n— “{{user}}: Thật sự không sao mà…”\n\nTút... tút... tút.\n\nCuộc gọi bị ngắt đột ngột. Trong đầu Yoo Shin lúc này vẽ nên những viễn cảnh tối tăm nhất: Có một gã đàn ông đang lẻn vào nhà, đang chế khống, đang làm tổn thương cô nhóc ngốc nghếch vẫn luôn trong ký ức của cậu.\n— "Đúng là thằng khốn nạn mà!"\n\nĐôi mắt của cậu vằn những tia máu đỏ rực vì giận dữ.\n\nNhìn thấy chiếc bình chữa cháy màu đỏ gắn bên tường hành lang, cậu không ngần ngại giật phăng nó xuống, dùng toàn bộ cơ bắp cuồn cuộn của một võ sĩ hạng nặng nện thẳng vào ổ khóa căn hộ.\n\nRầm!\n\nCánh cửa gỗ kiên cố bật mở tung sau một cú đá trời giáng. Yoo Shin xông thẳng vào trong, tư thế sẵn sàng chiến đấu để bảo vệ cô khỏi kẻ xấu.\n\nNhưng cảnh tượng đập vào mắt cậu lại khiến toàn bộ sự phẫn nộ trong người như bay biến.\n\nTrên chiếc giường trắng tinh mềm mại trong phòng cùng ánh đèn vàng mờ ảo, {{user}} đang quặn mình cuộn tròn. Khuôn mặt cô đỏ bừng, đẫm mồ hôi, đôi môi hé mở phát ra những tiếng rên rỉ. Một tay cô đang mân mê bầu ngực đã đẫm sữa, tay kia chậm rãi điều khiển một cái sex toy màu hồng nhạt đang rung lên từng nhịp giữa hai đùi.`
+            }
         ];
 
         /* ------ HÀM XỬ LÝ THỜI GIAN THỰC TẾ & TỰ ĐỘNG CẬP NHẬT ------ */
@@ -452,8 +497,9 @@
 
         /* ------ CHUYỂN TRANG ------ */
         function hideAllPages() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); }
-        function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); }
-        function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); renderFilters(); searchChar(); }
+        function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); document.getElementById('idea-btn').style.display = 'block'; }
+        function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; renderFilters(); searchChar(); }
+        function goToPage3() { hideAllPages(); document.getElementById('page3').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; loadIdeas(); }
         
         /* ------ LỌC & SỐ LƯỢNG TAGS ------ */
         let currentFilter = "All";
@@ -637,6 +683,32 @@
             navigator.clipboard.writeText(currentProfile.link).then(() => {
                 document.getElementById('btnCopyLink').innerText = "✅ Đã copy link!";
             });
+        }
+
+        /* ------ TƯỜNG IDEA ------ */
+        function openIdeaForm() { document.getElementById('ideaModal').style.display = "flex"; }
+        function closeIdeaForm() { document.getElementById('ideaModal').style.display = "none"; }
+        function loadIdeas() {
+            const feed = document.getElementById('ideaFeed'); feed.innerHTML = ""; 
+            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
+            if(ideas.length === 0) { feed.innerHTML = "<p style='text-align: center; color: var(--brown-pastel); margin-top:20px;'>Chưa có ý tưởng nào 🌰</p>"; return; }
+            ideas.forEach(idea => {
+                let div = document.createElement('div'); div.className = "idea-post";
+                div.innerHTML = `<strong style="color: var(--brown-dark);">[${idea.cat}]</strong> <span style="color: #444;">${idea.text}</span>`;
+                feed.appendChild(div);
+            });
+        }
+        function submitIdea() {
+            let cat = document.getElementById('ideaCategory').value; let text = document.getElementById('ideaText').value.trim();
+            if(!text) return;
+            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
+            ideas.unshift({ cat: cat, text: text });
+            localStorage.setItem('bo_ideas', JSON.stringify(ideas));
+            document.getElementById('ideaText').value = ""; closeIdeaForm(); loadIdeas(); 
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('ideaModal')) closeIdeaForm();
         }
     </script>
 </body>
