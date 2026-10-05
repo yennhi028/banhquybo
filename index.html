@@ -10,7 +10,7 @@
         /* ================= CẤU HÌNH GIAO DIỆN (CSS) ================= */
         :root {
             --color-title: #9A704F; /* Nâu caramel */
-            --color-sub: #C49A75;   /* Be caramel nhạt */
+            --color-sub: #ffffff;   /* Trắng (theo yêu cầu) */
             --btn-bg: #8B674A;      /* Màu nền nút chính */
             --btn-text: #FFF8EF;    /* Trắng kem cho chữ nút */
             --white: #ffffff;
@@ -36,25 +36,66 @@
             min-height: 100vh;
         }
 
-        /* Nút phát nhạc */
-        #music-btn {
+        /* Nút Playlist */
+        .music-wrapper {
             position: fixed;
             top: 20px;
             right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        #music-btn {
             background-color: var(--btn-bg);
             color: var(--btn-text);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
-            z-index: 1000;
             font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             transition: 0.2s;
         }
 
-        #music-btn:hover {
-            transform: scale(1.05);
+        #music-btn:hover { transform: scale(1.05); }
+
+        /* Menu danh sách nhạc */
+        .playlist-menu {
+            display: none; /* Ẩn đi, bấm mới hiện */
+            margin-top: 10px;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 260px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .playlist-menu.active {
+            display: block;
+        }
+
+        .song-item {
+            color: #ccc;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: 0.2s;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .song-item:last-child { border-bottom: none; }
+        .song-item:hover { background: rgba(255,255,255,0.1); color: white; }
+        .song-item.playing {
+            color: #ffd700; /* Màu vàng cho bài đang phát */
+            font-weight: bold;
+            background: rgba(255,215,0,0.1);
         }
 
         /* Khung quản lý trang */
@@ -69,63 +110,61 @@
         }
         .page.active { display: flex; }
 
-        /* KHUNG CHỨA NỘI DUNG (Đã bỏ nền mờ ảo, viền và bóng) */
+        /* ĐÃ BỎ KHUNG KÍNH Ở TRANG 1, chỉ giữ cấu trúc gom nhóm */
         .container {
             text-align: center;
             z-index: 10;
-            width: 95%; 
+            width: 95%;
             max-width: 700px;
-            padding: 20px 15px; 
-            transform: translateY(-5%); 
-            /* Xoá sạch background, blur, shadow theo yêu cầu */
+            padding: 20px 10px;
         }
 
+        /* Khung kính trang 2 giữ lại nhẹ để đọc được chữ danh sách nhân vật */
         .page2-container {
-            transform: translateY(0);
-            margin-top: 50px; 
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             padding: 30px 20px;
+            border-radius: 25px;
+            margin-top: 50px;
         }
 
-        /* Chữ Tiêu đề */
+        /* Chữ Tiêu đề và Subtitle (Thêm bóng đổ để không bị chìm vào nền) */
         .title {
             color: var(--color-title);
-            font-size: min(8.5vw, 2.8rem); 
+            font-size: min(10vw, 3.2rem); 
             margin: 5px 0 10px 0;
             white-space: nowrap; 
-            /* Giữ viền trắng mỏng để chữ nâu dễ đọc trên nền tối */
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.9); 
+            text-shadow: 0px 4px 15px rgba(0,0,0,0.8), 1px 1px 0px rgba(255,255,255,0.5); /* Bóng đen để nổi trên nền sáng/tối */
         }
 
-        /* Chữ Welcome (Đổi sang màu trắng) */
         .subtitle {
-            color: var(--white); /* Đổi màu trắng */
-            font-size: min(4.5vw, 1.4rem); 
-            margin-bottom: 30px; 
+            color: var(--color-sub); /* Đã đổi thành màu trắng */
+            font-size: min(4.8vw, 1.5rem); 
+            margin-bottom: 35px;
             white-space: nowrap; 
             font-weight: 800;
-            /* Đổi thành bóng đen mờ để chữ trắng nổi bần bật trên ảnh GIF */
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            text-shadow: 0px 3px 10px rgba(0,0,0,0.9); /* Bóng đổ mạnh giúp chữ trắng dễ đọc */
         }
 
         .small-text {
-            color: var(--white);
+            color: var(--color-title);
             font-style: italic;
             margin-bottom: 20px;
             font-size: 1.1rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
         /* Nút Vào kho bánh */
         .btn-main {
             background-color: var(--btn-bg);
             color: var(--btn-text);
-            border: none;
+            border: 2px solid rgba(255,255,255,0.2);
             padding: 14px 35px;
             font-size: 1.2rem;
             border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             transition: 0.3s;
             text-decoration: none;
             display: inline-block;
@@ -143,39 +182,40 @@
 
         /* 3 Nút Mạng Xã Hội ÉP VÀO 1 DÒNG */
         .social-links {
-            margin-top: 25px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 8px; /* Khoảng cách giữa các nút */
-            flex-wrap: nowrap; /* Lệnh ép không bao giờ rớt dòng */
+            gap: 8px;
+            flex-wrap: nowrap;
             width: 100%;
         }
 
         .social-btn {
-            flex: 1; /* Chia đều kích thước 3 nút */
-            padding: 10px 0;
+            flex: 1;
+            padding: 12px 0;
             border-radius: 20px;
             text-decoration: none;
             color: white;
             font-weight: bold;
-            font-size: min(3.5vw, 0.9rem); /* Chữ tự nhỏ lại nếu màn hình hẹp */
+            font-size: min(3.5vw, 0.95rem);
             white-space: nowrap;
             transition: 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .social-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
-        .facebook { background-color: #1877F2; }
-        .discord { background-color: #5865F2; }
-        .ngl { background-color: #FF4F79; }
+        .facebook { background-color: rgba(24, 119, 242, 0.9); }
+        .discord { background-color: rgba(88, 101, 242, 0.9); }
+        .ngl { background-color: rgba(255, 79, 121, 0.9); }
 
         /* TRANG 2: TÌM KIẾM & DANH SÁCH */
         .back-btn {
             position: absolute;
             top: 20px;
             left: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid var(--btn-bg);
-            color: var(--btn-bg);
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid var(--color-title);
+            color: var(--color-title);
             padding: 8px 15px;
             border-radius: 20px;
             cursor: pointer;
@@ -183,23 +223,20 @@
             transition: 0.2s;
             z-index: 100;
         }
-        .back-btn:hover { background: var(--btn-bg); color: var(--btn-text); }
 
         .search-box input {
             width: 100%;
             max-width: 400px;
             padding: 12px 20px;
             border-radius: 25px;
-            border: 2px solid var(--color-sub);
+            border: 2px solid var(--color-title);
             outline: none;
             font-size: 1rem;
             margin-bottom: 25px;
             background: rgba(255, 255, 255, 0.95);
             color: var(--color-title);
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .search-box input::placeholder { color: var(--color-sub); font-weight: normal; }
 
         .character-list {
             display: grid;
@@ -213,27 +250,26 @@
             padding: 20px;
             border-radius: 15px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             color: var(--color-title);
             font-weight: bold;
             font-size: 1.2rem;
-            border: 2px dashed var(--color-sub);
+            border: 2px dashed var(--color-title);
             transition: 0.3s;
         }
 
         .char-card:hover {
             transform: scale(1.05);
             background: #fdf5ef;
-            border-color: var(--color-title);
         }
 
-        /* MODAL (Khung thông tin chi tiết) */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(5px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -249,7 +285,6 @@
             max-height: 90vh;
             overflow-y: auto;
             border: 3px solid var(--color-title);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
         .close-btn {
@@ -257,71 +292,36 @@
             top: 15px; right: 20px;
             font-size: 1.8rem;
             cursor: pointer;
-            color: var(--color-sub);
-            transition: 0.2s;
-        }
-        .close-btn:hover { color: var(--color-title); transform: scale(1.2); }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-        .tag {
-            background: var(--color-sub);
-            color: var(--white);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
-        .info-section {
-            text-align: left;
-            margin-bottom: 20px;
-            background: #fdf5ef;
-            padding: 15px;
-            border-radius: 10px;
-            color: #555;
-            line-height: 1.5;
-        }
-        .info-section h3 {
             color: var(--color-title);
-            font-size: 1rem;
-            margin-bottom: 8px;
-            border-bottom: 1px dashed var(--color-sub);
-            padding-bottom: 5px;
         }
 
-        .pass-section { margin-top: 25px; }
-        .pass-section input {
-            padding: 12px;
-            border-radius: 10px;
-            border: 2px solid var(--color-sub);
-            margin-right: 10px;
-            outline: none;
-            font-size: 1rem;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        .pass-section input:focus { border-color: var(--color-title); }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; }
+        .tag { background: var(--btn-bg); color: var(--white); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; }
+
+        .info-section { background: #fdf5ef; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left;}
+        .info-section h3 { color: var(--color-title); font-size: 1rem; border-bottom: 1px dashed var(--btn-bg); padding-bottom: 5px; margin-bottom: 8px;}
+
+        .pass-section input { padding: 12px; border-radius: 10px; border: 2px solid var(--color-title); width: 100%; margin-bottom: 10px; outline: none; }
     </style>
 </head>
 <body>
 
-    <!-- ================= NÚT NHẠC ================= -->
-    <button id="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
-    <audio id="bg-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
+    <!-- ================= HỆ THỐNG NHẠC (PLAYLIST) ================= -->
+    <div class="music-wrapper">
+        <button id="music-btn" onclick="togglePlaylistMenu()">🎵 Danh sách nhạc 🎵</button>
+        
+        <div id="playlist-menu" class="playlist-menu">
+            <!-- Danh sách bài hát được tạo tự động bằng JS -->
+        </div>
+    </div>
+
+    <!-- Thẻ Audio ẩn -->
+    <audio id="bg-audio"></audio>
 
     <!-- ================= TRANG 1: TRANG CHỦ ================= -->
     <div id="page1" class="page active">
-        <!-- Đã bỏ khung mờ ảo ở giữa -->
-        <div class="container">
-            <!-- Đã bỏ bánh quy 🍪 -->
+        <!-- Bỏ khung kính .container, chữ trực tiếp nổi lên nền -->
+        <div class="container" style="background: transparent; border: none; box-shadow: none; backdrop-filter: none;">
             <h1 class="title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
             <h2 class="subtitle">Welcome to Bơ’s little archive</h2>
             
@@ -340,20 +340,18 @@
         <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="container page2-container">
-            <h1 class="title">HỘP BÁNH QUY CỦA BƠ</h1>
+            <h1 class="title" style="text-shadow: none; font-size: 2.2rem;">HỘP BÁNH QUY CỦA BƠ</h1>
             <p class="small-text">Mỗi chiếc bánh là một câu chuyện Bơ gửi gắm</p>
             
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="🔍 Tìm chồng..." onkeyup="searchChar()">
             </div>
 
-            <div class="character-list" id="charList">
-                <!-- Danh sách tự động -->
-            </div>
+            <div class="character-list" id="charList"></div>
         </div>
     </div>
 
-    <!-- ================= MODAL THÔNG TIN TỪNG ANH CHỒNG ================= -->
+    <!-- ================= MODAL ================= -->
     <div id="charModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -385,13 +383,82 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // DATA NHÂN VẬT 
+        // 1. DATA NHẠC - BẠN NHỚ UP 3 FILE NÀY LÊN GITHUB NHÉ!
+        const playlist = [
+            { title: "🎵 Rồi em sẽ gặp một chàng trai khác", src: "snaptik.vn_7626833029868080391.mp3" },
+            { title: "🎵 Gặp lại năm ta 60", src: "snaptik.vn_7573160026223725842.mp3" },
+            { title: "🎵 Tổng hợp", src: "snaptik.vn_7627001351553273109.mp3" }
+        ];
+
+        let currentSongIndex = 0;
+        let isMusicPlaying = false;
+        const audioEl = document.getElementById("bg-audio");
+        const playlistMenu = document.getElementById("playlist-menu");
+
+        // Khởi tạo menu nhạc
+        function renderPlaylist() {
+            playlistMenu.innerHTML = "";
+            playlist.forEach((song, index) => {
+                let div = document.createElement('div');
+                div.className = "song-item";
+                if (index === currentSongIndex) div.classList.add("playing");
+                div.innerText = song.title;
+                div.onclick = () => playSpecificSong(index);
+                playlistMenu.appendChild(div);
+            });
+        }
+
+        function togglePlaylistMenu() {
+            playlistMenu.classList.toggle("active");
+        }
+
+        // Ẩn menu nhạc nếu bấm ra ngoài
+        document.addEventListener('click', function(event) {
+            const wrapper = document.querySelector('.music-wrapper');
+            if (!wrapper.contains(event.target)) {
+                playlistMenu.classList.remove('active');
+            }
+        });
+
+        function loadSong(index) {
+            currentSongIndex = index;
+            audioEl.src = playlist[index].src;
+            renderPlaylist(); // Cập nhật lại UI để bôi vàng bài đang phát
+        }
+
+        function playSpecificSong(index) {
+            loadSong(index);
+            audioEl.play();
+            isMusicPlaying = true;
+            document.getElementById("music-btn").innerText = "🎶 Đang phát nhạc...";
+        }
+
+        // Tự động chuyển bài khi hát hết
+        audioEl.addEventListener('ended', () => {
+            let nextIndex = (currentSongIndex + 1) % playlist.length;
+            playSpecificSong(nextIndex);
+        });
+
+        // AUTOPLAY: Khi người dùng bấm lần đầu tiên trên màn hình, nhạc sẽ tự kêu
+        let hasInteracted = false;
+        document.body.addEventListener('click', () => {
+            if (!hasInteracted) {
+                hasInteracted = true;
+                playSpecificSong(0); // Phát bài đầu tiên
+            }
+        });
+
+        // Load bài hát đầu tiên sẵn sàng
+        loadSong(0);
+
+
+        // 2. DATA NHÂN VẬT 
         const characters = [
             {
                 id: 1,
                 name: "Taehyung Tổng Tài",
                 tags: ["Lạnh lùng", "Tổng tài", "Ngọt sủng"],
-                backstory: "Anh ta là người thừa kế của tập đoàn lớn nhất nước, nhưng lại luôn giấu đi sự ấm áp bên trong cái vỏ bọc lạnh lùng...",
+                backstory: "Anh ta là người thừa kế của tập đoàn lớn nhất nước...",
                 first: "Cô lại làm đổ cà phê vào áo tôi nữa rồi đấy? Có biết nó đắt thế nào không?",
                 pass: "bo123", 
                 link: "https://link-chat-cua-ban.com/1"
@@ -400,27 +467,12 @@
                 id: 2,
                 name: "Sói Xám Dịu Dàng",
                 tags: ["Dịu dàng", "Thú nhân", "Fantasy"],
-                backstory: "Một con sói lang thang trong khu rừng phép thuật, luôn âm thầm bảo vệ bạn.",
-                first: "Đừng sợ, tôi sẽ không làm tổn thương em đâu. Lại đây nào.",
+                backstory: "Một con sói lang thang trong khu rừng phép thuật...",
+                first: "Đừng sợ, tôi sẽ không làm tổn thương em đâu.",
                 pass: "bocute",
                 link: "https://link-chat-cua-ban.com/2"
             }
         ];
-
-        let music = document.getElementById("bg-music");
-        let isPlaying = false;
-
-        function toggleMusic() {
-            let btn = document.getElementById("music-btn");
-            if (isPlaying) {
-                music.pause();
-                btn.innerText = "🎵 Play Music";
-            } else {
-                music.play();
-                btn.innerText = "⏸️ Pause Music";
-            }
-            isPlaying = !isPlaying;
-        }
 
         function goToPage2() {
             document.getElementById('page1').classList.remove('active');
@@ -436,12 +488,10 @@
         function renderCharacters(list) {
             const listDiv = document.getElementById('charList');
             listDiv.innerHTML = ""; 
-            
             if(list.length === 0) {
-                listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--white); font-style: italic; text-shadow: 1px 1px 3px black;'>Không tìm thấy chồng yêu nào cả 🥲</p>";
+                listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--color-title); font-style: italic;'>Không tìm thấy chồng yêu nào cả 🥲</p>";
                 return;
             }
-
             list.forEach(char => {
                 let div = document.createElement('div');
                 div.className = "char-card";
@@ -486,13 +536,6 @@
 
         function closeModal() {
             document.getElementById('charModal').style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            let modal = document.getElementById('charModal');
-            if (event.target == modal) {
-                closeModal();
-            }
         }
 
         function checkPassword() {
