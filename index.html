@@ -16,7 +16,6 @@
             --beige-light: #FDF5EF;  
             --white: #ffffff;
             --text-dark: #5C4332;
-            --red-alert: #d63031;
         }
 
         * {
@@ -51,7 +50,7 @@
             justify-content: flex-start; padding-top: 80px; padding-bottom: 50px;
         }
 
-        /* Nút Cố Định (Idea, Trở lại) */
+        /* Nút Cố Định (Idea, Trở lại) - Bỏ nút Nhạc */
         .fixed-btn {
             position: fixed; z-index: 1000; border: none; font-weight: bold;
             background-color: var(--brown-dark); color: var(--white);
@@ -85,7 +84,6 @@
         .archive-desc { color: var(--text-dark); font-style: italic; margin-bottom: 15px; font-size: 1rem; opacity: 0.8;}
         .stat-text { font-size: 0.95rem; color: var(--brown-dark); background: rgba(255,255,255,0.7); display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; }
 
-        /* Gacha Random */
         .random-box {
             background: rgba(255, 255, 255, 0.75); border: 2px dashed var(--brown-pastel);
             border-radius: 20px; padding: 20px; margin: 0 auto 25px auto;
@@ -96,7 +94,6 @@
         .random-btn:hover { transform: scale(1.05); background-color: #7a583d; }
         .random-btn:disabled { background-color: var(--brown-pastel); cursor: not-allowed; transform: none; }
 
-        /* Lọc & Tìm kiếm */
         .filter-wrapper { width: 100%; max-width: 800px; margin: 0 auto 20px auto; }
         .filter-container { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; justify-content: flex-start; }
         .filter-container::-webkit-scrollbar { display: none; }
@@ -112,7 +109,7 @@
         
         .sort-box select { width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid var(--white); outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8); color: var(--brown-dark); font-weight: 800; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; }
 
-        /* Lưới Thẻ Nhân Vật Ngoại Trang Chủ */
+        /* Thẻ Nhân vật (Đã xoá tim) */
         .character-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; width: 100%; padding-bottom: 30px; }
         .char-card { background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 12px; text-align: left; position: relative; transition: 0.2s; cursor: pointer;}
         .char-card:hover { transform: translateY(-5px); border-color: var(--brown-pastel); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
@@ -121,14 +118,15 @@
         .char-name { font-size: 1.5rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2; margin-bottom: 5px;}
         .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
         .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 5px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--white);}
-        .char-note-mini { font-size: 0.9rem; color: var(--red-alert); font-weight: bold; font-style: italic; margin-top: 5px;}
+        
+        /* Note màu sắc bình thường */
+        .char-note-mini { font-size: 0.9rem; color: #777; font-weight: 600; font-style: italic; margin-top: 5px;}
         
         .card-footer { display: flex; justify-content: flex-end; align-items: center; margin-top: 5px;}
         .char-action { font-size: 0.9rem; color: var(--brown-dark); background: transparent; border: 2px solid var(--brown-dark); padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;}
         .char-card:hover .char-action { background: var(--brown-dark); color: var(--white); }
 
-
-        /* ================= TRANG 4: TRANG HỒ SƠ CHI TIẾT NHÂN VẬT (MỚI) ================= */
+        /* ================= TRANG 4: TRANG HỒ SƠ CHI TIẾT NHÂN VẬT ================= */
         .profile-container {
             width: 100%; max-width: 800px; margin: 0 auto;
             background: rgba(255, 255, 255, 0.9); border-radius: 30px;
@@ -137,23 +135,16 @@
         }
 
         .profile-img {
-            width: 100%; max-width: 350px; /* Độ to của ảnh */
-            border-radius: 20px; border: 5px solid var(--white);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            margin-bottom: 20px; object-fit: cover;
+            width: 100%; max-width: 350px; border-radius: 20px; border: 5px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 20px; object-fit: cover;
         }
 
-        .profile-name {
-            color: var(--brown-dark); font-size: 2.2rem; font-weight: 800;
-            text-align: center; margin-bottom: 15px; text-shadow: 1px 1px 0px #fff;
-        }
+        .profile-name { color: var(--brown-dark); font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 15px; text-shadow: 1px 1px 0px #fff; }
+        
+        /* Note trong hồ sơ */
+        .profile-note { color: #666; font-weight: 600; font-size: 0.95rem; margin-bottom: 25px; text-align: center; font-style: italic; }
 
-        .profile-note {
-            color: var(--red-alert); font-weight: bold; font-size: 1rem;
-            margin-bottom: 25px; text-align: center; font-style: italic;
-        }
-
-        /* Khung Cốt Truyện */
+        /* KHUNG CỐT TRUYỆN (Thu Gọn / Hiện Thêm) */
         .story-box {
             width: 100%; background: var(--beige-light); padding: 25px;
             border-radius: 20px; margin-bottom: 20px; text-align: left;
@@ -161,52 +152,58 @@
         }
         .story-title {
             color: var(--brown-dark); font-size: 1.1rem; margin-bottom: 15px;
-            border-bottom: 2px dashed var(--brown-pastel); padding-bottom: 8px;
-            display: inline-block;
+            border-bottom: 2px dashed var(--brown-pastel); padding-bottom: 8px; display: inline-block;
         }
+        
+        .story-wrapper { position: relative; }
         .story-content {
             color: var(--text-dark); font-size: 1.05rem; line-height: 1.8;
-            white-space: pre-wrap; /* Lệnh quan trọng để giữ nguyên từng dấu xuống dòng */
+            white-space: pre-wrap; 
+            max-height: 160px; /* Độ cao mặc định chỉ hiện 5-6 dòng */
+            overflow: hidden; 
         }
-
-        /* Nút Chat Cuối Trang */
-        .chat-action-section {
-            width: 100%; max-width: 400px; margin: 20px auto 0 auto;
-            display: flex; flex-direction: column; align-items: center; gap: 15px;
-        }
-        .chat-pass-input {
-            width: 100%; padding: 15px; border-radius: 15px; border: 2px solid var(--brown-pastel);
-            outline: none; font-size: 1.1rem; text-align: center; background: #fff;
-        }
-        .error-text { color: var(--red-alert); font-weight: bold; font-size: 0.95rem; display: none; }
+        .story-content.expanded { max-height: none; }
         
-        .btn-chat {
-            background-color: var(--brown-dark); color: var(--white); border: none;
-            padding: 16px; font-size: 1.2rem; border-radius: 30px; cursor: pointer;
-            font-weight: 800; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4);
-            width: 100%; transition: 0.2s; text-decoration: none; text-align: center;
+        /* Lớp sương mù che chữ khi thu gọn */
+        .story-fade {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+            background: linear-gradient(transparent, var(--beige-light));
+            pointer-events: none;
         }
+        .story-content.expanded + .story-fade { display: none; }
+        
+        /* Nút Đọc thêm */
+        .read-more-btn {
+            background: transparent; border: none; color: var(--brown-dark);
+            font-weight: 800; font-size: 0.95rem; cursor: pointer; margin-top: 15px;
+            display: block; width: 100%; text-align: center; padding: 5px;
+        }
+        .read-more-btn:hover { text-decoration: underline; }
+
+        /* Nút Chat */
+        .chat-action-section { width: 100%; max-width: 400px; margin: 20px auto 0 auto; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .chat-pass-input { width: 100%; padding: 15px; border-radius: 15px; border: 2px solid var(--brown-pastel); outline: none; font-size: 1.1rem; text-align: center; background: #fff; }
+        .error-text { color: #d63031; font-weight: bold; font-size: 0.95rem; display: none; }
+        .btn-chat { background-color: var(--brown-dark); color: var(--white); border: none; padding: 16px; font-size: 1.2rem; border-radius: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4); width: 100%; transition: 0.2s; text-decoration: none; text-align: center; }
         .btn-chat:hover { transform: translateY(-3px); background-color: #7a583d; }
 
 
-        /* ================= TRANG 3: TƯỜNG Ý TƯỞNG (Giữ nguyên) ================= */
+        /* ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= */
         .wall-container { width: 100%; max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.8); border-radius: 25px; padding: 20px;}
         .wall-header { text-align: center; margin-bottom: 20px; }
         .idea-post { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); text-align: left; }
         
-        /* Modal Góp Idea (Giữ nguyên) */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: var(--white); width: 90%; max-width: 450px; padding: 25px; border-radius: 25px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #999; }
-
     </style>
 </head>
 <body>
 
     <button id="idea-btn" class="fixed-btn" onclick="goToPage3()">💡 Tường Idea</button>
 
-    <!-- ================= TRANG 1: TRANG CHỦ ================= -->
+    <!-- TRANG 1 -->
     <div id="page1" class="page active">
         <div class="home-container">
             <h1 class="home-title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
@@ -220,7 +217,7 @@
         </div>
     </div>
 
-    <!-- ================= TRANG 2: DANH SÁCH NHÂN VẬT ================= -->
+    <!-- TRANG 2: KHO CHARACTER -->
     <div id="page2" class="page">
         <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
@@ -255,41 +252,49 @@
         </div>
     </div>
 
-    <!-- ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT (TRANG MỚI HOÀN TOÀN) ================= -->
+    <!-- TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT -->
     <div id="page4" class="page">
         <button class="fixed-btn back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
         
         <div class="profile-container">
-            <!-- CHỖ NÀY BẠN THAY LINK ẢNH CỦA BẠN VÀO NHÉ -->
-            <img id="profileImage" src="https://images.unsplash.com/photo-1611601322175-8751336495c0?q=80&w=1000&auto=format&fit=crop" alt="Profile Image" class="profile-img">
+            <!-- ẢNH ĐẠI DIỆN CHAR (Bạn dán link ảnh imgur/discord vào src nhé) -->
+            <img id="profileImage" src="https://i.ibb.co/L5hY7Xg/gym-boy.jpg" alt="Profile Image" class="profile-img">
             
-            <h1 id="profileName" class="profile-name">Tên Nhân Vật</h1>
+            <h1 id="profileName" class="profile-name">Cố Triết Vũ</h1>
             <div id="profileTags" class="char-tags-mini" style="justify-content: center; margin-bottom: 10px;"></div>
             <div id="profileNote" class="profile-note"></div>
 
+            <!-- Box Cốt Truyện -->
             <div class="story-box">
                 <h3 class="story-title">[BACKSTORY]</h3>
-                <p id="profileBackstory" class="story-content"></p>
+                <div class="story-wrapper">
+                    <p id="profileBackstory" class="story-content"></p>
+                    <div id="fadeBackstory" class="story-fade"></div>
+                </div>
+                <button id="btnBackstory" class="read-more-btn" onclick="toggleText('profileBackstory', 'fadeBackstory', this)">Hiển thị toàn bộ ⬇️</button>
             </div>
 
+            <!-- Box First Message -->
             <div class="story-box">
                 <h3 class="story-title">[FIRST MESSAGE]</h3>
-                <p id="profileFirst" class="story-content"></p>
+                <div class="story-wrapper">
+                    <p id="profileFirst" class="story-content"></p>
+                    <div id="fadeFirst" class="story-fade"></div>
+                </div>
+                <button id="btnFirst" class="read-more-btn" onclick="toggleText('profileFirst', 'fadeFirst', this)">Hiển thị toàn bộ ⬇️</button>
             </div>
 
             <div class="chat-action-section">
-                <!-- Chỗ nhập pass -->
                 <input type="password" id="profilePass" class="chat-pass-input" placeholder="Nhập pass mở khóa...">
                 <p id="profilePassError" class="error-text">Sai pass rồi, thử lại nhé 🥺!</p>
                 
-                <!-- Nút Chat -->
                 <button class="btn-chat" id="btnChat" onclick="verifyChat()">💬 Chat với chồng yêu</button>
                 <a href="#" id="linkChat" target="_blank" class="btn-chat" style="display:none; background-color: #ff4757;">💖 Vào Chat Ngay 💖</a>
             </div>
         </div>
     </div>
 
-    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= -->
+    <!-- TRANG 3: TƯỜNG Ý TƯỞNG -->
     <div id="page3" class="page">
         <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
         <div class="wall-container">
@@ -318,12 +323,12 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // DATA NHÂN VẬT ĐƯỢC CẬP NHẬT (Chú ý dấu ` để giữ nguyên định dạng xuống dòng của đoạn văn dài)
+        // DATA NHÂN VẬT
         const characters = [
             { 
                 id: 1, 
                 name: "Cố Triết Vũ", 
-                image: "https://i.ibb.co/L5hY7Xg/gym-boy.jpg", // Tạm dùng ảnh mạng, bạn có thể tự thay bằng link ảnh của bạn
+                image: "https://i.ibb.co/L5hY7Xg/gym-boy.jpg", 
                 tags: ["Bg", "bạn trai chó điên", "có plot ẩn", "R18", "nghiện bú ti user"], 
                 note: "Note: Char không sạch, nghiện thuốc.",
                 backstory: `Bạn trai tôi là chó điên.\n\nPhải, anh ấy chính là chó điên.\n\nNhớ lại ba năm trước, hồi mới quen nhau, anh đã tạo cho tôi một cú lừa cực kỳ ngoạn mục.\n\nNăm đầu tiên hẹn hò, Vũ xuất hiện như một bá đạo tổng tài bước ra từ tiểu thuyết, còn tôi chính là nữ chính ngốc bạch ngọt được che chở.\n\nAnh trưởng thành, chững chạc và cái gì trên đời anh cũng biết. Anh dạy tôi làm ăn kinh doanh, dạy tôi lái xe, dạy cả cách đối nhân xử thế với đời. Lịch trình đi date thì thôi, không phải bàn, toàn nhà hàng 5 sao, nến và hoa đầy đủ. Tôi lúc ấy u mê anh không chịu nổi, cứ ngỡ mình vớ được cực phẩm.\n\nNhưng đời đâu ai đoán được trước, đó chỉ là vỏ bọc của thằng điên này!\n\nBước sang năm thứ hai bên nhau, bản chất của anh bắt đầu bộc lộ. Không còn hình tượng tổng tài xịt nước hoa thơm phức, mặc vest phẳng phiu, thay vào đó là một ông chú lười cạo râu khi ở nhà, mặc áo 3 lỗ, lôi tôi đi ăn vỉa hè lê la khắp phố, và mỗi ngày là cái trò oẳn tù tì chí chóe xem hôm nay đứa nào phải rửa bát.\n\nKinh hoàng nhất là cái nết xả sinh lý của anh ta.\n\nThề có trời đất, anh vô cùng tự nhiên thả những quả rắm nổ bom ba ya như bom nổ ngay trước mặt tôi. Có hôm, tên khốn đó còn kéo tôi vào chăn, trùm kín mít lại chỉ để ép tôi hít trọn vẹn cái hương vị nồng say ấy.\n\nBao nhiêu lời lẽ sến súa lãng mạn hồi mới yêu bay đâu mất hết, thay bằng những câu từ thô bỉ mà tôi không dám tin có thể thốt ra từ miệng một người như anh.\n\nCố Triết Vũ năm nay 25 tuổi, là ông chủ quán bar, thành công ở tuổi đôi mươi, nhìn bề ngoài bảnh bao ngon nghẻ không ai nghĩ anh là con người như vậy.\n\nThật sự đánh rắm rất thối.`, 
@@ -331,7 +336,6 @@
                 pass: "123", 
                 link: "https://link-cua-ban.com" 
             }
-            // Bạn có thể copy paste {...} trên để tạo thêm nhiều nhân vật khác
         ];
 
         /* ------ CHUYỂN TRANG ------ */
@@ -355,14 +359,14 @@
         }
         function filterByTag(tag, btn) { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentFilter = tag; searchChar(); }
 
-        /* ------ QUAY NGẪU NHIÊN (GACHA) ------ */
+        /* ------ QUAY NGẪU NHIÊN ------ */
         function spinRandomChar() {
             if(characters.length === 0) return;
             let btn = document.getElementById('randomBtn'); let originalText = btn.innerText;
             btn.innerText = "Đang quay... ⏳"; btn.disabled = true;
             setTimeout(() => {
                 let randomIndex = Math.floor(Math.random() * characters.length);
-                openCharPage(characters[randomIndex].id); // Mở thẳng vào trang hồ sơ
+                openCharPage(characters[randomIndex].id); 
                 btn.innerText = originalText; btn.disabled = false;
             }, 800); 
         }
@@ -407,87 +411,38 @@
             renderCharacters(filtered);
         }
 
-        /* ------ HỆ THỐNG TRANG HỒ SƠ CHI TIẾT (TRANG 4) ------ */
+        /* ------ TRANG HỒ SƠ CHI TIẾT & CHỨC NĂNG THU GỌN/HIỂN THỊ ------ */
         let currentProfile = null;
         
         function openCharPage(id) {
             hideAllPages();
             document.getElementById('page4').classList.add('active');
-            
             let char = characters.find(c => c.id === id);
             currentProfile = char;
             
-            // Nếu bạn có ảnh thì nó sẽ tải vào đây
             if(char.image) {
                 document.getElementById('profileImage').src = char.image;
                 document.getElementById('profileImage').style.display = "block";
-            } else {
-                document.getElementById('profileImage').style.display = "none";
-            }
+            } else { document.getElementById('profileImage').style.display = "none"; }
 
             document.getElementById('profileName').innerText = char.name;
-            
-            // Gắn tags
-            let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
-            document.getElementById('profileTags').innerHTML = tagsHtml;
-            
-            // Note
+            document.getElementById('profileTags').innerHTML = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
             document.getElementById('profileNote').innerText = char.note || "";
             
-            // Cốt truyện & First Message (Tự động nhận diện xuống dòng)
             document.getElementById('profileBackstory').innerText = char.backstory;
             document.getElementById('profileFirst').innerText = char.first;
 
-            // Reset phần Chat Pass
+            // Reset tính năng thu gọn chữ
+            document.getElementById('profileBackstory').classList.remove('expanded');
+            document.getElementById('profileFirst').classList.remove('expanded');
+            document.getElementById('btnBackstory').innerText = "Hiển thị toàn bộ ⬇️";
+            document.getElementById('btnFirst').innerText = "Hiển thị toàn bộ ⬇️";
+
+            // Reset chat
             document.getElementById('profilePass').value = ""; 
             document.getElementById('profilePassError').style.display = "none"; 
             document.getElementById('btnChat').style.display = "block";
             document.getElementById('profilePass').style.display = "block";
             document.getElementById('linkChat').style.display = "none";
             
-            // Trượt lên đầu trang mượt mà
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Kiểm tra mật khẩu trực tiếp trên trang Hồ sơ
-        function verifyChat() {
-            let input = document.getElementById('profilePass').value;
-            if (input === currentProfile.pass) { 
-                document.getElementById('profilePassError').style.display = "none"; 
-                document.getElementById('btnChat').style.display = "none"; // Ẩn nút check
-                document.getElementById('profilePass').style.display = "none"; // Ẩn ô nhập pass
-                document.getElementById('linkChat').style.display = "block"; // Hiện nút Link
-                document.getElementById('linkChat').href = currentProfile.link; 
-            } else { 
-                document.getElementById('profilePassError').style.display = "block"; 
-            }
-        }
-
-        /* ------ TƯỜNG IDEA ------ */
-        function openIdeaForm() { document.getElementById('ideaModal').style.display = "flex"; }
-        function closeIdeaForm() { document.getElementById('ideaModal').style.display = "none"; }
-        function loadIdeas() {
-            const feed = document.getElementById('ideaFeed'); feed.innerHTML = ""; 
-            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            if(ideas.length === 0) { feed.innerHTML = "<p style='text-align: center; color: var(--brown-pastel); margin-top:20px;'>Chưa có ý tưởng nào 🌰</p>"; return; }
-            ideas.forEach(idea => {
-                let div = document.createElement('div'); div.className = "idea-post";
-                div.innerHTML = `<strong style="color: var(--brown-dark);">[${idea.cat}]</strong> <span style="color: #444;">${idea.text}</span>`;
-                feed.appendChild(div);
-            });
-        }
-        function submitIdea() {
-            let cat = document.getElementById('ideaCategory').value; let text = document.getElementById('ideaText').value.trim();
-            if(!text) return;
-            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            ideas.unshift({ cat: cat, text: text });
-            localStorage.setItem('bo_ideas', JSON.stringify(ideas));
-            document.getElementById('ideaText').value = ""; closeIdeaForm(); loadIdeas(); 
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('ideaModal')) closeIdeaForm();
-        }
-    </script>
-</body>
-</html>
+            window.scrollTo(
