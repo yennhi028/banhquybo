@@ -270,14 +270,15 @@
         /* ================= MUSIC PLAYER CSS ================= */
         .music-player-btn {
             position: fixed; bottom: 20px; left: 15px; 
-            width: 50px; height: 50px; border-radius: 50%;
-            background: var(--brown-dark); color: var(--white);
-            display: flex; justify-content: center; align-items: center;
-            font-size: 1.5rem; cursor: pointer; z-index: 2000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--white);
-            transition: transform 0.3s, background 0.3s;
+            width: 55px; height: 55px; border-radius: 50%;
+            background-image: url('https://cdn.discordapp.com/attachments/1547359339063419013/1556777179293950052/IMG_4359.jpg?backend=b2&ex=6ac5653b&is=6ac413bb&hm=b0291a91de3aff90897be283bc4709aaf76c63136686f58bf0092d9a18c19e9b&');
+            background-size: cover;
+            background-position: center;
+            cursor: pointer; z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 3px solid var(--white);
+            transition: box-shadow 0.3s, filter 0.3s;
         }
-        .music-player-btn:hover { transform: scale(1.1); }
+        .music-player-btn:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.4); filter: brightness(1.1); }
         .music-player-btn.playing { animation: spinMusic 4s linear infinite; }
         @keyframes spinMusic { 100% { transform: rotate(360deg); } }
 
@@ -323,9 +324,7 @@
     <!-- ================= MUSIC PLAYER ================= -->
     <audio id="bg-audio" preload="auto"></audio>
 
-    <div class="music-player-btn" id="musicToggleBtn" onclick="toggleMusicPanel()" title="Mở máy phát nhạc">
-        🎵
-    </div>
+    <div class="music-player-btn" id="musicToggleBtn" onclick="toggleMusicPanel()" title="Mở máy phát nhạc"></div>
 
     <div class="music-panel" id="musicPanel">
         <div class="music-title">💿 Máy Phát Nhạc</div>
@@ -445,7 +444,10 @@
             { name: "Gặp lại năm ta 60", src: "snaptik.vn_7573160026223725842.mp3" },
             { name: "Rồi em sẽ gặp 1 chàng trai khác", src: "snaptik.vn_7626833029868080391.mp3" },
             { name: "Mỹ nhân ngư", src: "snaptik.vn_7681308722055875858.mp3" },
-            { name: "Dòng thác thời gian", src: "snaptik.vn_7687606496569462036.mp3" }
+            { name: "Dòng thác thời gian", src: "snaptik.vn_7687606496569462036.mp3" },
+            { name: "Ngày xửa ngày xưa", src: "snaptik.vn_7579998523773553928.mp3" },
+            { name: "Biển đảo và em", src: "snaptik.vn_7678480025296899349.mp3" },
+            { name: "Anh đã không biết cách yêu em", src: "snaptik.vn_7679071778810940692.mp3" }
         ];
 
         let currentSongIndex = -1;
@@ -516,7 +518,7 @@
             
             if(isPlaying) {
                 playPauseBtn.innerText = "⏸";
-                musicToggleBtn.classList.add('playing');
+                musicToggleBtn.classList.add('playing'); // Cứ hát là quay tròn
             } else {
                 playPauseBtn.innerText = "▶";
                 musicToggleBtn.classList.remove('playing');
