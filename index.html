@@ -16,6 +16,7 @@
             --beige-light: #FDF5EF;  
             --white: #ffffff;
             --text-dark: #5C4332;
+            --red-alert: #d63031;
         }
 
         * {
@@ -36,7 +37,7 @@
             width: 100%; position: absolute; top: 0; left: 0;
         }
         .page.active { display: flex; animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
 
         /* Background */
         #page1 {
@@ -44,12 +45,13 @@
             background-size: cover; background-position: center; background-attachment: fixed;
         }
         
-        #page2, #page3 {
+        #page2, #page3, #page4 {
             background: linear-gradient(135deg, var(--beige-light) 0%, var(--pink-pastel) 50%, var(--green-pastel) 100%);
+            background-attachment: fixed;
             justify-content: flex-start; padding-top: 80px; padding-bottom: 50px;
         }
 
-        /* Nút Cố Định */
+        /* Nút Cố Định (Idea, Trở lại) */
         .fixed-btn {
             position: fixed; z-index: 1000; border: none; font-weight: bold;
             background-color: var(--brown-dark); color: var(--white);
@@ -57,10 +59,8 @@
             box-shadow: 0 4px 10px rgba(139, 103, 74, 0.4); transition: 0.2s; font-size: 0.95rem;
         }
         .fixed-btn:hover { transform: scale(1.05); }
-        #music-btn { bottom: 20px; left: 20px; }
         #idea-btn { top: 20px; right: 20px; }
         
-        /* Nút Trở lại (Sửa thành absolute để tự động trượt lên khi vuốt, không bị đè) */
         .back-btn { 
             position: absolute; top: 20px; left: 15px; background: rgba(255, 255, 255, 0.9); 
             color: var(--brown-dark); border: 2px solid var(--brown-dark); z-index: 100;
@@ -85,98 +85,128 @@
         .archive-desc { color: var(--text-dark); font-style: italic; margin-bottom: 15px; font-size: 1rem; opacity: 0.8;}
         .stat-text { font-size: 0.95rem; color: var(--brown-dark); background: rgba(255,255,255,0.7); display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; }
 
-        /* Tính năng Gacha Random Chồng Yêu */
+        /* Gacha Random */
         .random-box {
             background: rgba(255, 255, 255, 0.75); border: 2px dashed var(--brown-pastel);
             border-radius: 20px; padding: 20px; margin: 0 auto 25px auto;
             max-width: 600px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
         .random-title { font-size: 1.15rem; color: var(--brown-dark); font-weight: 800; margin-bottom: 12px; }
-        .random-btn {
-            background-color: var(--brown-dark); color: var(--white); border: none;
-            padding: 12px 30px; border-radius: 25px; font-weight: bold; font-size: 1rem;
-            cursor: pointer; box-shadow: 0 4px 10px rgba(139, 103, 74, 0.3); transition: 0.2s;
-        }
+        .random-btn { background-color: var(--brown-dark); color: var(--white); border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 10px rgba(139, 103, 74, 0.3); transition: 0.2s; }
         .random-btn:hover { transform: scale(1.05); background-color: #7a583d; }
         .random-btn:disabled { background-color: var(--brown-pastel); cursor: not-allowed; transform: none; }
 
-        /* Thanh Lọc Tags */
+        /* Lọc & Tìm kiếm */
         .filter-wrapper { width: 100%; max-width: 800px; margin: 0 auto 20px auto; }
         .filter-container { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; justify-content: flex-start; }
         .filter-container::-webkit-scrollbar { display: none; }
         .filter-btn { background: rgba(255,255,255,0.7); border: 1px solid var(--white); color: var(--text-dark); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0; }
         .filter-btn.active { background: var(--brown-dark); color: var(--white); border-color: var(--brown-dark); }
 
-        /* Tìm kiếm & Sắp xếp */
         .search-sort-wrapper { display: flex; gap: 10px; width: 100%; max-width: 700px; margin: 0 auto 25px auto; flex-direction: column; }
         @media (min-width: 600px) { .search-sort-wrapper { flex-direction: row; } }
         
         .search-box { flex: 1; position: relative; }
-        .search-box input {
-            width: 100%; padding: 12px 25px; border-radius: 30px; border: 2px solid var(--white);
-            outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8);
-            color: var(--text-dark); font-weight: 600; text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s;
-        }
+        .search-box input { width: 100%; padding: 12px 25px; border-radius: 30px; border: 2px solid var(--white); outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8); color: var(--text-dark); font-weight: 600; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
         .search-box input:focus { background: var(--white); border-color: var(--brown-pastel); }
         
-        .sort-box select {
-            width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid var(--white);
-            outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8);
-            color: var(--brown-dark); font-weight: 800; text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer;
-        }
+        .sort-box select { width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid var(--white); outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8); color: var(--brown-dark); font-weight: 800; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; }
 
-        /* Lưới Thẻ Nhân Vật */
+        /* Lưới Thẻ Nhân Vật Ngoại Trang Chủ */
         .character-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; width: 100%; padding-bottom: 30px; }
-        .char-card { background: rgba(255, 255, 255, 0.95); padding: 25px 20px 20px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 12px; text-align: left; position: relative; transition: 0.2s; }
+        .char-card { background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 12px; text-align: left; position: relative; transition: 0.2s; cursor: pointer;}
+        .char-card:hover { transform: translateY(-5px); border-color: var(--brown-pastel); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .char-card:active { transform: scale(0.98); }
         
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .char-name { font-size: 1.4rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2; padding-right: 10px;}
-        
-        /* Thả tim */
-        .fav-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; transition: 0.2s; outline: none; padding: 5px; margin: -5px; }
-        .fav-btn.active { animation: pop 0.3s; color: #ff4757;}
-        @keyframes pop { 50% { transform: scale(1.3); } }
-
+        .char-name { font-size: 1.5rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2; margin-bottom: 5px;}
         .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
         .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 5px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--white);}
+        .char-note-mini { font-size: 0.9rem; color: var(--red-alert); font-weight: bold; font-style: italic; margin-top: 5px;}
         
-        .card-footer { display: flex; justify-content: flex-end; align-items: center;}
+        .card-footer { display: flex; justify-content: flex-end; align-items: center; margin-top: 5px;}
         .char-action { font-size: 0.9rem; color: var(--brown-dark); background: transparent; border: 2px solid var(--brown-dark); padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;}
         .char-card:hover .char-action { background: var(--brown-dark); color: var(--white); }
 
-        /* ================= MODAL CHUNG ================= */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: var(--white); width: 90%; max-width: 450px; padding: 25px; border-radius: 25px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #999; }
-        
-        .modal-name { color: var(--brown-dark); font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 5px;}
-        .modal-copy-btn { background: var(--beige-light); border: none; color: var(--brown-dark); padding: 6px 15px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; cursor: pointer; display: block; margin: 0 auto 15px auto; transition: 0.2s; }
-        .modal-copy-btn:hover { background: var(--brown-pastel); color: white;}
-        
-        .info-section { background: var(--beige-light); padding: 15px; border-radius: 15px; margin-bottom: 15px; color: var(--text-dark); font-size: 0.95rem; line-height: 1.5; }
-        .info-section h3 { color: var(--brown-dark); font-size: 0.95rem; margin-bottom: 5px; }
-        
-        .pass-section input { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--beige-light); outline: none; font-size: 1rem; margin-bottom: 10px; background: #fafafa; text-align: center;}
-        .pass-section input:focus { border-color: var(--brown-pastel); }
 
-        /* Tường Idea */
+        /* ================= TRANG 4: TRANG HỒ SƠ CHI TIẾT NHÂN VẬT (MỚI) ================= */
+        .profile-container {
+            width: 100%; max-width: 800px; margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9); border-radius: 30px;
+            padding: 30px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 3px solid var(--white); display: flex; flex-direction: column; align-items: center;
+        }
+
+        .profile-img {
+            width: 100%; max-width: 350px; /* Độ to của ảnh */
+            border-radius: 20px; border: 5px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px; object-fit: cover;
+        }
+
+        .profile-name {
+            color: var(--brown-dark); font-size: 2.2rem; font-weight: 800;
+            text-align: center; margin-bottom: 15px; text-shadow: 1px 1px 0px #fff;
+        }
+
+        .profile-note {
+            color: var(--red-alert); font-weight: bold; font-size: 1rem;
+            margin-bottom: 25px; text-align: center; font-style: italic;
+        }
+
+        /* Khung Cốt Truyện */
+        .story-box {
+            width: 100%; background: var(--beige-light); padding: 25px;
+            border-radius: 20px; margin-bottom: 20px; text-align: left;
+            border: 1px solid #f2e3d5; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+        }
+        .story-title {
+            color: var(--brown-dark); font-size: 1.1rem; margin-bottom: 15px;
+            border-bottom: 2px dashed var(--brown-pastel); padding-bottom: 8px;
+            display: inline-block;
+        }
+        .story-content {
+            color: var(--text-dark); font-size: 1.05rem; line-height: 1.8;
+            white-space: pre-wrap; /* Lệnh quan trọng để giữ nguyên từng dấu xuống dòng */
+        }
+
+        /* Nút Chat Cuối Trang */
+        .chat-action-section {
+            width: 100%; max-width: 400px; margin: 20px auto 0 auto;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+        .chat-pass-input {
+            width: 100%; padding: 15px; border-radius: 15px; border: 2px solid var(--brown-pastel);
+            outline: none; font-size: 1.1rem; text-align: center; background: #fff;
+        }
+        .error-text { color: var(--red-alert); font-weight: bold; font-size: 0.95rem; display: none; }
+        
+        .btn-chat {
+            background-color: var(--brown-dark); color: var(--white); border: none;
+            padding: 16px; font-size: 1.2rem; border-radius: 30px; cursor: pointer;
+            font-weight: 800; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4);
+            width: 100%; transition: 0.2s; text-decoration: none; text-align: center;
+        }
+        .btn-chat:hover { transform: translateY(-3px); background-color: #7a583d; }
+
+
+        /* ================= TRANG 3: TƯỜNG Ý TƯỞNG (Giữ nguyên) ================= */
         .wall-container { width: 100%; max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.8); border-radius: 25px; padding: 20px;}
         .wall-header { text-align: center; margin-bottom: 20px; }
         .idea-post { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); text-align: left; }
+        
+        /* Modal Góp Idea (Giữ nguyên) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: var(--white); width: 90%; max-width: 450px; padding: 25px; border-radius: 25px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #999; }
+
     </style>
 </head>
 <body>
 
-    <button id="music-btn" class="fixed-btn" onclick="toggleMusic()">🎵 Nhạc</button>
-    <audio id="bg-music" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
-
     <button id="idea-btn" class="fixed-btn" onclick="goToPage3()">💡 Tường Idea</button>
 
-    <!-- TRANG 1 -->
+    <!-- ================= TRANG 1: TRANG CHỦ ================= -->
     <div id="page1" class="page active">
         <div class="home-container">
             <h1 class="home-title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
@@ -190,22 +220,20 @@
         </div>
     </div>
 
-    <!-- TRANG 2: KHO CHARACTER -->
+    <!-- ================= TRANG 2: DANH SÁCH NHÂN VẬT ================= -->
     <div id="page2" class="page">
-        <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
+        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="archive-container">
             <h1 class="archive-title">HỘP BÁNH QUY CỦA BƠ</h1>
             <p class="archive-desc">Mỗi chiếc bánh là một câu chuyện Bơ gửi gắm</p>
             <div class="stat-text">Kho hiện có: <span id="charCount">0</span> chiếc bánh 🍪</div>
             
-            <!-- Khu vực Gacha -->
             <div class="random-box">
                 <div class="random-title">Quay ngẫu nhiên chồng yêu 🌙</div>
                 <button id="randomBtn" class="random-btn" onclick="spinRandomChar()">Quay quay nè</button>
             </div>
 
-            <!-- Thanh Lọc có Kèm Số Lượng -->
             <div class="filter-wrapper">
                 <div class="filter-container" id="filterContainer"></div>
             </div>
@@ -227,9 +255,43 @@
         </div>
     </div>
 
-    <!-- TRANG 3: TƯỜNG Ý TƯỞNG -->
+    <!-- ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT (TRANG MỚI HOÀN TOÀN) ================= -->
+    <div id="page4" class="page">
+        <button class="fixed-btn back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
+        
+        <div class="profile-container">
+            <!-- CHỖ NÀY BẠN THAY LINK ẢNH CỦA BẠN VÀO NHÉ -->
+            <img id="profileImage" src="https://images.unsplash.com/photo-1611601322175-8751336495c0?q=80&w=1000&auto=format&fit=crop" alt="Profile Image" class="profile-img">
+            
+            <h1 id="profileName" class="profile-name">Tên Nhân Vật</h1>
+            <div id="profileTags" class="char-tags-mini" style="justify-content: center; margin-bottom: 10px;"></div>
+            <div id="profileNote" class="profile-note"></div>
+
+            <div class="story-box">
+                <h3 class="story-title">[BACKSTORY]</h3>
+                <p id="profileBackstory" class="story-content"></p>
+            </div>
+
+            <div class="story-box">
+                <h3 class="story-title">[FIRST MESSAGE]</h3>
+                <p id="profileFirst" class="story-content"></p>
+            </div>
+
+            <div class="chat-action-section">
+                <!-- Chỗ nhập pass -->
+                <input type="password" id="profilePass" class="chat-pass-input" placeholder="Nhập pass mở khóa...">
+                <p id="profilePassError" class="error-text">Sai pass rồi, thử lại nhé 🥺!</p>
+                
+                <!-- Nút Chat -->
+                <button class="btn-chat" id="btnChat" onclick="verifyChat()">💬 Chat với chồng yêu</button>
+                <a href="#" id="linkChat" target="_blank" class="btn-chat" style="display:none; background-color: #ff4757;">💖 Vào Chat Ngay 💖</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= -->
     <div id="page3" class="page">
-        <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
+        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
         <div class="wall-container">
             <div class="wall-header">
                 <h2 class="archive-title" style="font-size: 1.8rem;">Babi thả ý tưởng, Bơ thả chữ ❀</h2>
@@ -243,141 +305,91 @@
     <div id="ideaModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeIdeaForm()">&times;</span>
-            <h2 class="modal-name">Góp Idea 🌰</h2>
-            <div class="pass-section">
-                <select id="ideaCategory" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 10px; border: 2px solid var(--beige-light);">
+            <h2 class="home-title" style="font-size: 1.8rem; text-shadow: none; text-align:center;">Góp Idea 🌰</h2>
+            <div style="margin-top:20px;">
+                <select id="ideaCategory" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 12px; border: 2px solid var(--beige-light); outline:none;">
                     <option value="Bg">Bg</option><option value="Bl">Bl</option><option value="Gb">Gb</option><option value="Gl">Gl</option>
                 </select>
-                <textarea id="ideaText" style="width: 100%; height: 100px; padding: 10px; border-radius: 10px; border: 2px solid var(--beige-light); resize: none;" placeholder="Ghi ý tưởng vào đây..."></textarea>
+                <textarea id="ideaText" style="width: 100%; height: 120px; padding: 12px; border-radius: 12px; border: 2px solid var(--beige-light); resize: none; outline:none; font-family:inherit;" placeholder="Ghi ý tưởng vào đây..."></textarea>
             </div>
-            <button class="btn-main" style="width: 100%;" onclick="submitIdea()">Đăng Lên Tường ✨</button>
-        </div>
-    </div>
-
-    <!-- MODAL CHARACTER -->
-    <div id="charModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modalName" class="modal-name">Tên Nhân Vật</h2>
-            <button class="modal-copy-btn" onclick="copyCharLink()">🔗 Copy link chia sẻ</button>
-            
-            <div class="info-section">
-                <h3>📖 BACKSTORY</h3>
-                <p id="modalBackstory">...</p>
-            </div>
-            <div class="info-section">
-                <h3>💬 FIRST MESSAGE</h3>
-                <p id="modalFirst">...</p>
-            </div>
-
-            <div class="pass-section">
-                <input type="password" id="passInput" placeholder="Nhập pass để chat...">
-                <button class="btn-main" style="width: 100%; padding: 10px;" onclick="checkPassword()">Mở Khóa Chat</button>
-                <p id="passError" style="color: #ff4757; font-weight: bold; display: none; margin-top: 10px; text-align: center;">Sai pass rồi 🥺!</p>
-            </div>
-            <div id="chatLinkSection" style="display: none; margin-top: 15px; text-align: center;">
-                <a href="#" id="modalLink" target="_blank" class="btn-main" style="width: 100%;">💖 Vào Chat Ngay 💖</a>
-            </div>
+            <button class="btn-main" style="width: 100%; margin-top:10px;" onclick="submitIdea()">Đăng Lên Tường ✨</button>
         </div>
     </div>
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // DATA NHÂN VẬT (Giao diện thẻ hoàn toàn tinh giản, không hiển thị view hay badge)
+        // DATA NHÂN VẬT ĐƯỢC CẬP NHẬT (Chú ý dấu ` để giữ nguyên định dạng xuống dòng của đoạn văn dài)
         const characters = [
-            { id: 1, name: "Taehyung Tổng Tài", tags: ["Bg", "Lạnh lùng", "Tổng tài"], backstory: "Người thừa kế...", first: "Cà phê của tôi?", pass: "bo123", link: "https://link" },
-            { id: 2, name: "Sói Xám Dịu Dàng", tags: ["Gb", "Dịu dàng", "Thú nhân"], backstory: "Sói lang thang...", first: "Đừng sợ...", pass: "bocute", link: "https://link" },
-            { id: 3, name: "Cún Con Nũng Nịu", tags: ["Bl", "Đáng yêu", "Học đường"], backstory: "Đàn em khoá dưới...", first: "Đợi em với!", pass: "123", link: "https://link" }
+            { 
+                id: 1, 
+                name: "Cố Triết Vũ", 
+                image: "https://i.ibb.co/L5hY7Xg/gym-boy.jpg", // Tạm dùng ảnh mạng, bạn có thể tự thay bằng link ảnh của bạn
+                tags: ["Bg", "bạn trai chó điên", "có plot ẩn", "R18", "nghiện bú ti user"], 
+                note: "Note: Char không sạch, nghiện thuốc.",
+                backstory: `Bạn trai tôi là chó điên.\n\nPhải, anh ấy chính là chó điên.\n\nNhớ lại ba năm trước, hồi mới quen nhau, anh đã tạo cho tôi một cú lừa cực kỳ ngoạn mục.\n\nNăm đầu tiên hẹn hò, Vũ xuất hiện như một bá đạo tổng tài bước ra từ tiểu thuyết, còn tôi chính là nữ chính ngốc bạch ngọt được che chở.\n\nAnh trưởng thành, chững chạc và cái gì trên đời anh cũng biết. Anh dạy tôi làm ăn kinh doanh, dạy tôi lái xe, dạy cả cách đối nhân xử thế với đời. Lịch trình đi date thì thôi, không phải bàn, toàn nhà hàng 5 sao, nến và hoa đầy đủ. Tôi lúc ấy u mê anh không chịu nổi, cứ ngỡ mình vớ được cực phẩm.\n\nNhưng đời đâu ai đoán được trước, đó chỉ là vỏ bọc của thằng điên này!\n\nBước sang năm thứ hai bên nhau, bản chất của anh bắt đầu bộc lộ. Không còn hình tượng tổng tài xịt nước hoa thơm phức, mặc vest phẳng phiu, thay vào đó là một ông chú lười cạo râu khi ở nhà, mặc áo 3 lỗ, lôi tôi đi ăn vỉa hè lê la khắp phố, và mỗi ngày là cái trò oẳn tù tì chí chóe xem hôm nay đứa nào phải rửa bát.\n\nKinh hoàng nhất là cái nết xả sinh lý của anh ta.\n\nThề có trời đất, anh vô cùng tự nhiên thả những quả rắm nổ bom ba ya như bom nổ ngay trước mặt tôi. Có hôm, tên khốn đó còn kéo tôi vào chăn, trùm kín mít lại chỉ để ép tôi hít trọn vẹn cái hương vị nồng say ấy.\n\nBao nhiêu lời lẽ sến súa lãng mạn hồi mới yêu bay đâu mất hết, thay bằng những câu từ thô bỉ mà tôi không dám tin có thể thốt ra từ miệng một người như anh.\n\nCố Triết Vũ năm nay 25 tuổi, là ông chủ quán bar, thành công ở tuổi đôi mươi, nhìn bề ngoài bảnh bao ngon nghẻ không ai nghĩ anh là con người như vậy.\n\nThật sự đánh rắm rất thối.`, 
+                first: `Thế nhưng, con chó điên này thi thoảng lại làm tôi không thể ngừng yêu.\n\nChẳng hạn như hôm nay, 8 tháng 3.\n\nTôi vốn đinh ninh anh bận ở quán, quên béng ngày này rồi. Ấy thế mà đùng một cái, thư ký của anh đánh nguyên một con xe hơi mới tinh đến để tạo bất ngờ cho tôi. Chỉ vì tuần trước lướt điện thoại, tôi vô tình buột miệng khen cái xe này đẹp, thế mà anh nhớ kỹ rồi âm thầm dàn xếp hết. Chưa hết, anh còn chốt luôn cho mẹ tôi một chuyến du lịch Maldives nghỉ dưỡng chỉ vì biết bà thích đi biển.\n\nCầm chìa khóa xe trên tay, tôi xúc động muốn rớt nước mắt. Không ngờ cái tên thô lỗ ấy lại tĩnh lặng quan tâm đến tôi và gia đình chu đáo đến vậy. Bầu không khí dâng trào, tôi quyết định sến súa với anh một hôm. Nhấc điện thoại lên, tôi nâng niu gõ từng chữ gửi cho anh người yêu đang bận ở quán.\n\n{{user}}: Em yêu anh\n{{user}}: Cảm ơn anh đã cố gắng để hiện diện trong cuộc sống của em\n\nTriết Vũ: Chứ mày định để thằng nào?`, 
+                pass: "123", 
+                link: "https://link-cua-ban.com" 
+            }
+            // Bạn có thể copy paste {...} trên để tạo thêm nhiều nhân vật khác
         ];
 
         /* ------ CHUYỂN TRANG ------ */
-        function goToPage1() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('page1').classList.add('active'); document.getElementById('idea-btn').style.display = 'block'; }
-        function goToPage2() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('page2').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; renderFilters(); searchChar(); }
-        function goToPage3() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('page3').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; loadIdeas(); }
-
-        /* ------ NHẠC ------ */
-        let music = document.getElementById("bg-music"); let isPlaying = false;
-        function toggleMusic() { if (isPlaying) { music.pause(); document.getElementById("music-btn").innerText = "🎵 Nhạc"; } else { music.play(); document.getElementById("music-btn").innerText = "⏸️ Tắt"; } isPlaying = !isPlaying; }
-
+        function hideAllPages() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); }
+        function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); document.getElementById('idea-btn').style.display = 'block'; }
+        function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; renderFilters(); searchChar(); }
+        function goToPage3() { hideAllPages(); document.getElementById('page3').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; loadIdeas(); }
+        
         /* ------ LỌC & SỐ LƯỢNG TAGS ------ */
         let currentFilter = "All";
         function renderFilters() {
-            let allTags = new Set(); 
-            let tagCounts = {};
-            
-            // Đếm số lượng nhân vật cho từng tag
-            characters.forEach(c => {
-                c.tags.forEach(t => {
-                    allTags.add(t);
-                    tagCounts[t] = (tagCounts[t] || 0) + 1;
-                });
-            });
-            
+            let allTags = new Set(); let tagCounts = {};
+            characters.forEach(c => { c.tags.forEach(t => { allTags.add(t); tagCounts[t] = (tagCounts[t] || 0) + 1; }); });
             let filterContainer = document.getElementById('filterContainer');
             filterContainer.innerHTML = `<button class="filter-btn active" onclick="filterByTag('All', this)">Tất cả (${characters.length})</button>`;
-            
             Array.from(allTags).sort().forEach(tag => {
                 let btn = document.createElement('button'); btn.className = "filter-btn"; 
-                btn.innerText = `${tag} (${tagCounts[tag]})`; // Hiện số lượng cạnh tên tag
-                btn.onclick = function() { filterByTag(tag, this); }; 
-                filterContainer.appendChild(btn);
+                btn.innerText = `${tag} (${tagCounts[tag]})`; 
+                btn.onclick = function() { filterByTag(tag, this); }; filterContainer.appendChild(btn);
             });
         }
         function filterByTag(tag, btn) { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentFilter = tag; searchChar(); }
 
-        /* ------ YÊU THÍCH ------ */
-        function getFavs() { return JSON.parse(localStorage.getItem('bo_favs')) || []; }
-        function toggleFav(id, event) {
-            event.stopPropagation();
-            let favs = getFavs(); let btn = event.target;
-            if (favs.includes(id)) { favs = favs.filter(f => f !== id); btn.innerText = "🤍"; btn.classList.remove('active'); } 
-            else { favs.push(id); btn.innerText = "❤️"; btn.classList.add('active'); }
-            localStorage.setItem('bo_favs', JSON.stringify(favs));
-        }
-
         /* ------ QUAY NGẪU NHIÊN (GACHA) ------ */
         function spinRandomChar() {
             if(characters.length === 0) return;
-            
-            let btn = document.getElementById('randomBtn');
-            let originalText = btn.innerText;
-            btn.innerText = "Đang quay... ⏳";
-            btn.disabled = true;
-            
-            // Tạo hiệu ứng chờ 0.8 giây cho hồi hộp
+            let btn = document.getElementById('randomBtn'); let originalText = btn.innerText;
+            btn.innerText = "Đang quay... ⏳"; btn.disabled = true;
             setTimeout(() => {
                 let randomIndex = Math.floor(Math.random() * characters.length);
-                let randomChar = characters[randomIndex];
-                openModal(randomChar.id);
-                btn.innerText = originalText;
-                btn.disabled = false;
+                openCharPage(characters[randomIndex].id); // Mở thẳng vào trang hồ sơ
+                btn.innerText = originalText; btn.disabled = false;
             }, 800); 
         }
 
-        /* ------ RENDER & SẮP XẾP ------ */
+        /* ------ RENDER DANH SÁCH THẺ BÊN NGOÀI ------ */
         function renderCharacters(list) {
             const listDiv = document.getElementById('charList'); listDiv.innerHTML = ""; 
             document.getElementById('charCount').innerText = list.length; 
-            let favs = getFavs();
 
             if(list.length === 0) { listDiv.innerHTML = "<p style='width: 100%; text-align: center; color: var(--brown-dark); grid-column: 1/-1;'>Không tìm thấy bé nào khớp 🥲</p>"; return; }
             
             list.forEach(char => {
                 let div = document.createElement('div'); div.className = "char-card"; 
                 let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
-                let isFav = favs.includes(char.id);
+                let noteHtml = char.note ? `<div class="char-note-mini">${char.note}</div>` : '';
                 
                 div.innerHTML = `
                     <div class="card-header">
                         <div class="char-name">${char.name}</div>
-                        <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav(${char.id}, event)">${isFav ? '❤️' : '🤍'}</button>
                     </div>
                     <div class="char-tags-mini">${tagsHtml}</div>
+                    ${noteHtml}
                     <div class="card-footer">
-                        <button class="char-action" onclick="openModal(${char.id}, event)">Xem hồ sơ</button>
+                        <button class="char-action" onclick="openCharPage(${char.id})">Xem hồ sơ</button>
                     </div>
                 `;
-                div.onclick = (e) => { if(e.target.tagName !== 'BUTTON') openModal(char.id, e); };
+                div.onclick = (e) => { if(e.target.tagName !== 'BUTTON') openCharPage(char.id); };
                 listDiv.appendChild(div);
             });
         }
@@ -385,51 +397,70 @@
         function searchChar() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let sortType = document.getElementById('sortSelect').value;
-
-            // 1. Lọc
             let filtered = characters.filter(char => {
                 let matchText = char.name.toLowerCase().includes(input) || char.tags.join(" ").toLowerCase().includes(input);
                 let matchFilter = (currentFilter === "All") ? true : char.tags.includes(currentFilter);
                 return matchText && matchFilter;
             });
-
-            // 2. Sắp xếp
-            if (sortType === 'az') {
-                filtered.sort((a, b) => a.name.localeCompare(b.name));
-            } else if (sortType === 'za') {
-                filtered.sort((a, b) => b.name.localeCompare(a.name));
-            }
-
+            if (sortType === 'az') filtered.sort((a, b) => a.name.localeCompare(b.name));
+            else if (sortType === 'za') filtered.sort((a, b) => b.name.localeCompare(a.name));
             renderCharacters(filtered);
         }
 
-        /* ------ MODAL & COPY LINK ------ */
-        let currentChar = null;
-        function openModal(id, event) {
-            if(event) event.stopPropagation();
-            let char = characters.find(c => c.id === id);
-            currentChar = char; 
-            document.getElementById('charModal').style.display = "flex"; 
-            document.getElementById('modalName').innerText = char.name;
-            document.getElementById('modalBackstory').innerText = char.backstory; 
-            document.getElementById('modalFirst').innerText = char.first;
-            document.getElementById('passInput').value = ""; 
-            document.getElementById('passError').style.display = "none"; 
-            document.getElementById('chatLinkSection').style.display = "none";
-            document.querySelector('.modal-copy-btn').innerText = "🔗 Copy link chia sẻ";
-        }
-        function closeModal() { document.getElementById('charModal').style.display = "none"; }
+        /* ------ HỆ THỐNG TRANG HỒ SƠ CHI TIẾT (TRANG 4) ------ */
+        let currentProfile = null;
         
-        function checkPassword() {
-            let input = document.getElementById('passInput').value;
-            if (input === currentChar.pass) { document.getElementById('passError').style.display = "none"; document.getElementById('chatLinkSection').style.display = "block"; document.getElementById('modalLink').href = currentChar.link; } 
-            else { document.getElementById('passError').style.display = "block"; document.getElementById('chatLinkSection').style.display = "none"; }
+        function openCharPage(id) {
+            hideAllPages();
+            document.getElementById('page4').classList.add('active');
+            
+            let char = characters.find(c => c.id === id);
+            currentProfile = char;
+            
+            // Nếu bạn có ảnh thì nó sẽ tải vào đây
+            if(char.image) {
+                document.getElementById('profileImage').src = char.image;
+                document.getElementById('profileImage').style.display = "block";
+            } else {
+                document.getElementById('profileImage').style.display = "none";
+            }
+
+            document.getElementById('profileName').innerText = char.name;
+            
+            // Gắn tags
+            let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
+            document.getElementById('profileTags').innerHTML = tagsHtml;
+            
+            // Note
+            document.getElementById('profileNote').innerText = char.note || "";
+            
+            // Cốt truyện & First Message (Tự động nhận diện xuống dòng)
+            document.getElementById('profileBackstory').innerText = char.backstory;
+            document.getElementById('profileFirst').innerText = char.first;
+
+            // Reset phần Chat Pass
+            document.getElementById('profilePass').value = ""; 
+            document.getElementById('profilePassError').style.display = "none"; 
+            document.getElementById('btnChat').style.display = "block";
+            document.getElementById('profilePass').style.display = "block";
+            document.getElementById('linkChat').style.display = "none";
+            
+            // Trượt lên đầu trang mượt mà
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function copyCharLink() {
-            navigator.clipboard.writeText(currentChar.link).then(() => {
-                document.querySelector('.modal-copy-btn').innerText = "✅ Đã copy link!";
-            });
+        // Kiểm tra mật khẩu trực tiếp trên trang Hồ sơ
+        function verifyChat() {
+            let input = document.getElementById('profilePass').value;
+            if (input === currentProfile.pass) { 
+                document.getElementById('profilePassError').style.display = "none"; 
+                document.getElementById('btnChat').style.display = "none"; // Ẩn nút check
+                document.getElementById('profilePass').style.display = "none"; // Ẩn ô nhập pass
+                document.getElementById('linkChat').style.display = "block"; // Hiện nút Link
+                document.getElementById('linkChat').href = currentProfile.link; 
+            } else { 
+                document.getElementById('profilePassError').style.display = "block"; 
+            }
         }
 
         /* ------ TƯỜNG IDEA ------ */
@@ -455,7 +486,6 @@
         }
 
         window.onclick = function(event) {
-            if (event.target == document.getElementById('charModal')) closeModal();
             if (event.target == document.getElementById('ideaModal')) closeIdeaForm();
         }
     </script>
