@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= CẤU HÌNH GIAO DIỆN CHUNG ================= */
+        /* ================= CẤU HÌNH GIAO DIỆN (CSS) ================= */
         :root {
-            --color-title: #9A704F; 
-            --color-sub: #C49A75;   
-            --btn-bg: #8B674A;      
-            --btn-text: #FFF8EF;    
+            --color-title: #9A704F; /* Nâu caramel */
+            --color-sub: #C49A75;   /* Be caramel nhạt */
+            --btn-bg: #8B674A;      /* Màu nền nút chính */
+            --btn-text: #FFF8EF;    /* Trắng kem cho chữ nút */
             --white: #ffffff;
         }
 
@@ -52,9 +52,13 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             transition: 0.2s;
         }
-        #idea-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
 
-        /* Khung quản lý 3 trang */
+        #idea-btn:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* Khung quản lý trang */
         .page {
             display: none;
             min-height: 100vh;
@@ -66,7 +70,7 @@
         }
         .page.active { display: flex; }
 
-        /* TRANG 1 & 2 CONTAINER (Xóa viền, trong suốt) */
+        /* KHUNG CHỨA TRỐNG (Nổi trực tiếp trên nền) */
         .container {
             text-align: center;
             z-index: 10;
@@ -92,6 +96,7 @@
             text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; 
         }
 
+        /* Chữ Welcome */
         .subtitle {
             color: var(--white);
             font-size: min(4.5vw, 1.4rem); 
@@ -119,15 +124,23 @@
             border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); 
             transition: 0.3s;
             text-decoration: none;
             display: inline-block;
         }
-        .btn-main:hover { transform: translateY(-3px); filter: brightness(1.1); }
-        .btn-main.small { padding: 10px 20px; font-size: 1rem; }
 
-        /* 3 Nút Mạng Xã Hội */
+        .btn-main:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .btn-main.small {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+
+        /* 3 Nút Mạng Xã Hội ÉP VÀO 1 DÒNG */
         .social-links {
             margin-top: 25px;
             display: flex;
@@ -136,6 +149,7 @@
             flex-wrap: nowrap; 
             width: 100%;
         }
+
         .social-btn {
             flex: 1; 
             padding: 10px 0;
@@ -153,7 +167,7 @@
         .discord { background-color: #5865F2; }
         .ngl { background-color: #FF4F79; }
 
-        /* Nút quay lại chung */
+        /* TRANG 2: TÌM KIẾM & DANH SÁCH */
         .back-btn {
             position: absolute;
             top: 20px;
@@ -171,7 +185,6 @@
         }
         .back-btn:hover { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
 
-        /* Search Box Trang 2 */
         .search-box input {
             width: 100%;
             max-width: 400px;
@@ -186,6 +199,7 @@
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
+        .search-box input::placeholder { color: var(--color-sub); font-weight: normal; }
 
         .character-list {
             display: grid;
@@ -206,191 +220,25 @@
             border: 2px dashed var(--color-sub);
             transition: 0.3s;
         }
-        .char-card:hover { transform: scale(1.05); background: #fdf5ef; border-color: var(--color-title); }
 
-        /* ================= TRANG 3: IDEA BOARD (GIAO DIỆN SIÊU TO) ================= */
-        .idea-page-container {
-            background: rgba(253, 248, 237, 0.96); /* Kem bơ pastel */
-            border-radius: 30px;
-            padding: 30px 20px;
-            width: 95%;
-            max-width: 750px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border: 3px solid #F0D9A2; /* Viền màu bánh quy */
-            position: relative;
-            margin-top: 40px;
+        .char-card:hover {
+            transform: scale(1.05);
+            background: #fdf5ef;
+            border-color: var(--color-title);
         }
 
-        .idea-header-title {
-            color: #7C593C;
-            font-size: min(8vw, 2.2rem);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .idea-header-sub {
-            color: #9C7A5E;
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        /* Thanh tìm kiếm Idea */
-        .idea-search-box { margin-bottom: 20px; }
-        .idea-search-box input {
-            width: 100%;
-            padding: 14px 20px;
-            border-radius: 25px;
-            border: 2px solid #E5D5B5;
-            background: #fff;
-            font-size: 1rem;
-            outline: none;
-            color: #7C593C;
-            transition: 0.3s;
-        }
-        .idea-search-box input:focus { border-color: #B2D2A4; box-shadow: 0 0 10px rgba(178, 210, 164, 0.3); }
-
-        /* Nút Góp Idea Bự Màu Xanh Bơ */
-        .btn-giant {
-            width: 100%;
-            background: #B2D2A4; /* Xanh bơ pastel */
-            color: #4A633F; /* Xanh đậm */
-            font-size: 1.2rem;
-            font-weight: 800;
-            padding: 16px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(178, 210, 164, 0.6);
-            transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-giant:hover { transform: translateY(-3px); filter: brightness(1.05); }
-
-        /* Khu vực Form Điền Idea (Ẩn/Hiện) */
-        .idea-form-section {
-            display: none;
-            margin-top: 20px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 25px;
-            border: 2px dashed #B2D2A4;
-        }
-
-        .idea-grid-large {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        @media(min-width: 500px) { .idea-grid-large { grid-template-columns: 1fr 1fr; } }
-
-        .idea-box-large {
-            background: #F9FDF7;
-            border: 1px solid #D5E4C3;
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-        }
-        .idea-box-large h3 {
-            color: #5A7A50;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .idea-box-large textarea {
-            width: 100%;
-            height: 90px;
-            border: none;
-            background: transparent;
-            resize: none;
-            outline: none;
-            font-size: 1rem;
-            color: #444;
-            font-family: inherit;
-        }
-        .idea-box-large textarea::placeholder { color: #A0B09A; }
-
-        /* Tiêu đề phân cách Feed */
-        .idea-divider {
-            text-align: center;
-            color: #DDA76A;
-            font-weight: 800;
-            font-size: 1.1rem;
-            margin: 35px 0 20px 0;
-            position: relative;
-        }
-        .idea-divider::before, .idea-divider::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 20%;
-            height: 2px;
-            background: #F0D9A2;
-        }
-        .idea-divider::before { left: 0; }
-        .idea-divider::after { right: 0; }
-
-        /* Card Idea của người xem */
-        .idea-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #F4E8D1;
-            text-align: left;
-        }
-        .idea-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .status-tag {
-            font-size: 0.8rem;
-            font-weight: 800;
-            padding: 6px 12px;
-            border-radius: 20px;
-        }
-        .status-tag.approved { background: #E1EFD9; color: #5A7A50; }
-        .status-tag.pending { background: #FDF0D1; color: #B38627; }
-        .time-tag { font-size: 0.85rem; color: #A89F91; }
-
-        .idea-author {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            color: #7C593C;
-            margin-bottom: 10px;
-        }
-        .idea-author .avatar {
-            background: #F8EDD1;
-            width: 32px; height: 32px;
-            display: flex; justify-content: center; align-items: center;
-            border-radius: 50%;
-            font-size: 1rem;
-        }
-        .idea-card-text { color: #555; line-height: 1.6; font-size: 0.95rem; }
-
-        /* MODAL KHUNG CHAT CHARACTER */
+        /* MODAL CHUNG */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(4px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
         }
+
         .modal-content {
             background: var(--white);
             width: 90%;
@@ -398,13 +246,94 @@
             padding: 30px;
             border-radius: 20px;
             position: relative;
-            max-height: 90vh;
+            max-height: 85vh; /* Giới hạn chiều cao để cuộn mượt trên điện thoại */
             overflow-y: auto;
             border: 3px solid var(--color-title);
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--color-sub); transition: 0.2s; }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-sub);
+            transition: 0.2s;
+        }
         .close-btn:hover { color: var(--color-title); transform: scale(1.2); }
+
+        /* KHU VỰC GỬI IDEA & BẢNG TIN */
+        .idea-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .idea-box {
+            background: var(--white);
+            border: 2px solid var(--color-sub);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 1 / 1; 
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .idea-box h3 {
+            text-align: center;
+            color: var(--color-title);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed var(--color-sub);
+            padding-bottom: 5px;
+        }
+
+        .idea-box textarea {
+            flex: 1;
+            border: none;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            background: transparent;
+            color: #333;
+        }
+        .idea-box textarea::placeholder { color: #ccc; font-style: italic; }
+
+        /* Style cho từng bài đăng Idea trên Feed */
+        .feed-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: left;
+            border: 1px solid #eaeaea;
+        }
+        .feed-author {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: var(--color-title);
+            font-size: 1rem;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eaeaea;
+        }
+        .feed-content {
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-wrap; /* Giữ nguyên khoảng cách xuống dòng */
+        }
+        .tag-idea {
+            font-weight: bold;
+            color: var(--btn-bg);
+        }
+
+        /* Modal Character info cũ */
         .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; justify-content: center; }
         .tag { background: var(--color-sub); color: var(--white); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; }
         .info-section { text-align: left; margin-bottom: 20px; background: #fdf5ef; padding: 15px; border-radius: 10px; color: #555; line-height: 1.5; }
@@ -416,8 +345,8 @@
 </head>
 <body>
 
-    <!-- Nút Góp Idea (Chuyển sang Trang 3) -->
-    <button id="idea-btn" onclick="goToPage3()">💡 Góp Idea</button>
+    <!-- Nút Góp Idea nổi ở góc -->
+    <button id="idea-btn" onclick="openIdeaModal()">💡 Góp Idea</button>
 
     <!-- ================= TRANG 1: TRANG CHỦ ================= -->
     <div id="page1" class="page active">
@@ -453,103 +382,72 @@
         </div>
     </div>
 
-    <!-- ================= TRANG 3: TRẠM IDEA ================= -->
-    <div id="page3" class="page">
-        <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
+    <!-- ================= MODAL GỬI IDEA & BẢNG TIN ================= -->
+    <div id="ideaModal" class="modal">
+        <div class="modal-content" style="background: #fdf5ef;">
+            <span class="close-btn" onclick="closeIdeaModal()">&times;</span>
+            
+            <!-- Chữ tiêu đề mới -->
+            <h2 class="title" style="margin-top: 0; font-size: 1.6rem; text-align: center; text-shadow: none;">Babi thả ý tưởng, Bơ thả chữ ❀</h2>
+            
+            <!-- Nút mở form nhập -->
+            <button id="openFormBtn" class="btn-main" style="width: 100%; margin: 15px 0;" onclick="showInputForm()">+ Góp hạt cho Bơ</button>
 
-        <div class="idea-page-container">
-            <h1 class="idea-header-title">Trạm Idea Của Bơ 🥑</h1>
-            <p class="idea-header-sub">Có ý tưởng nhưng lười viết? Không sao cứ ném idea vô đây nàng muốn xem tui sẽ "cook" idea nàng như nào, cứ thoải mái nhé iu iu 💕</p>
-
-            <div class="idea-search-box">
-                <input type="text" placeholder="🔍 Tìm kiếm ý tưởng, thể loại...">
-            </div>
-
-            <!-- Nút Khổng Lồ Mở Form -->
-            <button class="btn-giant" onclick="toggleIdeaForm()">
-                <span>＋</span> Gửi Ý Tưởng Mới <span>🍪</span>
-            </button>
-
-            <!-- Form Nhập Khổng Lồ 4 Mục -->
-            <div id="idea-form-section" class="idea-form-section">
-                <div class="idea-grid-large">
-                    <div class="idea-box-large">
-                        <h3>🥑 Bg <span style="font-size: 0.8rem; font-weight: normal; color:#888;">(Boy x Girl)</span></h3>
-                        <textarea placeholder="Nhập idea Bg của nàng vào đây..."></textarea>
+            <!-- Khu vực nhập liệu (Mặc định ẩn) -->
+            <div id="ideaInputSection" style="display: none;">
+                <div class="idea-grid">
+                    <div class="idea-box">
+                        <h3>Bg</h3>
+                        <textarea id="idea-bg" placeholder="Boy x Girl..."></textarea>
                     </div>
-                    <div class="idea-box-large">
-                        <h3>🍪 Bl <span style="font-size: 0.8rem; font-weight: normal; color:#888;">(Boy x Boy)</span></h3>
-                        <textarea placeholder="Nhập idea Bl của nàng vào đây..."></textarea>
+                    <div class="idea-box">
+                        <h3>Bl</h3>
+                        <textarea id="idea-bl" placeholder="Boy x Boy..."></textarea>
                     </div>
-                    <div class="idea-box-large">
-                        <h3>🥑 Gb <span style="font-size: 0.8rem; font-weight: normal; color:#888;">(Girl x Boy)</span></h3>
-                        <textarea placeholder="Nhập idea Gb của nàng vào đây..."></textarea>
+                    <div class="idea-box">
+                        <h3>Gb</h3>
+                        <textarea id="idea-gb" placeholder="Girl x Boy..."></textarea>
                     </div>
-                    <div class="idea-box-large">
-                        <h3>🍪 Gl <span style="font-size: 0.8rem; font-weight: normal; color:#888;">(Girl x Girl)</span></h3>
-                        <textarea placeholder="Nhập idea Gl của nàng vào đây..."></textarea>
+                    <div class="idea-box">
+                        <h3>Gl</h3>
+                        <textarea id="idea-gl" placeholder="Girl x Girl..."></textarea>
                     </div>
                 </div>
-                <!-- Nút gửi màu bánh nướng -->
-                <button class="btn-main" style="width: 100%; margin-top: 15px; background: #E5B976; color: #fff; box-shadow: 0 4px 10px rgba(229,185,118,0.4);" onclick="submitGiantIdea()">Gửi Cho Bơ Nấu Ngay 🍳</button>
+                <!-- Nút gửi thực sự -->
+                <button class="btn-main" style="width: 100%; margin-top: 15px; background-color: var(--color-title);" onclick="submitToFeed()">Đăng Lên Bảng ✨</button>
             </div>
 
-            <div class="idea-divider">✨ CÓ Ý TƯỞNG HAY? GÓP TẠI ĐÂY NÀO ✨</div>
-
-            <!-- Danh sách Idea đã gửi -->
-            <div class="idea-feed">
-                <!-- Thẻ 1 -->
-                <div class="idea-card">
-                    <div class="idea-card-header">
-                        <span class="status-tag approved">✓ ĐÃ DUYỆT</span>
-                        <span class="time-tag">Vài phút trước</span>
-                    </div>
-                    <div class="idea-author">
-                        <div class="avatar">👤</div> <b>Nàng giấu tên 🌸</b> • Đóng góp ý tưởng
-                    </div>
-                    <p class="idea-card-text">
-                        <b>[Bg]</b> Nữ chính đi du lịch miền núi, lỡ đạp lên giày của tộc trưởng bản địa. Mắng ổng vài câu ổng đỏ mặt chạy đi. Hôm sau ổng kéo cả bản qua khách sạn hỏi cưới (vì phong tục ở đó đạp lên giày là tỏ tình). Nữ chính từ chối thì ổng rưng rưng...
-                    </p>
-                </div>
-                
-                <!-- Thẻ 2 -->
-                <div class="idea-card">
-                    <div class="idea-card-header">
-                        <span class="status-tag pending">⏳ ĐANG NẤU</span>
-                        <span class="time-tag">1 ngày trước</span>
-                    </div>
-                    <div class="idea-author">
-                        <div class="avatar">👤</div> <b>Nàng giấu tên 🎀</b> • Đóng góp ý tưởng
-                    </div>
-                    <p class="idea-card-text">
-                        <b>[Bl]</b> Cậu bạn thanh mai trúc mã nhà bên. Cãi nhau với user từ hồi cởi truồng tắm mưa, mồm mép cực kỳ độc địa nhưng hễ ai ăn hiếp user là lao ra đánh người ta bảo vệ. Hôm đi cắm trại lớp, hai đứa bị lạc...
-                    </p>
-                </div>
+            <!-- Bảng Tin chứa các Idea đã gửi (Mặc định trống) -->
+            <div id="ideaFeed" style="margin-top: 20px;">
+                <!-- JavaScript sẽ thêm card vào đây khi có người gửi -->
             </div>
-
         </div>
     </div>
 
-    <!-- ================= MODAL CHARACTER (GIỮ NGUYÊN) ================= -->
+    <!-- ================= MODAL THÔNG TIN TỪNG ANH CHỒNG ================= -->
     <div id="charModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2 id="modalName" class="title" style="margin-top: 0; font-size: 2rem; text-shadow: none;">Tên Nhân Vật</h2>
+            
             <div id="modalTags" class="tags"></div>
             
             <div class="info-section">
                 <h3>📖 BACKSTORY</h3>
                 <p id="modalBackstory">...</p>
             </div>
+
             <div class="info-section">
                 <h3>💬 FIRST MESSAGE</h3>
                 <p id="modalFirst">...</p>
             </div>
+
             <div class="pass-section">
                 <input type="password" id="passInput" placeholder="Nhập pass để chat...">
                 <button class="btn-main small" style="width: 100%;" onclick="checkPassword()">Mở Khóa Chat</button>
                 <p id="passError" style="color: #ff4757; font-weight: bold; display: none; margin-top: 10px;">Sai pass rồi, thử lại nhé 🥺!</p>
             </div>
+
             <div id="chatLinkSection" style="display: none; margin-top: 25px; text-align: center;">
                 <a href="#" id="modalLink" target="_blank" class="btn-main" style="width: 100%;">💖 Vào Chat Ngay 💖</a>
             </div>
@@ -558,7 +456,7 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // DATA NHÂN VẬT CHÍNH CỦA BẠN
+        // DATA NHÂN VẬT 
         const characters = [
             {
                 id: 1,
@@ -581,33 +479,27 @@
         ];
 
         /* ------ CHUYỂN TRANG ------ */
-        function goToPage1() {
-            document.getElementById('page2').classList.remove('active');
-            document.getElementById('page3').classList.remove('active');
-            document.getElementById('page1').classList.add('active');
-        }
-
         function goToPage2() {
             document.getElementById('page1').classList.remove('active');
-            document.getElementById('page3').classList.remove('active');
             document.getElementById('page2').classList.add('active');
             renderCharacters(characters); 
         }
 
-        function goToPage3() {
-            document.getElementById('page1').classList.remove('active');
+        function goToPage1() {
             document.getElementById('page2').classList.remove('active');
-            document.getElementById('page3').classList.add('active');
+            document.getElementById('page1').classList.add('active');
         }
 
-        /* ------ QUẢN LÝ TRANG 2 (NHÂN VẬT) ------ */
+        /* ------ QUẢN LÝ TÌM KIẾM & DANH SÁCH ------ */
         function renderCharacters(list) {
             const listDiv = document.getElementById('charList');
             listDiv.innerHTML = ""; 
+            
             if(list.length === 0) {
                 listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--white); font-style: italic;'>Không tìm thấy chồng yêu nào cả 🥲</p>";
                 return;
             }
+
             list.forEach(char => {
                 let div = document.createElement('div');
                 div.className = "char-card";
@@ -626,12 +518,14 @@
             renderCharacters(filtered);
         }
 
-        /* ------ QUẢN LÝ MODAL (PASS CHAT) ------ */
+        /* ------ MODAL CHARACTER & PASSWORD ------ */
         let currentChar = null;
+
         function openModal(char) {
             currentChar = char;
             document.getElementById('charModal').style.display = "flex";
             document.getElementById('modalName').innerText = char.name;
+            
             let tagsDiv = document.getElementById('modalTags');
             tagsDiv.innerHTML = "";
             char.tags.forEach(tag => {
@@ -640,8 +534,10 @@
                 span.innerText = "#" + tag;
                 tagsDiv.appendChild(span);
             });
+
             document.getElementById('modalBackstory').innerText = char.backstory;
             document.getElementById('modalFirst').innerText = char.first;
+            
             document.getElementById('passInput').value = "";
             document.getElementById('passError').style.display = "none";
             document.getElementById('chatLinkSection').style.display = "none";
@@ -663,26 +559,77 @@
             }
         }
 
-        /* ------ QUẢN LÝ TRANG 3 (GỬI IDEA KHỔNG LỒ) ------ */
-        function toggleIdeaForm() {
-            let form = document.getElementById('idea-form-section');
-            if (form.style.display === 'none' || form.style.display === '') {
-                form.style.display = 'block';
-            } else {
-                form.style.display = 'none';
+        /* ------ QUẢN LÝ BẢNG IDEA ------ */
+        function openIdeaModal() {
+            document.getElementById('ideaModal').style.display = "flex";
+        }
+
+        function closeIdeaModal() {
+            document.getElementById('ideaModal').style.display = "none";
+            // Ẩn form nhập đi nếu người dùng đang mở dở
+            document.getElementById('ideaInputSection').style.display = "none";
+            document.getElementById('openFormBtn').style.display = "block";
+        }
+
+        function showInputForm() {
+            document.getElementById('openFormBtn').style.display = "none";
+            document.getElementById('ideaInputSection').style.display = "block";
+        }
+
+        function submitToFeed() {
+            // Lấy nội dung từ các ô nhập
+            let bg = document.getElementById('idea-bg').value.trim();
+            let bl = document.getElementById('idea-bl').value.trim();
+            let gb = document.getElementById('idea-gb').value.trim();
+            let gl = document.getElementById('idea-gl').value.trim();
+
+            let postContent = "";
+
+            if(bg) postContent += `<span class="tag-idea">[Bg]</span> ${bg}<br><br>`;
+            if(bl) postContent += `<span class="tag-idea">[Bl]</span> ${bl}<br><br>`;
+            if(gb) postContent += `<span class="tag-idea">[Gb]</span> ${gb}<br><br>`;
+            if(gl) postContent += `<span class="tag-idea">[Gl]</span> ${gl}<br><br>`;
+
+            if(postContent === "") {
+                alert("Nàng chưa nhập nội dung gì vào các hộp Idea cả 🥺");
+                return;
             }
+
+            // Tạo khung Card bài đăng Idea mới
+            let newCard = document.createElement('div');
+            newCard.className = "feed-card";
+            
+            // Hiện đúng chữ Ẩn danh 👀
+            newCard.innerHTML = `
+                <div class="feed-author">👤 Ẩn danh 👀</div>
+                <div class="feed-content">${postContent}</div>
+            `;
+
+            // Thêm card mới lên đầu tiên của bảng tin
+            let feed = document.getElementById('ideaFeed');
+            feed.prepend(newCard);
+
+            // Xóa rỗng các ô nhập chuẩn bị cho lần sau
+            document.getElementById('idea-bg').value = "";
+            document.getElementById('idea-bl').value = "";
+            document.getElementById('idea-gb').value = "";
+            document.getElementById('idea-gl').value = "";
+
+            // Ẩn form đi, hiện lại nút "+ Góp hạt cho Bơ"
+            document.getElementById('ideaInputSection').style.display = "none";
+            document.getElementById('openFormBtn').style.display = "block";
         }
 
-        function submitGiantIdea() {
-            alert("Cảm ơn nàng đã gửi idea siêu cấp đáng yêu cho Bơ nhé! Bơ sẽ đọc và 'cook' sớm thôi 🥑🍪💖");
-            document.querySelectorAll('.idea-box-large textarea').forEach(ta => ta.value = '');
-            toggleIdeaForm(); // Tự thu nhỏ lại sau khi gửi
-        }
-
-        // Đóng modal khi bấm ra ngoài
+        // Bấm ra ngoài vùng trống thì đóng modal
         window.onclick = function(event) {
             let charModal = document.getElementById('charModal');
-            if (event.target == charModal) { closeModal(); }
+            let ideaModal = document.getElementById('ideaModal');
+            if (event.target == charModal) {
+                closeModal();
+            }
+            if (event.target == ideaModal) {
+                closeIdeaModal();
+            }
         }
     </script>
 </body>
