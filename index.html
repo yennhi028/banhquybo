@@ -44,32 +44,40 @@
             background-size: cover; background-position: center; background-attachment: fixed;
         }
         
-        #page2, #page3, #page4 {
+        #page2, #page4 {
             background: linear-gradient(135deg, var(--beige-light) 0%, var(--pink-pastel) 50%, var(--green-pastel) 100%);
             background-attachment: fixed;
-            justify-content: flex-start; padding-top: 80px; padding-bottom: 50px;
+            justify-content: flex-start; padding-top: 100px; padding-bottom: 50px;
         }
 
-        /* Nút Cố Định (Idea, Trở lại) */
-        .fixed-btn {
-            position: fixed; z-index: 1000; border: none; font-weight: bold;
-            background-color: var(--brown-dark); color: var(--white);
-            padding: 10px 18px; border-radius: 25px; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(139, 103, 74, 0.4); transition: 0.2s; font-size: 0.95rem;
+        /* ================= HEADER CỐ ĐỊNH ================= */
+        /* Khung Avatar nhỏ góc trái */
+        .mini-profile {
+            position: fixed; top: 20px; left: 15px;
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.85); padding: 5px 15px 5px 5px;
+            border-radius: 30px; z-index: 1000; border: 2px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);
         }
-        .fixed-btn:hover { transform: scale(1.05); }
-        #idea-btn { top: 20px; right: 20px; }
-        
+        .mini-profile img {
+            width: 35px; height: 35px; border-radius: 50%; object-fit: cover;
+            border: 2px solid var(--brown-dark);
+        }
+        .mini-profile span {
+            color: var(--brown-dark); font-weight: 800; font-size: 0.95rem;
+        }
+
+        /* Nút Cố Định (Trở lại chuyển sang Phải) */
         .back-btn { 
-            position: absolute; top: 20px; left: 15px; background: rgba(255, 255, 255, 0.9); 
-            color: var(--brown-dark); border: 2px solid var(--brown-dark); z-index: 100;
+            position: fixed; top: 20px; right: 15px; background: rgba(255, 255, 255, 0.9); 
+            color: var(--brown-dark); border: 2px solid var(--brown-dark); z-index: 1000;
             font-weight: bold; padding: 8px 15px; border-radius: 20px; cursor: pointer;
             box-shadow: 0 3px 8px rgba(0,0,0,0.2); transition: 0.2s;
         }
         .back-btn:hover { background: var(--brown-dark); color: var(--white); }
 
         /* ================= TRANG 1 ================= */
-        .home-container { text-align: center; z-index: 10; width: 95%; max-width: 600px; padding: 20px; }
+        .home-container { text-align: center; z-index: 10; width: 95%; max-width: 600px; padding: 20px; margin-top: 30px;}
         .home-title { color: var(--brown-pastel); font-size: min(8.5vw, 2.8rem); margin: 5px 0 10px 0; white-space: nowrap; text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
         .subtitle { color: var(--white); font-size: min(4.5vw, 1.4rem); margin-bottom: 30px; font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
         .btn-main { background-color: var(--brown-dark); color: var(--white); border: none; padding: 14px 35px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4); transition: 0.2s; width: 100%; max-width: 300px; display: inline-block;}
@@ -126,6 +134,7 @@
         .card-footer { display: flex; justify-content: flex-end; align-items: center; margin-top: 5px;}
         .char-action { font-size: 0.9rem; color: var(--brown-dark); background: transparent; border: 2px solid var(--brown-dark); padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;}
         .char-card:hover .char-action { background: var(--brown-dark); color: var(--white); }
+
 
         /* ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= */
         .profile-container {
@@ -216,22 +225,15 @@
         }
         .copy-btn:hover { background: var(--brown-pastel); color: var(--white); }
 
-        /* ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= */
-        .wall-container { width: 100%; max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.8); border-radius: 25px; padding: 20px;}
-        .wall-header { text-align: center; margin-bottom: 20px; }
-        .idea-post { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); text-align: left; }
-        
-        /* Modal Góp Idea */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: var(--white); width: 90%; max-width: 450px; padding: 25px; border-radius: 25px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #999; }
-
     </style>
 </head>
 <body>
 
-    <button id="idea-btn" class="fixed-btn" onclick="goToPage3()">💡 Tường Idea</button>
+    <!-- Header Cố Định Mọi Trang -->
+    <div id="mini-profile" class="mini-profile">
+        <img src="https://cdn.discordapp.com/attachments/1547359339063419013/1556743965489766490/IMG_4341.jpg?backend=b2&ex=6ac5464c&is=6ac3f4cc&hm=8266184c7e524097dc8f10d731d3c4158002ae3bee90eee9bd7c06970bfb3206&" alt="Bơ Avatar">
+        <span>Bánh Quy Bơ</span>
+    </div>
 
     <!-- ================= TRANG 1 ================= -->
     <div id="page1" class="page active">
@@ -249,7 +251,7 @@
 
     <!-- ================= TRANG 2: DANH SÁCH NHÂN VẬT ================= -->
     <div id="page2" class="page">
-        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
+        <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="archive-container">
             <h1 class="archive-title">HỘP BÁNH QUY CỦA BƠ</h1>
@@ -284,7 +286,7 @@
 
     <!-- ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= -->
     <div id="page4" class="page">
-        <button class="fixed-btn back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
+        <button class="back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
         
         <div class="profile-container">
             <img id="profileImage" src="" alt="Profile Image" class="profile-img">
@@ -310,39 +312,14 @@
             </div>
 
             <div class="chat-action-section">
+                <!-- Chỗ nhập pass -->
                 <input type="password" id="profilePass" class="chat-pass-input" placeholder="Nhập pass mở khóa...">
                 <p id="profilePassError" class="error-text">Sai pass rồi, thử lại nhé 🥺!</p>
                 
+                <!-- Nút Chat -->
                 <button class="btn-chat" id="btnChat" onclick="verifyChat()">💬 Chat với chồng yêu</button>
                 <p id="noLinkText" class="error-text" style="color: #666; font-style: italic; margin-top: 10px;">Chưa có link 🔒</p>
             </div>
-        </div>
-    </div>
-
-    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= -->
-    <div id="page3" class="page">
-        <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
-        <div class="wall-container">
-            <div class="wall-header">
-                <h2 class="archive-title" style="font-size: 1.8rem;">Babi thả ý tưởng, Bơ thả chữ ❀</h2>
-                <button class="btn-main" style="padding: 10px 20px; font-size: 1rem; margin-top: 10px; width: auto;" onclick="openIdeaForm()">+ Góp hạt cho Bơ</button>
-            </div>
-            <div id="ideaFeed"></div>
-        </div>
-    </div>
-
-    <!-- MODAL GÓP IDEA -->
-    <div id="ideaModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeIdeaForm()">&times;</span>
-            <h2 class="home-title" style="font-size: 1.8rem; text-shadow: none; text-align:center;">Góp Idea 🌰</h2>
-            <div style="margin-top:20px;">
-                <select id="ideaCategory" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 12px; border: 2px solid var(--beige-light); outline:none;">
-                    <option value="Bg">Bg</option><option value="Bl">Bl</option><option value="Gb">Gb</option><option value="Gl">Gl</option>
-                </select>
-                <textarea id="ideaText" style="width: 100%; height: 120px; padding: 12px; border-radius: 12px; border: 2px solid var(--beige-light); resize: none; outline:none; font-family:inherit;" placeholder="Ghi ý tưởng vào đây..."></textarea>
-            </div>
-            <button class="btn-main" style="width: 100%; margin-top:10px;" onclick="submitIdea()">Đăng Lên Tường ✨</button>
         </div>
     </div>
 
@@ -444,9 +421,8 @@
 
         /* ------ CHUYỂN TRANG ------ */
         function hideAllPages() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); }
-        function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); document.getElementById('idea-btn').style.display = 'block'; }
-        function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; renderFilters(); searchChar(); }
-        function goToPage3() { hideAllPages(); document.getElementById('page3').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; loadIdeas(); }
+        function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); }
+        function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); renderFilters(); searchChar(); }
         
         /* ------ LỌC & SỐ LƯỢNG TAGS ------ */
         let currentFilter = "All";
@@ -630,32 +606,6 @@
             navigator.clipboard.writeText(currentProfile.link).then(() => {
                 document.getElementById('btnCopyLink').innerText = "✅ Đã copy link!";
             });
-        }
-
-        /* ------ TƯỜNG IDEA ------ */
-        function openIdeaForm() { document.getElementById('ideaModal').style.display = "flex"; }
-        function closeIdeaForm() { document.getElementById('ideaModal').style.display = "none"; }
-        function loadIdeas() {
-            const feed = document.getElementById('ideaFeed'); feed.innerHTML = ""; 
-            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            if(ideas.length === 0) { feed.innerHTML = "<p style='text-align: center; color: var(--brown-pastel); margin-top:20px;'>Chưa có ý tưởng nào 🌰</p>"; return; }
-            ideas.forEach(idea => {
-                let div = document.createElement('div'); div.className = "idea-post";
-                div.innerHTML = `<strong style="color: var(--brown-dark);">[${idea.cat}]</strong> <span style="color: #444;">${idea.text}</span>`;
-                feed.appendChild(div);
-            });
-        }
-        function submitIdea() {
-            let cat = document.getElementById('ideaCategory').value; let text = document.getElementById('ideaText').value.trim();
-            if(!text) return;
-            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            ideas.unshift({ cat: cat, text: text });
-            localStorage.setItem('bo_ideas', JSON.stringify(ideas));
-            document.getElementById('ideaText').value = ""; closeIdeaForm(); loadIdeas(); 
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('ideaModal')) closeIdeaForm();
         }
     </script>
 </body>
