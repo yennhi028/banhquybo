@@ -155,7 +155,6 @@
             transition: 0.3s ease-in-out;
         }
 
-        /* Chế độ List ngang */
         .character-list.list-view {
             grid-template-columns: 1fr;
             max-width: 800px; margin: 0 auto;
@@ -174,7 +173,6 @@
         
         .char-card:hover { transform: translateY(-8px); border-color: var(--brown-pastel); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
         
-        /* Ảnh Cover trên Card */
         .char-img-wrapper {
             position: relative; width: 100%; height: 220px; overflow: hidden;
             background-color: var(--beige-light);
@@ -190,7 +188,6 @@
             pointer-events: none;
         }
 
-        /* Nút Tim */
         .fav-btn {
             position: absolute; top: 12px; right: 12px;
             background: rgba(255,255,255,0.85); border: none;
@@ -202,7 +199,6 @@
         .fav-btn:hover { transform: scale(1.1); background: #fff; }
         .fav-btn.favorited { color: #ff4757; }
 
-        /* Badges */
         .badges-container {
             position: absolute; bottom: 12px; left: 12px;
             display: flex; gap: 6px; z-index: 10;
@@ -215,9 +211,7 @@
         .badge.alert { background: var(--red-alert); color: #fff; }
         .badge.new { background: var(--gold); color: #fff; }
 
-        /* Nội dung Card */
         .char-info { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1;}
-        
         .char-name { font-size: 1.4rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2;}
         .char-time { font-size: 0.8rem; color: #888; font-weight: 600; font-style: italic;}
         .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
@@ -233,10 +227,7 @@
         .char-action { font-size: 0.9rem; color: var(--white); background: var(--brown-dark); border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;}
         .char-card:hover .char-action { background: #7a583d; transform: scale(1.05);}
 
-        /* List View Điều Chỉnh */
-        .character-list.list-view .char-card {
-            flex-direction: row; height: 180px; align-items: stretch;
-        }
+        .character-list.list-view .char-card { flex-direction: row; height: 180px; align-items: stretch; }
         .character-list.list-view .char-img-wrapper { width: 180px; height: 100%; }
         .character-list.list-view .char-info { justify-content: center; }
         @media (max-width: 600px) {
@@ -252,88 +243,73 @@
             border: 3px solid var(--white); display: flex; flex-direction: column; align-items: center;
         }
 
-        .profile-img {
-            width: 100%; max-width: 350px; 
-            border-radius: 20px; border: 5px solid var(--white);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            margin-bottom: 20px; object-fit: cover;
-        }
+        .profile-img { width: 100%; max-width: 350px; border-radius: 20px; border: 5px solid var(--white); box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 20px; object-fit: cover;}
+        .profile-name { color: var(--brown-dark); font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 5px; text-shadow: 1px 1px 0px #fff; }
+        .profile-time { font-size: 0.95rem; color: #888; font-weight: 600; font-style: italic; margin-bottom: 15px; text-align: center; }
+        .profile-note { color: var(--text-dark); font-weight: 600; font-size: 1rem; margin-bottom: 25px; text-align: center; font-style: italic; white-space: pre-wrap; }
 
-        .profile-name {
-            color: var(--brown-dark); font-size: 2.2rem; font-weight: 800;
-            text-align: center; margin-bottom: 5px; text-shadow: 1px 1px 0px #fff;
-        }
+        .story-box { width: 100%; background: var(--beige-light); padding: 25px; border-radius: 20px; margin-bottom: 20px; text-align: left; border: 1px solid #f2e3d5; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); }
+        .story-title { color: var(--brown-dark); font-size: 1.1rem; margin-bottom: 15px; border-bottom: 2px dashed var(--brown-pastel); padding-bottom: 8px; display: inline-block; }
+        .story-content { color: var(--text-dark); font-size: 1.05rem; line-height: 1.8; white-space: pre-wrap; }
+        .text-collapsed { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 
-        .profile-time {
-            font-size: 0.95rem; color: #888; font-weight: 600; font-style: italic;
-            margin-bottom: 15px; text-align: center;
-        }
-
-        .profile-note {
-            color: var(--text-dark); font-weight: 600; font-size: 1rem;
-            margin-bottom: 25px; text-align: center; font-style: italic;
-            white-space: pre-wrap; 
-        }
-
-        /* Khung Cốt Truyện & Thu Gọn */
-        .story-box {
-            width: 100%; background: var(--beige-light); padding: 25px;
-            border-radius: 20px; margin-bottom: 20px; text-align: left;
-            border: 1px solid #f2e3d5; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
-        }
-        .story-title {
-            color: var(--brown-dark); font-size: 1.1rem; margin-bottom: 15px;
-            border-bottom: 2px dashed var(--brown-pastel); padding-bottom: 8px;
-            display: inline-block;
-        }
-        
-        .story-content {
-            color: var(--text-dark); font-size: 1.05rem; line-height: 1.8;
-            white-space: pre-wrap;
-        }
-
-        .text-collapsed {
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .read-more-btn {
-            background: none; border: none; color: var(--brown-dark);
-            font-size: 0.95rem; font-weight: 800; cursor: pointer;
-            margin-top: 10px; display: block; width: 100%; text-align: center;
-        }
+        .read-more-btn { background: none; border: none; color: var(--brown-dark); font-size: 0.95rem; font-weight: 800; cursor: pointer; margin-top: 10px; display: block; width: 100%; text-align: center; }
         .read-more-btn:hover { text-decoration: underline; }
 
-        /* Nút Chat Cuối Trang */
-        .chat-action-section {
-            width: 100%; max-width: 400px; margin: 20px auto 0 auto;
-            display: flex; flex-direction: column; align-items: center; gap: 15px;
-        }
-        .chat-pass-input {
-            width: 100%; padding: 15px; border-radius: 15px; border: 2px solid var(--brown-pastel);
-            outline: none; font-size: 1.1rem; text-align: center; background: #fff;
-        }
+        .chat-action-section { width: 100%; max-width: 400px; margin: 20px auto 0 auto; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .chat-pass-input { width: 100%; padding: 15px; border-radius: 15px; border: 2px solid var(--brown-pastel); outline: none; font-size: 1.1rem; text-align: center; background: #fff; }
         .error-text { color: #d63031; font-weight: bold; font-size: 0.95rem; display: none; margin-bottom: -5px;}
         
-        .btn-chat {
-            background-color: var(--brown-dark); color: var(--white); border: none;
-            padding: 16px; font-size: 1.2rem; border-radius: 30px; cursor: pointer;
-            font-weight: 800; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4);
-            width: 100%; transition: 0.2s; text-decoration: none; text-align: center;
-        }
+        .btn-chat { background-color: var(--brown-dark); color: var(--white); border: none; padding: 16px; font-size: 1.2rem; border-radius: 30px; cursor: pointer; font-weight: 800; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4); width: 100%; transition: 0.2s; text-decoration: none; text-align: center; }
         .btn-chat:hover { transform: translateY(-3px); filter: brightness(1.1); }
         .btn-chat.disabled { background-color: var(--brown-pastel); cursor: not-allowed; box-shadow: none; transform: none;}
 
-        .copy-btn {
-            background: var(--beige-light); border: none; color: var(--brown-dark); 
-            padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; 
-            cursor: pointer; display: block; margin: 0 auto 20px auto; transition: 0.2s; 
-            border: 1px solid var(--brown-pastel);
-        }
+        .copy-btn { background: var(--beige-light); border: none; color: var(--brown-dark); padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; cursor: pointer; display: block; margin: 0 auto 20px auto; transition: 0.2s; border: 1px solid var(--brown-pastel); }
         .copy-btn:hover { background: var(--brown-pastel); color: var(--white); }
 
+        /* ================= MUSIC PLAYER CSS ================= */
+        .music-player-btn {
+            position: fixed; bottom: 20px; left: 15px; 
+            width: 50px; height: 50px; border-radius: 50%;
+            background: var(--brown-dark); color: var(--white);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem; cursor: pointer; z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--white);
+            transition: transform 0.3s, background 0.3s;
+        }
+        .music-player-btn:hover { transform: scale(1.1); }
+        .music-player-btn.playing { animation: spinMusic 4s linear infinite; }
+        @keyframes spinMusic { 100% { transform: rotate(360deg); } }
+
+        .music-panel {
+            position: fixed; bottom: 85px; left: 15px;
+            width: 280px; background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px; padding: 15px; border: 2px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 1999;
+            backdrop-filter: blur(10px);
+            display: none; flex-direction: column; gap: 10px;
+            transform-origin: bottom left; animation: scaleUp 0.3s ease;
+        }
+        .music-panel.active { display: flex; }
+        @keyframes scaleUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+        .music-title { font-size: 1rem; color: var(--brown-dark); font-weight: 800; text-align: center; border-bottom: 2px dashed var(--brown-pastel); padding-bottom: 8px; margin-bottom: 5px;}
+        .current-song { font-size: 0.95rem; color: var(--red-alert); font-weight: 700; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        .music-controls { display: flex; justify-content: center; gap: 15px; align-items: center; margin: 5px 0;}
+        .music-btn { background: var(--beige-light); border: 1px solid var(--brown-pastel); color: var(--brown-dark); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; justify-content: center; align-items: center; transition: 0.2s;}
+        .music-btn:hover { background: var(--brown-pastel); color: var(--white); }
+        .play-pause-btn { width: 50px; height: 50px; font-size: 1.3rem; background: var(--brown-dark); color: var(--white); border: none;}
+        .play-pause-btn:hover { transform: scale(1.1); background: var(--red-alert); border-color: var(--red-alert); }
+
+        .playlist { list-style: none; max-height: 140px; overflow-y: auto; padding-right: 5px; }
+        .playlist::-webkit-scrollbar { width: 5px; }
+        .playlist::-webkit-scrollbar-thumb { background: var(--brown-pastel); border-radius: 10px; }
+        .playlist li { padding: 8px 10px; border-radius: 10px; font-size: 0.85rem; font-weight: 700; color: var(--text-dark); cursor: pointer; transition: 0.2s; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;}
+        .playlist li:before { content: '🎵'; font-size: 0.75rem; opacity: 0.5; }
+        .playlist li:hover { background: var(--beige-light); }
+        .playlist li.active { background: var(--brown-pastel); color: var(--white); }
+        .playlist li.active:before { content: '🎶'; opacity: 1; }
     </style>
 </head>
 <body>
@@ -342,6 +318,29 @@
     <div id="mini-profile" class="mini-profile">
         <img src="https://cdn.discordapp.com/attachments/1547359339063419013/1556743965489766490/IMG_4341.jpg?backend=b2&ex=6ac5464c&is=6ac3f4cc&hm=8266184c7e524097dc8f10d731d3c4158002ae3bee90eee9bd7c06970bfb3206&" alt="Bơ Avatar">
         <span>Bánh Quy Bơ</span>
+    </div>
+
+    <!-- ================= MUSIC PLAYER ================= -->
+    <audio id="bg-audio" preload="auto"></audio>
+
+    <div class="music-player-btn" id="musicToggleBtn" onclick="toggleMusicPanel()" title="Mở máy phát nhạc">
+        🎵
+    </div>
+
+    <div class="music-panel" id="musicPanel">
+        <div class="music-title">💿 Máy Phát Nhạc</div>
+        <div class="current-song" id="currentSongName">Đang tải nhạc...</div>
+        
+        <div class="music-controls">
+            <!-- Nút bấm lùi và tiến đều chuyển bài ngẫu nhiên -->
+            <button class="music-btn" onclick="playRandomSong()">⏮</button>
+            <button class="music-btn play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+            <button class="music-btn" onclick="playRandomSong()">⏭</button>
+        </div>
+        
+        <ul class="playlist" id="playlistContainer">
+            <!-- Playlist tạo bằng JS -->
+        </ul>
     </div>
 
     <!-- ================= TRANG 1 ================= -->
@@ -372,7 +371,7 @@
                 <button id="randomBtn" class="random-btn" onclick="spinRandomChar()">Quay quay nè</button>
             </div>
 
-            <!-- Panel điều khiển Mới -->
+            <!-- Panel điều khiển -->
             <div class="control-panel">
                 <div class="filter-wrapper">
                     <div class="filter-container" id="filterContainer"></div>
@@ -441,7 +440,125 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // Dữ liệu nhân vật (đã giữ nguyên và update ảnh Thẩm Sơ Triều)
+        /* ================= HỆ THỐNG MUSIC PLAYER ================= */
+        const playListSongs = [
+            { name: "Gặp lại năm ta 60", src: "snaptik.vn_7573160026223725842.mp3" },
+            { name: "Rồi em sẽ gặp 1 chàng trai khác", src: "snaptik.vn_7626833029868080391.mp3" },
+            { name: "Mỹ nhân ngư", src: "snaptik.vn_7681308722055875858.mp3" },
+            { name: "Dòng thác thời gian", src: "snaptik.vn_7687606496569462036.mp3" }
+        ];
+
+        let currentSongIndex = -1;
+        let audioObj;
+        let isPlaying = false;
+        let userInteracted = false;
+
+        function initMusicPlayer() {
+            audioObj = document.getElementById('bg-audio');
+            renderPlaylistUI();
+            
+            // Random bài hát đầu tiên
+            currentSongIndex = Math.floor(Math.random() * playListSongs.length);
+            loadSong(currentSongIndex);
+            
+            // Tự động nhảy bài Random khi hết nhạc
+            audioObj.addEventListener('ended', playRandomSong);
+
+            // Xử lý Autoplay
+            let playPromise = audioObj.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    updatePlayState();
+                }).catch(error => {
+                    // Nếu trình duyệt chặn, chờ user click 1 phát bất kỳ là Play luôn
+                    const unlockAudio = () => {
+                        if (!userInteracted && !isPlaying) {
+                            audioObj.play();
+                            isPlaying = true;
+                            updatePlayState();
+                            userInteracted = true;
+                        }
+                    };
+                    document.body.addEventListener('click', unlockAudio, { once: true });
+                    document.body.addEventListener('touchstart', unlockAudio, { once: true });
+                });
+            }
+        }
+
+        function loadSong(index) {
+            currentSongIndex = index;
+            audioObj.src = playListSongs[index].src;
+            document.getElementById('currentSongName').innerText = playListSongs[index].name;
+            
+            // Làm nổi bật bài đang hát trong list
+            document.querySelectorAll('.playlist li').forEach((li, i) => {
+                if(i === index) li.classList.add('active');
+                else li.classList.remove('active');
+            });
+        }
+
+        function togglePlayPause() {
+            if (audioObj.paused) {
+                audioObj.play();
+                isPlaying = true;
+            } else {
+                audioObj.pause();
+                isPlaying = false;
+            }
+            updatePlayState();
+            userInteracted = true;
+        }
+
+        function updatePlayState() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const musicToggleBtn = document.getElementById('musicToggleBtn');
+            
+            if(isPlaying) {
+                playPauseBtn.innerText = "⏸";
+                musicToggleBtn.classList.add('playing');
+            } else {
+                playPauseBtn.innerText = "▶";
+                musicToggleBtn.classList.remove('playing');
+            }
+        }
+
+        function playSelectedSong(index) {
+            loadSong(index);
+            audioObj.play();
+            isPlaying = true;
+            updatePlayState();
+            userInteracted = true;
+        }
+
+        function playRandomSong() {
+            let newIndex = currentSongIndex;
+            while(newIndex === currentSongIndex && playListSongs.length > 1) {
+                newIndex = Math.floor(Math.random() * playListSongs.length);
+            }
+            playSelectedSong(newIndex);
+        }
+
+        function toggleMusicPanel() {
+            document.getElementById('musicPanel').classList.toggle('active');
+        }
+
+        function renderPlaylistUI() {
+            const container = document.getElementById('playlistContainer');
+            container.innerHTML = "";
+            playListSongs.forEach((song, i) => {
+                let li = document.createElement('li');
+                li.innerText = song.name;
+                li.onclick = () => playSelectedSong(i);
+                container.appendChild(li);
+            });
+        }
+
+        // Kích hoạt máy nhạc ngay khi Web load xong
+        window.addEventListener('DOMContentLoaded', initMusicPlayer);
+
+
+        /* ================= DỮ LIỆU NHÂN VẬT ================= */
         const characters = [
             { 
                 id: 1, 
@@ -449,15 +566,13 @@
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556715988764991508/IMG_4228.jpg?backend=b2&ex=6ac52c3e&is=6ac3dabe&hm=e576ac1c8d82ef0586fa700a9214267d8f21a616092e4691c4b927617fdaadec&",
                 tags: ["Bg", "bạn trai chó điên", "có plot ẩn", "R18", "nghiện bú ti user"], 
                 note: "Note: Char không sạch, nghiện thuốc.",
-                postTime: "2026-10-05T20:30:00", 
-                pass: "", link: "", backstory: `Bạn trai tôi là chó điên...`, first: `Thế nhưng, con chó điên này thi thoảng lại làm tôi không thể ngừng yêu...` 
+                postTime: "2026-10-05T20:30:00", pass: "", link: "", backstory: `Bạn trai tôi là chó điên...`, first: `Thế nhưng, con chó điên này thi thoảng lại làm tôi không thể ngừng yêu...` 
             },
             {
                 id: 2, name: "Hạ Sâm Niên",
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556720658778562642/IMG_4144.png?backend=b2&ex=6ac53097&is=6ac3df17&hm=228885cb4918a07359de2e9ee564f2389a94ac598986b8d292e020f10da9e996&",
                 tags: ["Bg", "Cún con tâm cơ", "hồng hài nhi", "ngọt", "nũng nịu", "txvt"],
-                note: "Note: Có lệnh nsfw (ăn ẻm khi trên 18 nha)",
-                postTime: "2026-10-06T00:05:00", pass: "", link: "#", backstory: `Em và Hạ Sâm Niên quen nhau...`, first: `Hôm nay em tan học sớm...`
+                note: "Note: Có lệnh nsfw (ăn ẻm khi trên 18 nha)", postTime: "2026-10-06T00:05:00", pass: "", link: "#", backstory: `Em và Hạ Sâm Niên quen nhau...`, first: `Hôm nay em tan học sớm...`
             },
             {
                 id: 3, name: "Thẩm Sơ Triều x Lục Dã Xuyên",
@@ -504,131 +619,80 @@
             }
         ];
 
-        /* ------ HỆ THỐNG YÊU THÍCH (LOCAL STORAGE) ------ */
+        /* ------ HỆ THỐNG YÊU THÍCH ------ */
         let favorites = JSON.parse(localStorage.getItem('bo_favorites')) || [];
         function toggleFav(e, id) {
-            e.stopPropagation(); // Ngăn click nhầm vào card
+            e.stopPropagation();
             if(favorites.includes(id)) {
                 favorites = favorites.filter(favId => favId !== id);
-                e.target.innerText = "🤍";
-                e.target.classList.remove('favorited');
+                e.target.innerText = "🤍"; e.target.classList.remove('favorited');
             } else {
                 favorites.push(id);
-                e.target.innerText = "❤️";
-                e.target.classList.add('favorited');
+                e.target.innerText = "❤️"; e.target.classList.add('favorited');
             }
             localStorage.setItem('bo_favorites', JSON.stringify(favorites));
-            if(currentFilter === "Favs") searchChar(); // Update list nếu đang ở tab Yêu thích
+            if(currentFilter === "Favs") searchChar();
         }
 
-        /* ------ HÀM XỬ LÝ THỜI GIAN ------ */
         function formatTimeAgo(dateString) {
             if (!dateString) return "Mới đăng";
-            const postDate = new Date(dateString);
-            const now = new Date();
-            const diffMs = now - postDate;
-            const diffMins = Math.floor(diffMs / 60000);
-            const diffHours = Math.floor(diffMs / 3600000);
-            const diffDays = Math.floor(diffMs / 86400000);
-            
+            const diffMins = Math.floor((new Date() - new Date(dateString)) / 60000);
             if (diffMins < 60) return `${diffMins} phút trước`;
-            if (diffHours < 24) return `${diffHours} giờ trước`;
-            return `${diffDays} ngày trước`;
+            if (diffMins < 1440) return `${Math.floor(diffMins / 60)} giờ trước`;
+            return `${Math.floor(diffMins / 1440)} ngày trước`;
         }
+        function isNew(dateString) { return dateString ? (new Date() - new Date(dateString)) < (3 * 86400000) : false; }
 
-        function isNew(dateString) {
-            if (!dateString) return false;
-            const postDate = new Date(dateString);
-            const now = new Date();
-            return (now - postDate) < (3 * 86400000); // Đánh dấu MỚI nếu đăng trong 3 ngày
-        }
-
-        /* ------ CHUYỂN TRANG ------ */
         function hideAllPages() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); }
         function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); }
         function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); renderFilters(); searchChar(); }
         
-        /* ------ CHUYỂN ĐỔI GIAO DIỆN LƯỚI/DANH SÁCH ------ */
         function changeView(type) {
-            const list = document.getElementById('charList');
-            const btnG = document.getElementById('btnGrid');
-            const btnL = document.getElementById('btnList');
-            if(type === 'grid') {
-                list.classList.remove('list-view');
-                btnG.classList.add('active'); btnL.classList.remove('active');
-            } else {
-                list.classList.add('list-view');
-                btnL.classList.add('active'); btnG.classList.remove('active');
-            }
+            const list = document.getElementById('charList'), btnG = document.getElementById('btnGrid'), btnL = document.getElementById('btnList');
+            if(type === 'grid') { list.classList.remove('list-view'); btnG.classList.add('active'); btnL.classList.remove('active'); } 
+            else { list.classList.add('list-view'); btnL.classList.add('active'); btnG.classList.remove('active'); }
         }
 
-        /* ------ LỌC & SỐ LƯỢNG TAGS ------ */
         let currentFilter = "All";
         function renderFilters() {
             let allTags = new Set(); let tagCounts = {};
             characters.forEach(c => { c.tags.forEach(t => { allTags.add(t); tagCounts[t] = (tagCounts[t] || 0) + 1; }); });
             
             let filterContainer = document.getElementById('filterContainer');
-            filterContainer.innerHTML = `
-                <button class="filter-btn active" onclick="filterByTag('All', this)">Tất cả (${characters.length})</button>
-                <button class="filter-btn fav-filter" onclick="filterByTag('Favs', this)">❤️ Đã lưu (${favorites.length})</button>
-            `;
+            filterContainer.innerHTML = `<button class="filter-btn active" onclick="filterByTag('All', this)">Tất cả (${characters.length})</button>
+                                         <button class="filter-btn fav-filter" onclick="filterByTag('Favs', this)">❤️ Đã lưu (${favorites.length})</button>`;
             
             Array.from(allTags).sort().forEach(tag => {
-                let btn = document.createElement('button'); btn.className = "filter-btn"; 
-                btn.innerText = `${tag} (${tagCounts[tag]})`; 
+                let btn = document.createElement('button'); btn.className = "filter-btn"; btn.innerText = `${tag} (${tagCounts[tag]})`; 
                 btn.onclick = function() { filterByTag(tag, this); }; filterContainer.appendChild(btn);
             });
         }
+        function filterByTag(tag, btn) { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentFilter = tag; searchChar(); }
 
-        function filterByTag(tag, btn) { 
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); 
-            btn.classList.add('active'); currentFilter = tag; searchChar(); 
-        }
-
-        /* ------ QUAY NGẪU NHIÊN ------ */
         function spinRandomChar() {
             if(characters.length === 0) return;
             let btn = document.getElementById('randomBtn'); let originalText = btn.innerText;
             btn.innerText = "Đang quay... ⏳"; btn.disabled = true;
-            setTimeout(() => {
-                let randomIndex = Math.floor(Math.random() * characters.length);
-                openCharPage(characters[randomIndex].id); 
-                btn.innerText = originalText; btn.disabled = false;
-            }, 800); 
+            setTimeout(() => { openCharPage(characters[Math.floor(Math.random() * characters.length)].id); btn.innerText = originalText; btn.disabled = false; }, 800); 
         }
 
-        /* ------ RENDER THẺ CÓ ẢNH ------ */
         function renderCharacters(list) {
-            const listDiv = document.getElementById('charList'); listDiv.innerHTML = ""; 
-            document.getElementById('charCount').innerText = list.length; 
-
+            const listDiv = document.getElementById('charList'); listDiv.innerHTML = ""; document.getElementById('charCount').innerText = list.length; 
             if(list.length === 0) { listDiv.innerHTML = "<p style='width: 100%; text-align: center; color: var(--brown-dark); padding: 50px 0; grid-column: 1/-1;'>Không tìm thấy bé nào khớp 🥲</p>"; return; }
             
             list.forEach((char, index) => {
-                let div = document.createElement('div'); div.className = "char-card"; 
-                div.style.animationDelay = `${index * 0.05}s`; // Hiệu ứng xếp tầng
-                
-                // Tags mỏng
+                let div = document.createElement('div'); div.className = "char-card"; div.style.animationDelay = `${index * 0.05}s`;
                 let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
-                
-                // Hệ thống Badges (R18, Mới)
                 let badgesHtml = '';
                 if(isNew(char.postTime)) badgesHtml += `<span class="badge new">✨ Mới</span>`;
-                if(char.tags.some(t => t.toUpperCase().includes('R18') || t.toUpperCase().includes('NSFW'))) {
-                    badgesHtml += `<span class="badge alert">🔞 R18+</span>`;
-                }
+                if(char.tags.some(t => t.toUpperCase().includes('R18') || t.toUpperCase().includes('NSFW'))) badgesHtml += `<span class="badge alert">🔞 R18+</span>`;
                 
                 let isFav = favorites.includes(char.id);
-                let favIcon = isFav ? "❤️" : "🤍";
-                let favClass = isFav ? "favorited" : "";
-
-                // HTML cho mỗi thẻ
                 div.innerHTML = `
                     <div class="char-img-wrapper">
                         <img class="char-img" src="${char.image || 'https://i.ibb.co/3M3bCYM/boy-placeholder.jpg'}" alt="${char.name}" loading="lazy">
                         <div class="img-overlay"></div>
-                        <button class="fav-btn ${favClass}" onclick="toggleFav(event, ${char.id})" title="Yêu thích">${favIcon}</button>
+                        <button class="fav-btn ${isFav ? 'favorited' : ''}" onclick="toggleFav(event, ${char.id})" title="Yêu thích">${isFav ? '❤️' : '🤍'}</button>
                         ${badgesHtml ? `<div class="badges-container">${badgesHtml}</div>` : ''}
                     </div>
                     <div class="char-info">
@@ -636,11 +700,8 @@
                         <div class="char-time">🕒 Cập nhật: ${formatTimeAgo(char.postTime)}</div>
                         <div class="char-tags-mini">${tagsHtml}</div>
                         ${char.note ? `<div class="char-note-mini">${char.note}</div>` : ''}
-                        <div class="card-footer">
-                            <button class="char-action">Đọc hồ sơ ➔</button>
-                        </div>
-                    </div>
-                `;
+                        <div class="card-footer"><button class="char-action">Đọc hồ sơ ➔</button></div>
+                    </div>`;
                 div.onclick = (e) => { if(!e.target.classList.contains('fav-btn')) openCharPage(char.id); };
                 listDiv.appendChild(div);
             });
@@ -649,138 +710,69 @@
         function searchChar() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let sortType = document.getElementById('sortSelect').value;
-            
             let filtered = characters.filter(char => {
                 let matchText = char.name.toLowerCase().includes(input) || char.tags.join(" ").toLowerCase().includes(input);
-                
-                let matchFilter = true;
-                if(currentFilter === "Favs") {
-                    matchFilter = favorites.includes(char.id);
-                } else if(currentFilter !== "All") {
-                    matchFilter = char.tags.includes(currentFilter);
-                }
+                let matchFilter = currentFilter === "Favs" ? favorites.includes(char.id) : (currentFilter === "All" ? true : char.tags.includes(currentFilter));
                 return matchText && matchFilter;
             });
 
-            // Logic sắp xếp
             filtered.sort((a, b) => {
                 if (sortType === 'newest') return new Date(b.postTime) - new Date(a.postTime);
                 if (sortType === 'oldest') return new Date(a.postTime) - new Date(b.postTime);
                 if (sortType === 'az') return a.name.localeCompare(b.name);
-                if (sortType === 'za') return b.name.localeCompare(a.name);
-                return 0;
+                if (sortType === 'za') return b.name.localeCompare(a.name); return 0;
             });
-
             renderCharacters(filtered);
-            
-            // Cập nhật lại bộ đếm của nút "Favs" trong filter
-            let favBtn = document.querySelector('.filter-btn.fav-filter');
-            if(favBtn) favBtn.innerText = `❤️ Đã lưu (${favorites.length})`;
+            let favBtn = document.querySelector('.filter-btn.fav-filter'); if(favBtn) favBtn.innerText = `❤️ Đã lưu (${favorites.length})`;
         }
 
-        /* ------ HỆ THỐNG TRANG HỒ SƠ CHI TIẾT (TRANG 4) ------ */
         let currentProfile = null;
-        
         function toggleText(contentId, btnId) {
-            let content = document.getElementById(contentId);
-            let btn = document.getElementById(btnId);
-            if (content.classList.contains('text-collapsed')) {
-                content.classList.remove('text-collapsed');
-                btn.innerText = "Thu gọn bớt ▴";
-            } else {
-                content.classList.add('text-collapsed');
-                btn.innerText = "Hiển thị toàn bộ ▾";
-            }
+            let content = document.getElementById(contentId), btn = document.getElementById(btnId);
+            if (content.classList.contains('text-collapsed')) { content.classList.remove('text-collapsed'); btn.innerText = "Thu gọn bớt ▴"; } 
+            else { content.classList.add('text-collapsed'); btn.innerText = "Hiển thị toàn bộ ▾"; }
         }
 
         function openCharPage(id) {
-            hideAllPages();
-            document.getElementById('page4').classList.add('active');
-            
-            let char = characters.find(c => c.id === id);
-            currentProfile = char;
+            hideAllPages(); document.getElementById('page4').classList.add('active');
+            let char = characters.find(c => c.id === id); currentProfile = char;
             
             document.getElementById('profileImage').src = char.image || 'https://i.ibb.co/3M3bCYM/boy-placeholder.jpg';
             document.getElementById('profileImage').style.display = "block";
-
             document.getElementById('profileName').innerText = char.name;
-            
-            // Hiển thị ngày giờ đầy đủ
-            const pDate = new Date(char.postTime);
-            document.getElementById('profileTime').innerText = `🕒 Đăng ngày: ${pDate.getDate()}/${pDate.getMonth()+1}/${pDate.getFullYear()}`;
-            
-            let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
-            document.getElementById('profileTags').innerHTML = tagsHtml;
+            const pDate = new Date(char.postTime); document.getElementById('profileTime').innerText = `🕒 Đăng ngày: ${pDate.getDate()}/${pDate.getMonth()+1}/${pDate.getFullYear()}`;
+            document.getElementById('profileTags').innerHTML = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
             
             let noteEl = document.getElementById('profileNote');
-            if(char.note && char.note.trim() !== "") {
-                noteEl.innerText = char.note;
-                noteEl.style.display = "block";
-            } else { noteEl.style.display = "none"; }
+            if(char.note && char.note.trim() !== "") { noteEl.innerText = char.note; noteEl.style.display = "block"; } else { noteEl.style.display = "none"; }
             
-            document.getElementById('profileBackstory').innerText = char.backstory;
-            document.getElementById('profileFirst').innerText = char.first;
+            document.getElementById('profileBackstory').innerText = char.backstory; document.getElementById('profileFirst').innerText = char.first;
+            document.getElementById('profileBackstory').classList.add('text-collapsed'); document.getElementById('profileFirst').classList.add('text-collapsed');
+            document.getElementById('btnMoreBackstory').innerText = "Hiển thị toàn bộ ▾"; document.getElementById('btnMoreFirst').innerText = "Hiển thị toàn bộ ▾";
 
-            document.getElementById('profileBackstory').classList.add('text-collapsed');
-            document.getElementById('profileFirst').classList.add('text-collapsed');
-            document.getElementById('btnMoreBackstory').innerText = "Hiển thị toàn bộ ▾";
-            document.getElementById('btnMoreFirst').innerText = "Hiển thị toàn bộ ▾";
-
-            let passInput = document.getElementById('profilePass');
-            let passError = document.getElementById('profilePassError');
-            let btnChat = document.getElementById('btnChat');
-            let noLinkText = document.getElementById('noLinkText');
-
-            btnChat.classList.remove('disabled'); btnChat.style.display = "block";
-            passInput.style.display = "none"; passError.style.display = "none";
-            noLinkText.style.display = "none";
+            let passInput = document.getElementById('profilePass'), passError = document.getElementById('profilePassError'), btnChat = document.getElementById('btnChat'), noLinkText = document.getElementById('noLinkText');
+            btnChat.classList.remove('disabled'); btnChat.style.display = "block"; passInput.style.display = "none"; passError.style.display = "none"; noLinkText.style.display = "none";
 
             if (!char.link || char.link.trim() === "") {
-                btnChat.innerText = "💬 Chat với chồng yêu";
-                btnChat.classList.add('disabled');
-                btnChat.onclick = function(e) { e.preventDefault(); };
-                noLinkText.style.display = "block";
+                btnChat.innerText = "💬 Chat với chồng yêu"; btnChat.classList.add('disabled'); btnChat.onclick = function(e) { e.preventDefault(); }; noLinkText.style.display = "block";
             } else {
-                if (!char.pass || char.pass.trim() === "") {
-                    btnChat.innerText = "💬 Chat với chồng yêu";
-                    btnChat.style.backgroundColor = "var(--brown-dark)";
-                    btnChat.onclick = function() { window.open(char.link, '_blank'); };
-                } else {
-                    passInput.style.display = "block"; passInput.value = "";
-                    btnChat.innerText = "💬 Mở Khóa Chat";
-                    btnChat.style.backgroundColor = "var(--brown-dark)";
-                    btnChat.onclick = verifyChat;
-                }
+                if (!char.pass || char.pass.trim() === "") { btnChat.innerText = "💬 Chat với chồng yêu"; btnChat.style.backgroundColor = "var(--brown-dark)"; btnChat.onclick = function() { window.open(char.link, '_blank'); };
+                } else { passInput.style.display = "block"; passInput.value = ""; btnChat.innerText = "💬 Mở Khóa Chat"; btnChat.style.backgroundColor = "var(--brown-dark)"; btnChat.onclick = verifyChat; }
             }
-
-            document.getElementById('btnCopyLink').innerText = "🔗 Copy link chia sẻ";
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('btnCopyLink').innerText = "🔗 Copy link chia sẻ"; window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function verifyChat() {
-            let input = document.getElementById('profilePass').value;
-            if (input === currentProfile.pass) { 
-                document.getElementById('profilePassError').style.display = "none"; 
-                document.getElementById('profilePass').style.display = "none";
-                
-                let btn = document.getElementById('btnChat');
-                btn.innerText = "💖 Vào Chat Ngay 💖";
-                btn.style.backgroundColor = "var(--red-alert)"; 
-                btn.onclick = function() { window.open(currentProfile.link, '_blank'); };
-                
-                window.open(currentProfile.link, '_blank');
+            if (document.getElementById('profilePass').value === currentProfile.pass) { 
+                document.getElementById('profilePassError').style.display = "none"; document.getElementById('profilePass').style.display = "none";
+                let btn = document.getElementById('btnChat'); btn.innerText = "💖 Vào Chat Ngay 💖"; btn.style.backgroundColor = "var(--red-alert)"; 
+                btn.onclick = function() { window.open(currentProfile.link, '_blank'); }; window.open(currentProfile.link, '_blank');
             } else { document.getElementById('profilePassError').style.display = "block"; }
         }
 
         function copyCharLink() {
-            if (!currentProfile.link || currentProfile.link.trim() === "") {
-                document.getElementById('btnCopyLink').innerText = "❌ Chưa có link để copy!";
-                setTimeout(() => { document.getElementById('btnCopyLink').innerText = "🔗 Copy link chia sẻ"; }, 2000);
-                return;
-            }
-            navigator.clipboard.writeText(currentProfile.link).then(() => {
-                document.getElementById('btnCopyLink').innerText = "✅ Đã copy link!";
-            });
+            if (!currentProfile.link || currentProfile.link.trim() === "") { document.getElementById('btnCopyLink').innerText = "❌ Chưa có link để copy!"; setTimeout(() => { document.getElementById('btnCopyLink').innerText = "🔗 Copy link chia sẻ"; }, 2000); return; }
+            navigator.clipboard.writeText(currentProfile.link).then(() => { document.getElementById('btnCopyLink').innerText = "✅ Đã copy link!"; });
         }
     </script>
 </body>
