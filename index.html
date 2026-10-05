@@ -209,7 +209,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2); backdrop-filter: blur(2px);
         }
         .badge.alert { background: var(--red-alert); color: #fff; }
-        .badge.new { background: var(--gold); color: #fff; }
 
         .char-info { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1;}
         .char-name { font-size: 1.4rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2;}
@@ -441,15 +440,14 @@
     <script>
         /* ================= HỆ THỐNG MUSIC PLAYER ================= */
         const playListSongs = [
-            { name: "Gặp lại năm ta 60", src: "snaptik.vn_7573160026223725842.mp3" },
-            { name: "Rồi em sẽ gặp 1 chàng trai khác", src: "snaptik.vn_7626833029868080391.mp3" },
             { name: "Mỹ nhân ngư", src: "snaptik.vn_7681308722055875858.mp3" },
             { name: "Dòng thác thời gian", src: "snaptik.vn_7687606496569462036.mp3" },
             { name: "Biển đảo và em", src: "snaptik.vn_7678480025296899349.mp3" },
-            { name: "Anh đã không biết cách yêu em", src: "snaptik.vn_7679071778810940692.mp3" },
             { name: "Một lời đồn", src: "snaptik.vn_7638236693891681556.mp3" },
-            { name: "Đừng yêu nữa em mệt rồi", src: "snaptik.vn_7683516664788405525.mp3" },
-            { name: "Summertime Sadness", src: "snaptik.vn_7471733173227883783.mp3" }
+            { name: "Summertime Sadness", src: "snaptik.vn_7471733173227883783.mp3" },
+            { name: "Say my name", src: "snaptik.vn_7663602013598453012.mp3" },
+            { name: "Shape of You", src: "snaptik.vn_7562495638060010770.mp3" },
+            { name: "Hẹn em dưới pháo hoa", src: "snaptik.vn_7688702704675245330.mp3" }
         ];
 
         let currentSongIndex = -1;
@@ -645,7 +643,6 @@
             if (diffMins < 1440) return `${Math.floor(diffMins / 60)} giờ trước`;
             return `${Math.floor(diffMins / 1440)} ngày trước`;
         }
-        function isNew(dateString) { return dateString ? (new Date() - new Date(dateString)) < (3 * 86400000) : false; }
 
         function hideAllPages() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); }
         function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); }
@@ -688,7 +685,7 @@
                 let div = document.createElement('div'); div.className = "char-card"; div.style.animationDelay = `${index * 0.05}s`;
                 let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
                 let badgesHtml = '';
-                if(isNew(char.postTime)) badgesHtml += `<span class="badge new">✨ Mới</span>`;
+                
                 if(char.tags.some(t => t.toUpperCase().includes('R18') || t.toUpperCase().includes('NSFW'))) badgesHtml += `<span class="badge alert">🔞 R18+</span>`;
                 
                 let isFav = favorites.includes(char.id);
