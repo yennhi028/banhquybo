@@ -113,11 +113,12 @@
 
         /* Lưới Thẻ Nhân Vật Ngoại Trang Chủ */
         .character-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; width: 100%; padding-bottom: 30px; }
-        .char-card { background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 12px; text-align: left; position: relative; transition: 0.2s; cursor: pointer;}
+        .char-card { background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 10px; text-align: left; position: relative; transition: 0.2s; cursor: pointer;}
         .char-card:hover { transform: translateY(-5px); border-color: var(--brown-pastel); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .char-card:active { transform: scale(0.98); }
         
-        .char-name { font-size: 1.5rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2; margin-bottom: 5px;}
+        .char-name { font-size: 1.5rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2;}
+        .char-time { font-size: 0.85rem; color: #888; margin-bottom: 5px; font-weight: 600; font-style: italic;}
         .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
         .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 5px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--white);}
         .char-note-mini { font-size: 0.9rem; color: var(--text-dark); font-weight: 600; font-style: italic; margin-top: 5px;}
@@ -127,7 +128,7 @@
         .char-card:hover .char-action { background: var(--brown-dark); color: var(--white); }
 
 
-        /* ================= TRANG 4: TRANG HỒ SƠ CHI TIẾT NHÂN VẬT ================= */
+        /* ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= */
         .profile-container {
             width: 100%; max-width: 800px; margin: 0 auto;
             background: rgba(255, 255, 255, 0.9); border-radius: 30px;
@@ -144,10 +145,14 @@
 
         .profile-name {
             color: var(--brown-dark); font-size: 2.2rem; font-weight: 800;
-            text-align: center; margin-bottom: 15px; text-shadow: 1px 1px 0px #fff;
+            text-align: center; margin-bottom: 5px; text-shadow: 1px 1px 0px #fff;
         }
 
-        /* Đã đổi màu Note chói thành màu bình thường */
+        .profile-time {
+            font-size: 0.95rem; color: #888; font-weight: 600; font-style: italic;
+            margin-bottom: 15px; text-align: center;
+        }
+
         .profile-note {
             color: var(--text-dark); font-weight: 600; font-size: 1rem;
             margin-bottom: 25px; text-align: center; font-style: italic;
@@ -170,7 +175,6 @@
             white-space: pre-wrap; /* Giữ nguyên dấu xuống dòng */
         }
 
-        /* Lớp CSS dùng để giới hạn số dòng (Thu gọn) */
         .text-collapsed {
             display: -webkit-box;
             -webkit-line-clamp: 5; /* Hiển thị tối đa 5 dòng */
@@ -178,7 +182,6 @@
             overflow: hidden;
         }
 
-        /* Nút Hiển thị toàn bộ */
         .read-more-btn {
             background: none; border: none; color: var(--brown-dark);
             font-size: 0.95rem; font-weight: 800; cursor: pointer;
@@ -195,7 +198,7 @@
             width: 100%; padding: 15px; border-radius: 15px; border: 2px solid var(--brown-pastel);
             outline: none; font-size: 1.1rem; text-align: center; background: #fff;
         }
-        .error-text { color: #d63031; font-weight: bold; font-size: 0.95rem; display: none; }
+        .error-text { color: #d63031; font-weight: bold; font-size: 0.95rem; display: none; margin-bottom: -5px;}
         
         .btn-chat {
             background-color: var(--brown-dark); color: var(--white); border: none;
@@ -203,7 +206,17 @@
             font-weight: 800; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4);
             width: 100%; transition: 0.2s; text-decoration: none; text-align: center;
         }
-        .btn-chat:hover { transform: translateY(-3px); background-color: #7a583d; }
+        .btn-chat:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+        /* Nút Copy Link riêng cho Hồ sơ */
+        .copy-btn {
+            background: var(--beige-light); border: none; color: var(--brown-dark); 
+            padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; 
+            cursor: pointer; display: block; margin: 0 auto 20px auto; transition: 0.2s; 
+            border: 1px solid var(--brown-pastel);
+        }
+        .copy-btn:hover { background: var(--brown-pastel); color: var(--white); }
+
 
         /* ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= */
         .wall-container { width: 100%; max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.8); border-radius: 25px; padding: 20px;}
@@ -276,12 +289,15 @@
         <button class="fixed-btn back-btn" onclick="goToPage2()">🔙 Về kho bánh</button>
         
         <div class="profile-container">
-            <!-- ĐÃ DÁN LINK ẢNH DISCORD BẠN YÊU CẦU -->
-            <img id="profileImage" src="https://cdn.discordapp.com/attachments/1547359339063419013/1556715988764991508/IMG_4228.jpg?backend=b2&ex=6ac52c3e&is=6ac3dabe&hm=e576ac1c8d82ef0586fa700a9214267d8f21a616092e4691c4b927617fdaadec&" alt="Profile Image" class="profile-img">
+            <img id="profileImage" src="" alt="Profile Image" class="profile-img">
             
             <h1 id="profileName" class="profile-name">Tên Nhân Vật</h1>
+            <div id="profileTime" class="profile-time"></div>
+            
             <div id="profileTags" class="char-tags-mini" style="justify-content: center; margin-bottom: 10px;"></div>
             <div id="profileNote" class="profile-note"></div>
+
+            <button class="copy-btn" id="btnCopyLink" onclick="copyCharLink()">🔗 Copy link chia sẻ</button>
 
             <div class="story-box">
                 <h3 class="story-title">[BACKSTORY]</h3>
@@ -296,13 +312,12 @@
             </div>
 
             <div class="chat-action-section">
-                <!-- Chỗ nhập pass -->
+                <!-- Chỗ nhập pass (Tự động ẩn nếu nhân vật không có pass) -->
                 <input type="password" id="profilePass" class="chat-pass-input" placeholder="Nhập pass mở khóa...">
                 <p id="profilePassError" class="error-text">Sai pass rồi, thử lại nhé 🥺!</p>
                 
-                <!-- Nút Chat -->
+                <!-- Nút Chat (Thay đổi chữ tự động dựa trên pass) -->
                 <button class="btn-chat" id="btnChat" onclick="verifyChat()">💬 Chat với chồng yêu</button>
-                <a href="#" id="linkChat" target="_blank" class="btn-chat" style="display:none; background-color: var(--brown-dark);">💖 Vào Chat Ngay 💖</a>
             </div>
         </div>
     </div>
@@ -336,7 +351,9 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // DATA NHÂN VẬT (Đã thay ảnh thật và text dài cho Cố Triết Vũ)
+        // HỆ THỐNG THỜI GIAN ĐĂNG CHUẨN XÁC
+        // Chú ý property `postTime`: Hãy nhập theo định dạng YYYY-MM-DDTHH:MM:SS
+        
         const characters = [
             { 
                 id: 1, 
@@ -344,12 +361,44 @@
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556715988764991508/IMG_4228.jpg?backend=b2&ex=6ac52c3e&is=6ac3dabe&hm=e576ac1c8d82ef0586fa700a9214267d8f21a616092e4691c4b927617fdaadec&",
                 tags: ["Bg", "bạn trai chó điên", "có plot ẩn", "R18", "nghiện bú ti user"], 
                 note: "Note: Char không sạch, nghiện thuốc.",
-                backstory: `Bạn trai tôi là chó điên.\n\nPhải, anh ấy chính là chó điên.\n\nNhớ lại ba năm trước, hồi mới quen nhau, anh đã tạo cho tôi một cú lừa cực kỳ ngoạn mục.\n\nNăm đầu tiên hẹn hò, Vũ xuất hiện như một bá đạo tổng tài bước ra từ tiểu thuyết, còn tôi chính là nữ chính ngốc bạch ngọt được che chở.\n\nAnh trưởng thành, chững chạc và cái gì trên đời anh cũng biết. Anh dạy tôi làm ăn kinh doanh, dạy tôi lái xe, dạy cả cách đối nhân xử thế với đời. Lịch trình đi date thì thôi, không phải bàn, toàn nhà hàng 5 sao, nến và hoa đầy đủ. Tôi lúc ấy u mê anh không chịu nổi, cứ ngỡ mình vớ được cực phẩm.\n\nNhưng đời đâu ai đoán được trước, đó chỉ là vỏ bọc của thằng điên này!\n\nBước sang năm thứ hai bên nhau, bản chất của anh bắt đầu bộc lộ. Không còn hình tượng tổng tài xịt nước hoa thơm phức, mặc vest phẳng phiu, thay vào đó là một ông chú lười cạo râu khi ở nhà, mặc áo 3 lỗ, lôi tôi đi ăn vỉa hè lê la khắp phố, và mỗi ngày là cái trò oẳn tù tì chí chóe xem hôm nay đứa nào phải rửa bát.\n\nKinh hoàng nhất là cái nết xả sinh lý của anh ta.\n\nThề có trời đất, anh vô cùng tự nhiên thả những quả rắm nổ bom ba ya như bom nổ ngay trước mặt tôi. Có hôm, tên khốn đó còn kéo tôi vào chăn, trùm kín mít lại chỉ để ép tôi hít trọn vẹn cái hương vị nồng say ấy.\n\nBao nhiêu lời lẽ sến súa lãng mạn hồi mới yêu bay đâu mất hết, thay bằng những câu từ thô bỉ mà tôi không dám tin có thể thốt ra từ miệng một người như anh.\n\nCố Triết Vũ năm nay 25 tuổi, là ông chủ quán bar, thành công ở tuổi đôi mươi, nhìn bề ngoài bảnh bao ngon nghẻ không ai nghĩ anh là con người như vậy.\n\nThật sự đánh rắm rất thối.`, 
-                first: `Thế nhưng, con chó điên này thi thoảng lại làm tôi không thể ngừng yêu.\n\nChẳng hạn như hôm nay, 8 tháng 3.\n\nTôi vốn đinh ninh anh bận ở quán, quên béng ngày này rồi. Ấy thế mà đùng một cái, thư ký của anh đánh nguyên một con xe hơi mới tinh đến để tạo bất ngờ cho tôi. Chỉ vì tuần trước lướt điện thoại, tôi vô tình buột miệng khen cái xe này đẹp, thế mà anh nhớ kỹ rồi âm thầm dàn xếp hết. Chưa hết, anh còn chốt luôn cho mẹ tôi một chuyến du lịch Maldives nghỉ dưỡng chỉ vì biết bà thích đi biển.\n\nCầm chìa khóa xe trên tay, tôi xúc động muốn rớt nước mắt. Không ngờ cái tên thô lỗ ấy lại tĩnh lặng quan tâm đến tôi và gia đình chu đáo đến vậy. Bầu không khí dâng trào, tôi quyết định sến súa với anh một hôm. Nhấc điện thoại lên, tôi nâng niu gõ từng chữ gửi cho anh người yêu đang bận ở quán.\n\n{{user}}: Em yêu anh\n{{user}}: Cảm ơn anh đã cố gắng để hiện diện trong cuộc sống của em\n\nTriết Vũ: Chứ mày định để thằng nào?`, 
+                postTime: "2026-10-01T15:30:00", // Thời gian đăng ảo
                 pass: "123", 
-                link: "https://link-cua-ban.com" 
+                link: "https://link-cua-ban.com",
+                backstory: `Bạn trai tôi là chó điên.\n\nPhải, anh ấy chính là chó điên.\n\nNhớ lại ba năm trước, hồi mới quen nhau, anh đã tạo cho tôi một cú lừa cực kỳ ngoạn mục.\n\nNăm đầu tiên hẹn hò, Vũ xuất hiện như một bá đạo tổng tài bước ra từ tiểu thuyết, còn tôi chính là nữ chính ngốc bạch ngọt được che chở.\n\nAnh trưởng thành, chững chạc và cái gì trên đời anh cũng biết. Anh dạy tôi làm ăn kinh doanh, dạy tôi lái xe, dạy cả cách đối nhân xử thế với đời. Lịch trình đi date thì thôi, không phải bàn, toàn nhà hàng 5 sao, nến và hoa đầy đủ. Tôi lúc ấy u mê anh không chịu nổi, cứ ngỡ mình vớ được cực phẩm.\n\nNhưng đời đâu ai đoán được trước, đó chỉ là vỏ bọc của thằng điên này!\n\nBước sang năm thứ hai bên nhau, bản chất của anh bắt đầu bộc lộ. Không còn hình tượng tổng tài xịt nước hoa thơm phức, mặc vest phẳng phiu, thay vào đó là một ông chú lười cạo râu khi ở nhà, mặc áo 3 lỗ, lôi tôi đi ăn vỉa hè lê la khắp phố, và mỗi ngày là cái trò oẳn tù tì chí chóe xem hôm nay đứa nào phải rửa bát.\n\nKinh hoàng nhất là cái nết xả sinh lý của anh ta.\n\nThề có trời đất, anh vô cùng tự nhiên thả những quả rắm nổ bom ba ya như bom nổ ngay trước mặt tôi. Có hôm, tên khốn đó còn kéo tôi vào chăn, trùm kín mít lại chỉ để ép tôi hít trọn vẹn cái hương vị nồng say ấy.\n\nBao nhiêu lời lẽ sến súa lãng mạn hồi mới yêu bay đâu mất hết, thay bằng những câu từ thô bỉ mà tôi không dám tin có thể thốt ra từ miệng một người như anh.\n\nCố Triết Vũ năm nay 25 tuổi, là ông chủ quán bar, thành công ở tuổi đôi mươi, nhìn bề ngoài bảnh bao ngon nghẻ không ai nghĩ anh là con người như vậy.\n\nThật sự đánh rắm rất thối.`, 
+                first: `Thế nhưng, con chó điên này thi thoảng lại làm tôi không thể ngừng yêu.\n\nChẳng hạn như hôm nay, 8 tháng 3.\n\nTôi vốn đinh ninh anh bận ở quán, quên béng ngày này rồi. Ấy thế mà đùng một cái, thư ký của anh đánh nguyên một con xe hơi mới tinh đến để tạo bất ngờ cho tôi. Chỉ vì tuần trước lướt điện thoại, tôi vô tình buột miệng khen cái xe này đẹp, thế mà anh nhớ kỹ rồi âm thầm dàn xếp hết. Chưa hết, anh còn chốt luôn cho mẹ tôi một chuyến du lịch Maldives nghỉ dưỡng chỉ vì biết bà thích đi biển.\n\nCầm chìa khóa xe trên tay, tôi xúc động muốn rớt nước mắt. Không ngờ cái tên thô lỗ ấy lại tĩnh lặng quan tâm đến tôi và gia đình chu đáo đến vậy. Bầu không khí dâng trào, tôi quyết định sến súa với anh một hôm. Nhấc điện thoại lên, tôi nâng niu gõ từng chữ gửi cho anh người yêu đang bận ở quán.\n\n{{user}}: Em yêu anh\n{{user}}: Cảm ơn anh đã cố gắng để hiện diện trong cuộc sống của em\n\nTriết Vũ: Chứ mày định để thằng nào?` 
+            },
+            {
+                id: 2,
+                name: "Hạ Sâm Niên",
+                image: "https://i.ibb.co/3M3bCYM/boy-placeholder.jpg", // Tạm dùng ảnh mạng, bạn có thể tự thay bằng ảnh thật
+                tags: ["Cún con tâm cơ", "hồng hài nhi", "ngọt", "nũng nịu", "txvt"],
+                note: "Note: Có lệnh nsfw (ăn ẻm khi trên 18 nha)",
+                postTime: "2026-10-06T00:05:00", // Ngày đăng ảo
+                pass: "", // BỎ TRỐNG LÀ KHÔNG CẦN PASS
+                link: "https://lm.facebook.com/l.php?u=https%3A%2F%2Faistudio.google.com%2Fapp%2Fprompts%3Fstate%3D%257B%2522ids%2522%253A%255B%2522137yb5TmRXGohxI_xierhk6x5pvcHaNq-%2522%255D%252C%2522action%2522%253A%2522open%2522%252C%2522userId%2522%253A%2522104638213073409804458%2522%252C%2522resourceKeys%2522%253A%257B%257D%257D%26fbclid%3DIwZXh0bgNhZW0CMTEAcGRvZgFmZGlkFlD7Y__TrmsIdF4fjiOlrruvBLhZvYxzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEeq2pxgz06412pFYUBerc202nDORFGAoOKXlqiq3InwWmvR_qOHIiWkoN35ik_aem_H18YnATrmjgu23G9KPb0Mw&h=AUDJz8XpGbeMtz5CXaRqWeUYWs63fC0wvHK6DWKY4m4iFseyuaxyqafoOZ0-eX4fKj9t9ZIrf_FH1YYqS9ssTs_4AwOYrk0oVwFQkI8xA0ihkxbadUHQKIz02yQyKGtX7gFDyuJIDP6keTZwKBm7xTYA_A8j&s=1",
+                backstory: `Em và Hạ Sâm Niên quen nhau vào một ngày đầu đông se lạnh, khi thằng nhóc ấy vừa chân ướt chân ráo bước vào trường cấp ba.\n\nEm lớn hơn cậu một tuổi, ấy vậy mà chớp mắt cái, tính đến nay hai người đã kề cạnh bên nhau được hai năm. Hồi mới quen, em chỉ thấy Sâm Niên là một cậu nhóc thật thà, ngoan ngoãn và khá đáng yêu; nhưng phiền một nỗi, cậu nhạy cảm quá, lại suốt ngày lẽo đẽo bám theo làm phiền em.\n\nThế mà lửa gần rơm lâu ngày cũng bén, càng bên nhau lâu, em càng ngày càng quen thuộc với cái đuôi nhỏ ấy, thậm chí dần dần lại thấy những khuyết điểm đó của cậu cũng thật đáng yêu.\n\nNói đi cũng phải nói lại, Hạ Sâm Niên thực sự rất đẹp trai, phải thừa nhận cậu là người con trai rực rỡ và đẹp nhất mà em từng thấy.\n\nSinh ra trong một gia đình giàu có, lại còn là nam thần bóng rổ của trường, cứ mỗi chiều cậu bước ra sân tập là y như rằng có cả một mớ nữ sinh vây quanh hò reo, đưa khăn đưa nước.\n\nĐứng trước một thiếu niên hoàn mỹ như thế, làm sao em có thể không rung động cơ chứ?\n\nNhưng có nằm mơ cũng chẳng ai ngờ, năm đó, chính cái con người rực sáng giữa đám đông ấy lại là người động tâm trước.\n\nHạ Sâm Niên là người thích em trước, là người mặt dày bám theo em, rồi cũng chính cậu ngốc nghếch tỏ tình với em.\n\nDù cậu có ân cần và si tình đến mấy, em vẫn nhất quyết giấu cậu đi, đã yêu nhau hai năm rồi mà vẫn không chịu công khai cho cậu một danh phận rõ ràng.\n\nSâm Niên không ít lần ấm ức, nhưng với em, tình yêu vốn dĩ là chuyện của hai người, chỉ cần hai trái tim tự biết, tự thấu hiểu nhau là đủ, sao phải mang ra cho thiên hạ chỉ trỏ bàn tán.\n\nHơn nữa, em vốn là người ghét phiền phức. Cứ tưởng tượng cảnh vừa công khai xong, đám fan girl của Hạ Sâm Niên sẽ thi nhau soi mói, làm phiền cuộc sống của em là em đã thấy bực mình.`,
+                first: `Hôm nay em tan học sớm, rảnh rỗi thế nào em lại nổi hứng rẽ qua sân bóng rổ xem Hạ Sâm Niên tập luyện.\n\nCứ ngỡ sẽ được ngắm bạn trai mình tỏa sáng trên sân, ai ngờ đâu vừa bước tới góc khán đài, đập vào mắt em lại là một cảnh tượng gai mắt, thằng nhóc đó đang cúi đầu, mỉm cười nói chuyện với một cô gái khác.\n\nMáu ghen trong người em liền bốc lên.\n\nKhông thèm tiến tới gọi hay hỏi han cho ra lẽ, em quay ngoắt gót bỏ đi thẳng. Suốt cả ngày hôm đó, em tắt luôn thông báo, mặc kệ điện thoại rung liên hồi, kiên quyết không thèm rep lấy một tin nhắn nào của tên Hạ Sâm Niên đáng ghét đó.\n\nĐến tận khuya khoắt, khi cơn giận đã bốc hoả suốt mấy tiếng đồng hồ, em mới hậm hực cầm máy lên. Trên màn hình là cuộc gọi thứ 57 từ Sâm Niên.\n\nEm ấn nút nghe.\n\nChưa kịp để người bên kia thốt lên nửa lời, em đã như núi lửa phun trào, gào ầm lên mắng cậu vuốt mặt không kịp. Em trút hết mọi bực dọc, mắng cậu không ngừng suốt 20 phút đồng hồ.\n\nHạ Sâm Niên không hề cãi lại nửa câu, cứ thế im lặng ngoan ngoãn chịu trận.\n\nGiữa những nhịp thở hổn hển của em vì mắng quá mệt, qua loa điện thoại, em bỗng nghe thấy những tiếng động đều đều vang lên\n\nCộp… cộp…\n\nEm quát luôn vào điện thoại\n— "Em đang làm gì đấy?"\n\nGiọng cậu mang theo sự tủi thân\n— "Đang gõ màn hình…"\n\n{{user}}: "Gõ màn hình làm gì? Em có bệnh à?"\n\nGiọng Sâm Niên nghe càng thêm phần ấm ức, tủi thân hơn, cậu nhỏ giọng.\n— "Đánh chị…"\n\nLúc này, em mới sực nhớ ra một chuyện.\n\nHình nền điện thoại của Hạ Sâm Niên vẫn luôn là ảnh của em.`
             }
         ];
+
+        /* ------ HÀM XỬ LÝ THỜI GIAN ĐĂNG ------ */
+        function formatTimeAgo(dateString) {
+            if (!dateString) return "Mới đăng gần đây";
+            const postDate = new Date(dateString);
+            const now = new Date();
+            const diffTime = Math.abs(now - postDate);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            let daysText = diffDays === 0 ? "Hôm nay" : `${diffDays} ngày trước`;
+            
+            const h = postDate.getHours().toString().padStart(2, '0');
+            const m = postDate.getMinutes().toString().padStart(2, '0');
+            const d = postDate.getDate().toString().padStart(2, '0');
+            const mo = (postDate.getMonth() + 1).toString().padStart(2, '0');
+            const y = postDate.getFullYear();
+            
+            return `${daysText} • ${d}/${mo}/${y} lúc ${h}:${m}`;
+        }
 
         /* ------ CHUYỂN TRANG ------ */
         function hideAllPages() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); }
@@ -384,7 +433,7 @@
             }, 800); 
         }
 
-        /* ------ RENDER THẺ DANH SÁCH ------ */
+        /* ------ RENDER THẺ DANH SÁCH NGOÀI (CÓ THÊM HIỂN THỊ THỜI GIAN) ------ */
         function renderCharacters(list) {
             const listDiv = document.getElementById('charList'); listDiv.innerHTML = ""; 
             document.getElementById('charCount').innerText = list.length; 
@@ -395,11 +444,13 @@
                 let div = document.createElement('div'); div.className = "char-card"; 
                 let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
                 let noteHtml = char.note ? `<div class="char-note-mini">${char.note}</div>` : '';
+                let timeStr = formatTimeAgo(char.postTime);
                 
                 div.innerHTML = `
                     <div class="card-header">
                         <div class="char-name">${char.name}</div>
                     </div>
+                    <div class="char-time">🕒 ${timeStr}</div>
                     <div class="char-tags-mini">${tagsHtml}</div>
                     ${noteHtml}
                     <div class="card-footer">
@@ -427,11 +478,9 @@
         /* ------ HỆ THỐNG TRANG HỒ SƠ CHI TIẾT (TRANG 4) ------ */
         let currentProfile = null;
         
-        // Hàm xử lý Mở rộng/Thu gọn văn bản
         function toggleText(contentId, btnId) {
             let content = document.getElementById(contentId);
             let btn = document.getElementById(btnId);
-            
             if (content.classList.contains('text-collapsed')) {
                 content.classList.remove('text-collapsed');
                 btn.innerText = "Thu gọn bớt ▴";
@@ -456,29 +505,45 @@
             }
 
             document.getElementById('profileName').innerText = char.name;
+            document.getElementById('profileTime').innerText = "🕒 Đăng: " + formatTimeAgo(char.postTime);
+            
             let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
             document.getElementById('profileTags').innerHTML = tagsHtml;
             document.getElementById('profileNote').innerText = char.note || "";
             
-            // Set text
             let bsContent = document.getElementById('profileBackstory');
             let fmContent = document.getElementById('profileFirst');
             bsContent.innerText = char.backstory;
             fmContent.innerText = char.first;
 
-            // Mặc định luôn thu gọn khi mở char mới
             bsContent.classList.add('text-collapsed');
             fmContent.classList.add('text-collapsed');
             document.getElementById('btnMoreBackstory').innerText = "Hiển thị toàn bộ ▾";
             document.getElementById('btnMoreFirst').innerText = "Hiển thị toàn bộ ▾";
 
-            // Reset phần Chat
-            document.getElementById('profilePass').value = ""; 
-            document.getElementById('profilePassError').style.display = "none"; 
-            document.getElementById('btnChat').style.display = "block";
-            document.getElementById('profilePass').style.display = "block";
-            document.getElementById('linkChat').style.display = "none";
-            
+            // TÍNH NĂNG NHẬN DIỆN MẬT KHẨU (NẾU TRỐNG => CHAT NGAY KHÔNG CẦN PASS)
+            let passInput = document.getElementById('profilePass');
+            let passError = document.getElementById('profilePassError');
+            let btnChat = document.getElementById('btnChat');
+
+            if (!char.pass || char.pass.trim() === "") {
+                passInput.style.display = "none";
+                passError.style.display = "none";
+                btnChat.innerText = "💬 Chat với chồng yêu";
+                btnChat.style.backgroundColor = "var(--brown-dark)";
+                btnChat.onclick = function() {
+                    window.open(char.link, '_blank');
+                };
+            } else {
+                passInput.style.display = "block";
+                passInput.value = "";
+                passError.style.display = "none";
+                btnChat.innerText = "💬 Mở Khóa Chat";
+                btnChat.style.backgroundColor = "var(--brown-dark)";
+                btnChat.onclick = verifyChat;
+            }
+
+            document.getElementById('btnCopyLink').innerText = "🔗 Copy link chia sẻ";
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -486,13 +551,24 @@
             let input = document.getElementById('profilePass').value;
             if (input === currentProfile.pass) { 
                 document.getElementById('profilePassError').style.display = "none"; 
-                document.getElementById('btnChat').style.display = "none"; 
-                document.getElementById('profilePass').style.display = "none"; 
-                document.getElementById('linkChat').style.display = "block"; 
-                document.getElementById('linkChat').href = currentProfile.link; 
+                document.getElementById('profilePass').style.display = "none";
+                
+                let btn = document.getElementById('btnChat');
+                btn.innerText = "💖 Vào Chat Ngay 💖";
+                btn.style.backgroundColor = "#ff4757"; // Đổi màu nhấn mạnh
+                btn.onclick = function() { window.open(currentProfile.link, '_blank'); };
+                
+                // Mở tab tự động cho người dùng luôn
+                window.open(currentProfile.link, '_blank');
             } else { 
                 document.getElementById('profilePassError').style.display = "block"; 
             }
+        }
+
+        function copyCharLink() {
+            navigator.clipboard.writeText(currentProfile.link).then(() => {
+                document.getElementById('btnCopyLink').innerText = "✅ Đã copy link!";
+            });
         }
 
         /* ------ TƯỜNG IDEA ------ */
