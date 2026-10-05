@@ -69,20 +69,15 @@
         }
         .page.active { display: flex; }
 
-        /* KHUNG KÍNH: Làm dẹt (nằm ngang), rộng hơn, trong suốt hơn để khoe GIF */
+        /* KHUNG CHỨA NỘI DUNG (Đã bỏ nền mờ ảo, viền và bóng) */
         .container {
             text-align: center;
             z-index: 10;
-            width: 95%; /* Mở rộng tối đa ra 2 bên mép màn hình */
+            width: 95%; 
             max-width: 700px;
-            background: rgba(255, 255, 255, 0.4); /* Giảm độ đục để thấy GIF rõ hơn */
-            backdrop-filter: blur(5px); /* Giảm độ mờ */
-            -webkit-backdrop-filter: blur(5px);
-            padding: 35px 15px; /* Giảm khoảng cách trên dưới để khung nằm ngang */
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 20px 15px; 
             transform: translateY(-5%); 
+            /* Xoá sạch background, blur, shadow theo yêu cầu */
         }
 
         .page2-container {
@@ -91,29 +86,33 @@
             padding: 30px 20px;
         }
 
-        /* Chữ Tiêu đề và Subtitle */
+        /* Chữ Tiêu đề */
         .title {
             color: var(--color-title);
             font-size: min(8.5vw, 2.8rem); 
             margin: 5px 0 10px 0;
             white-space: nowrap; 
+            /* Giữ viền trắng mỏng để chữ nâu dễ đọc trên nền tối */
             text-shadow: 1px 1px 0px rgba(255,255,255,0.9); 
         }
 
+        /* Chữ Welcome (Đổi sang màu trắng) */
         .subtitle {
-            color: var(--color-sub);
+            color: var(--white); /* Đổi màu trắng */
             font-size: min(4.5vw, 1.4rem); 
-            margin-bottom: 25px; /* Ép khoảng cách gần lại */
+            margin-bottom: 30px; 
             white-space: nowrap; 
             font-weight: 800;
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.6);
+            /* Đổi thành bóng đen mờ để chữ trắng nổi bần bật trên ảnh GIF */
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
         }
 
         .small-text {
-            color: var(--color-title);
+            color: var(--white);
             font-style: italic;
             margin-bottom: 20px;
             font-size: 1.1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
         /* Nút Vào kho bánh */
@@ -126,7 +125,7 @@
             border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(139, 103, 74, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             transition: 0.3s;
             text-decoration: none;
             display: inline-block;
@@ -162,7 +161,7 @@
             font-size: min(3.5vw, 0.9rem); /* Chữ tự nhỏ lại nếu màn hình hẹp */
             white-space: nowrap;
             transition: 0.2s;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         .social-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
         .facebook { background-color: #1877F2; }
@@ -174,9 +173,9 @@
             position: absolute;
             top: 20px;
             left: 15px;
-            background: rgba(255, 255, 255, 0.85);
-            border: 2px solid var(--color-title);
-            color: var(--color-title);
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--btn-bg);
+            color: var(--btn-bg);
             padding: 8px 15px;
             border-radius: 20px;
             cursor: pointer;
@@ -184,7 +183,7 @@
             transition: 0.2s;
             z-index: 100;
         }
-        .back-btn:hover { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+        .back-btn:hover { background: var(--btn-bg); color: var(--btn-text); }
 
         .search-box input {
             width: 100%;
@@ -198,6 +197,7 @@
             background: rgba(255, 255, 255, 0.95);
             color: var(--color-title);
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .search-box input::placeholder { color: var(--color-sub); font-weight: normal; }
 
@@ -213,7 +213,7 @@
             padding: 20px;
             border-radius: 15px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             color: var(--color-title);
             font-weight: bold;
             font-size: 1.2rem;
@@ -232,7 +232,7 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(3px);
             z-index: 2000;
             justify-content: center;
@@ -249,7 +249,7 @@
             max-height: 90vh;
             overflow-y: auto;
             border: 3px solid var(--color-title);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
         .close-btn {
@@ -319,9 +319,10 @@
 
     <!-- ================= TRANG 1: TRANG CHỦ ================= -->
     <div id="page1" class="page active">
-        <!-- Khung kính trong suốt chứa nội dung -->
+        <!-- Đã bỏ khung mờ ảo ở giữa -->
         <div class="container">
-            <h1 class="title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ 🍪</h1>
+            <!-- Đã bỏ bánh quy 🍪 -->
+            <h1 class="title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
             <h2 class="subtitle">Welcome to Bơ’s little archive</h2>
             
             <button class="btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
@@ -437,7 +438,7 @@
             listDiv.innerHTML = ""; 
             
             if(list.length === 0) {
-                listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--color-title); font-style: italic;'>Không tìm thấy chồng yêu nào cả 🥲</p>";
+                listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--white); font-style: italic; text-shadow: 1px 1px 3px black;'>Không tìm thấy chồng yêu nào cả 🥲</p>";
                 return;
             }
 
