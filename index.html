@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= BẢNG MÀU PASTEL MỚI ================= */
+        /* ================= BẢNG MÀU PASTEL ================= */
         :root {
-            --brown-pastel: #BCA38F; /* Nâu pastel */
-            --brown-dark: #8B674A;   /* Nâu đậm cho nút, chữ chính */
-            --pink-pastel: #FADCE6;  /* Hồng pastel */
-            --green-pastel: #DDEBD5; /* Xanh pastel */
-            --beige-light: #FDF5EF;  /* Be nhạt */
+            --brown-pastel: #BCA38F; 
+            --brown-dark: #8B674A;   
+            --pink-pastel: #FADCE6;  
+            --green-pastel: #DDEBD5; 
+            --beige-light: #FDF5EF;  
             --white: #ffffff;
             --text-dark: #5C4332;
         }
@@ -29,29 +29,28 @@
             overflow-x: hidden; position: relative; min-height: 100vh;
         }
 
-        /* Quản lý Trang & Background riêng biệt */
+        /* Quản lý Trang */
         .page {
             display: none; min-height: 100vh; padding: 15px;
             flex-direction: column; align-items: center; justify-content: center;
             width: 100%; position: absolute; top: 0; left: 0;
         }
         .page.active { display: flex; animation: fadeIn 0.4s ease-in-out; }
-        
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Trang 1: Background GIF cũ */
+        /* Background */
         #page1 {
             background-image: url('https://i.pinimg.com/originals/7e/94/db/7e94db5560ea776c9c34e6e295412c58.gif');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
-
-        /* Trang 2 & 3: Background Gradient Pastel mới */
+        
+        /* ĐÃ SỬA LỖI ĐÈ NÚT: Tăng padding-top để chừa chỗ cho nút Trở lại */
         #page2, #page3 {
             background: linear-gradient(135deg, var(--beige-light) 0%, var(--pink-pastel) 50%, var(--green-pastel) 100%);
-            justify-content: flex-start; padding-top: 80px; padding-bottom: 50px;
+            justify-content: flex-start; padding-top: 100px; padding-bottom: 50px;
         }
 
-        /* Nút Cố Định (Nhạc, Idea) */
+        /* Nút Cố Định */
         .fixed-btn {
             position: fixed; z-index: 1000; border: none; font-weight: bold;
             background-color: var(--brown-dark); color: var(--white);
@@ -61,55 +60,33 @@
         .fixed-btn:hover { transform: scale(1.05); }
         #music-btn { bottom: 20px; left: 20px; }
         #idea-btn { top: 20px; right: 20px; }
-        .back-btn { top: 20px; left: 15px; background: rgba(255, 255, 255, 0.8); color: var(--brown-dark); border: 2px solid var(--brown-dark); }
+        .back-btn { top: 20px; left: 15px; background: rgba(255, 255, 255, 0.9); color: var(--brown-dark); border: 2px solid var(--brown-dark); }
         .back-btn:hover { background: var(--brown-dark); color: var(--white); }
 
-        /* ================= TRANG 1: TRANG CHỦ ================= */
-        .home-container {
-            text-align: center; z-index: 10; width: 95%; max-width: 600px;
-            background: transparent; padding: 20px;
-        }
-        .home-title {
-            color: var(--brown-pastel); font-size: min(8.5vw, 2.8rem); 
-            margin: 5px 0 10px 0; white-space: nowrap; 
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff; 
-        }
-        .subtitle {
-            color: var(--white); font-size: min(4.5vw, 1.4rem); margin-bottom: 30px; 
-            font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-        }
-        .btn-main {
-            background-color: var(--brown-dark); color: var(--white);
-            border: none; padding: 14px 35px; font-size: 1.1rem;
-            border-radius: 30px; cursor: pointer; font-weight: bold;
-            box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4); transition: 0.2s; width: 100%; max-width: 300px;
-        }
+        /* ================= TRANG 1 ================= */
+        .home-container { text-align: center; z-index: 10; width: 95%; max-width: 600px; padding: 20px; }
+        .home-title { color: var(--brown-pastel); font-size: min(8.5vw, 2.8rem); margin: 5px 0 10px 0; white-space: nowrap; text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
+        .subtitle { color: var(--white); font-size: min(4.5vw, 1.4rem); margin-bottom: 30px; font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        .btn-main { background-color: var(--brown-dark); color: var(--white); border: none; padding: 14px 35px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 6px 15px rgba(139, 103, 74, 0.4); transition: 0.2s; width: 100%; max-width: 300px; display: inline-block;}
         .btn-main:active { transform: scale(0.95); }
-        
         .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 10px; width: 100%; max-width: 400px; margin-inline: auto;}
-        .social-btn {
-            flex: 1; padding: 10px 0; border-radius: 20px; text-decoration: none; text-align: center;
-            color: white; font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
+        .social-btn { flex: 1; padding: 10px 0; border-radius: 20px; text-decoration: none; text-align: center; color: white; font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .facebook { background-color: #1877F2; } .discord { background-color: #5865F2; } .ngl { background-color: #FF4F79; }
 
-        /* ================= TRANG 2: KHO CHARACTER PASTEL ================= */
-        .archive-container { width: 95%; max-width: 1000px; margin: 0 auto; text-align: center; }
-
-        .archive-title {
-            color: var(--brown-dark); font-size: min(7vw, 2.2rem); 
-            margin-bottom: 5px; font-weight: 800;
-            text-shadow: 2px 2px 0px var(--white);
-        }
+        /* ================= TRANG 2 ================= */
+        .archive-container { width: 95%; max-width: 1000px; margin: 0 auto; text-align: center; position: relative;}
+        .archive-title { color: var(--brown-dark); font-size: min(7vw, 2.2rem); margin-bottom: 5px; font-weight: 800; text-shadow: 2px 2px 0px var(--white); }
         .archive-desc { color: var(--text-dark); font-style: italic; margin-bottom: 15px; font-size: 1rem; opacity: 0.8;}
+        .stat-text { font-size: 0.95rem; color: var(--brown-dark); background: rgba(255,255,255,0.7); display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; }
 
-        .stat-text {
-            font-size: 0.95rem; color: var(--brown-dark); background: rgba(255,255,255,0.7);
-            display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px;
+        /* Bộ công cụ Tìm kiếm & Sắp xếp */
+        .search-sort-wrapper {
+            display: flex; gap: 10px; width: 100%; max-width: 700px; margin: 0 auto 20px auto;
+            flex-direction: column; /* Mặc định trên đt xếp dọc cho rộng rãi */
         }
-
-        /* Thanh Tìm Kiếm */
-        .search-box { width: 100%; max-width: 600px; margin: 0 auto 20px auto; }
+        @media (min-width: 600px) { .search-sort-wrapper { flex-direction: row; } }
+        
+        .search-box { flex: 1; position: relative; }
         .search-box input {
             width: 100%; padding: 12px 25px; border-radius: 30px; border: 2px solid var(--white);
             outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8);
@@ -117,80 +94,67 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s;
         }
         .search-box input:focus { background: var(--white); border-color: var(--brown-pastel); }
+        
+        .sort-box select {
+            width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid var(--white);
+            outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.8);
+            color: var(--brown-dark); font-weight: 800; text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer;
+        }
 
-        /* Thanh Lọc Tags - GỌN HƠN BẰNG SCROLL NGANG */
-        .filter-wrapper {
-            width: 100%; max-width: 800px; margin: 0 auto 25px auto;
-            position: relative;
-        }
-        .filter-container {
-            display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;
-            scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;
-            justify-content: flex-start; /* Vuốt ngang trên mobile */
-        }
+        /* Thanh Lọc Tags ngang */
+        .filter-wrapper { width: 100%; max-width: 800px; margin: 0 auto 25px auto; }
+        .filter-container { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; justify-content: flex-start; }
         .filter-container::-webkit-scrollbar { display: none; }
-        .filter-btn {
-            background: rgba(255,255,255,0.7); border: 1px solid var(--white);
-            color: var(--text-dark); padding: 6px 15px; border-radius: 20px;
-            cursor: pointer; font-size: 0.9rem; font-weight: 700; white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
-        }
+        .filter-btn { background: rgba(255,255,255,0.7); border: 1px solid var(--white); color: var(--text-dark); padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0; }
         .filter-btn.active { background: var(--brown-dark); color: var(--white); border-color: var(--brown-dark); }
 
-        /* Lưới Thẻ Nhân Vật Mới (Có Yêu thích & Lượt xem) */
-        .character-list { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-            gap: 15px; width: 100%; padding-bottom: 30px;
-        }
-        
-        .char-card {
-            background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 2px solid var(--white);
-            display: flex; flex-direction: column; gap: 10px; text-align: left; position: relative;
-            transition: 0.2s;
-        }
+        /* Lưới Thẻ Nhân Vật */
+        .character-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; width: 100%; padding-bottom: 30px; }
+        .char-card { background: rgba(255, 255, 255, 0.9); padding: 25px 20px 20px 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid var(--white); display: flex; flex-direction: column; gap: 12px; text-align: left; position: relative; transition: 0.2s; }
         .char-card:active { transform: scale(0.98); }
         
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .char-name { font-size: 1.3rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2; padding-right: 10px;}
-        
-        /* Nút thả tim */
-        .fav-btn {
-            background: none; border: none; font-size: 1.4rem; cursor: pointer;
-            transition: 0.2s; outline: none; padding: 5px; margin: -5px;
+        /* Huy hiệu (Badge) Mới / Hot */
+        .char-badge {
+            position: absolute; top: -10px; right: -10px;
+            background: #FF4F79; color: white; padding: 4px 12px;
+            border-radius: 12px; font-size: 0.75rem; font-weight: 800;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 2;
         }
+
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .char-name { font-size: 1.35rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2; padding-right: 10px;}
+        
+        /* Thả tim */
+        .fav-btn { background: none; border: none; font-size: 1.4rem; cursor: pointer; transition: 0.2s; outline: none; padding: 5px; margin: -5px; }
         .fav-btn.active { animation: pop 0.3s; }
         @keyframes pop { 50% { transform: scale(1.3); } }
 
-        .char-tags-mini { display: flex; flex-wrap: wrap; gap: 5px; }
+        .char-tags-mini { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 5px; }
         .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 4px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; }
         
-        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; }
-        .char-views { font-size: 0.85rem; color: #888; font-weight: 600; display: flex; align-items: center; gap: 4px;}
-        
-        .char-action {
-            font-size: 0.85rem; color: var(--brown-dark); background: transparent; 
-            border: 1.5px solid var(--brown-dark); padding: 5px 15px; border-radius: 15px; 
-            font-weight: bold; cursor: pointer;
-        }
+        .card-footer { display: flex; justify-content: flex-end; align-items: center;}
+        .char-action { font-size: 0.85rem; color: var(--brown-dark); background: transparent; border: 2px solid var(--brown-dark); padding: 6px 18px; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.2s;}
         .char-card:hover .char-action { background: var(--brown-dark); color: var(--white); }
 
-        /* ================= MODAL THÔNG TIN & FORM ================= */
+        /* ================= MODAL ================= */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: var(--white); width: 90%; max-width: 450px; padding: 25px; border-radius: 25px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #999; }
         
-        .modal-name { color: var(--brown-dark); font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 15px;}
+        .modal-name { color: var(--brown-dark); font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 5px;}
+        .modal-copy-btn { background: var(--beige-light); border: none; color: var(--brown-dark); padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; font-weight: bold; cursor: pointer; display: block; margin: 0 auto 15px auto; }
+        
         .info-section { background: var(--beige-light); padding: 15px; border-radius: 15px; margin-bottom: 15px; color: var(--text-dark); font-size: 0.95rem; line-height: 1.5; }
         .info-section h3 { color: var(--brown-dark); font-size: 0.95rem; margin-bottom: 5px; }
         
-        .pass-section input { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--beige-light); outline: none; font-size: 1rem; margin-bottom: 10px; background: #fafafa;}
+        .pass-section input { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--beige-light); outline: none; font-size: 1rem; margin-bottom: 10px; background: #fafafa; text-align: center;}
         .pass-section input:focus { border-color: var(--brown-pastel); }
 
-        /* Css sơ cho Tường Idea (giữ tông nền trắng sữa) */
+        /* Tường Idea */
         .wall-container { width: 100%; max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.8); border-radius: 25px; padding: 20px;}
         .wall-header { text-align: center; margin-bottom: 20px; }
-        .idea-post { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .idea-post { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); text-align: left; }
     </style>
 </head>
 <body>
@@ -200,14 +164,12 @@
 
     <button id="idea-btn" class="fixed-btn" onclick="goToPage3()">💡 Tường Idea</button>
 
-    <!-- ================= TRANG 1 ================= -->
+    <!-- TRANG 1 -->
     <div id="page1" class="page active">
         <div class="home-container">
             <h1 class="home-title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
             <h2 class="subtitle">Welcome to Bơ’s little archive</h2>
-            
             <button class="btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
-            
             <div class="social-links">
                 <a href="#" target="_blank" class="social-btn facebook">Facebook</a>
                 <a href="#" target="_blank" class="social-btn discord">Discord</a>
@@ -216,31 +178,38 @@
         </div>
     </div>
 
-    <!-- ================= TRANG 2: KHO CHARACTER PASTEL ================= -->
+    <!-- TRANG 2: KHO CHARACTER -->
     <div id="page2" class="page">
         <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="archive-container">
-            <!-- Đã xoá ký tự dư thừa -->
             <h1 class="archive-title">HỘP BÁNH QUY CỦA BƠ</h1>
             <p class="archive-desc">Mỗi chiếc bánh là một câu chuyện Bơ gửi gắm</p>
-            
             <div class="stat-text">Kho hiện có: <span id="charCount">0</span> chiếc bánh 🍪</div>
             
-            <!-- Trượt ngang gọn gàng -->
             <div class="filter-wrapper">
                 <div class="filter-container" id="filterContainer"></div>
             </div>
 
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm anh chồng yêu thích..." onkeyup="searchChar()">
+            <!-- TÍNH NĂNG TÌM KIẾM & SẮP XẾP -->
+            <div class="search-sort-wrapper">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm anh chồng yêu thích..." onkeyup="searchChar()">
+                </div>
+                <div class="sort-box">
+                    <select id="sortSelect" onchange="searchChar()">
+                        <option value="default">Sắp xếp: Mặc định</option>
+                        <option value="az">Tên: A - Z</option>
+                        <option value="za">Tên: Z - A</option>
+                    </select>
+                </div>
             </div>
             
             <div class="character-list" id="charList"></div>
         </div>
     </div>
 
-    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= -->
+    <!-- TRANG 3: TƯỜNG Ý TƯỞNG -->
     <div id="page3" class="page">
         <button class="fixed-btn back-btn" onclick="goToPage1()">🔙 Trở lại</button>
         <div class="wall-container">
@@ -266,11 +235,13 @@
         </div>
     </div>
 
-    <!-- ================= MODAL CHARACTER ================= -->
+    <!-- MODAL CHARACTER -->
     <div id="charModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2 id="modalName" class="modal-name">Tên Nhân Vật</h2>
+            <!-- TÍNH NĂNG SHARE -->
+            <button class="modal-copy-btn" onclick="copyCharLink()">🔗 Copy link chia sẻ</button>
             
             <div class="info-section">
                 <h3>📖 BACKSTORY</h3>
@@ -294,11 +265,11 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // THÊM: baseViews (Lượt xem gốc ảo) để web trông sống động
+        // DATA NHÂN VẬT: Thêm property 'badge' để gán nhãn (ví dụ: "Mới 🌟", "Hot 🔥"). Có thể bỏ trống "".
         const characters = [
-            { id: 1, name: "Taehyung Tổng Tài", tags: ["Bg", "Lạnh lùng", "Tổng tài"], backstory: "Người thừa kế...", first: "Cà phê của tôi?", pass: "bo123", link: "https://link", baseViews: 1250 },
-            { id: 2, name: "Sói Xám Dịu Dàng", tags: ["Gb", "Dịu dàng", "Thú nhân"], backstory: "Sói lang thang...", first: "Đừng sợ...", pass: "bocute", link: "https://link", baseViews: 843 },
-            { id: 3, name: "Cún Con Nũng Nịu", tags: ["Bl", "Đáng yêu", "Học đường"], backstory: "Đàn em khoá dưới...", first: "Đợi em với!", pass: "123", link: "https://link", baseViews: 2314 }
+            { id: 1, name: "Taehyung Tổng Tài", badge: "Hot 🔥", tags: ["Bg", "Lạnh lùng", "Tổng tài"], backstory: "Người thừa kế...", first: "Cà phê của tôi?", pass: "bo123", link: "https://link" },
+            { id: 2, name: "Sói Xám Dịu Dàng", badge: "Mới 🌟", tags: ["Gb", "Dịu dàng", "Thú nhân"], backstory: "Sói lang thang...", first: "Đừng sợ...", pass: "bocute", link: "https://link" },
+            { id: 3, name: "Cún Con Nũng Nịu", badge: "", tags: ["Bl", "Đáng yêu", "Học đường"], backstory: "Đàn em khoá dưới...", first: "Đợi em với!", pass: "123", link: "https://link" }
         ];
 
         /* ------ CHUYỂN TRANG ------ */
@@ -323,54 +294,43 @@
         }
         function filterByTag(tag, btn) { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentFilter = tag; searchChar(); }
 
-        /* ------ TÍNH NĂNG YÊU THÍCH (Lưu máy) ------ */
+        /* ------ YÊU THÍCH ------ */
         function getFavs() { return JSON.parse(localStorage.getItem('bo_favs')) || []; }
         function toggleFav(id, event) {
-            event.stopPropagation(); // Ngăn mở hồ sơ khi bấm thả tim
-            let favs = getFavs();
-            let btn = event.target;
+            event.stopPropagation();
+            let favs = getFavs(); let btn = event.target;
             if (favs.includes(id)) { favs = favs.filter(f => f !== id); btn.innerText = "🤍"; btn.classList.remove('active'); } 
             else { favs.push(id); btn.innerText = "❤️"; btn.classList.add('active'); }
             localStorage.setItem('bo_favs', JSON.stringify(favs));
         }
 
-        /* ------ TÍNH NĂNG LƯỢT XEM ------ */
-        function getViews(id, baseViews) {
-            let localViews = JSON.parse(localStorage.getItem('bo_views')) || {};
-            return baseViews + (localViews[id] || 0); // View ảo + View click thực tế
-        }
-        function incrementView(id) {
-            let localViews = JSON.parse(localStorage.getItem('bo_views')) || {};
-            localViews[id] = (localViews[id] || 0) + 1;
-            localStorage.setItem('bo_views', JSON.stringify(localViews));
-        }
-
-        /* ------ RENDER DANH SÁCH ------ */
+        /* ------ RENDER & SẮP XẾP ------ */
         function renderCharacters(list) {
             const listDiv = document.getElementById('charList'); listDiv.innerHTML = ""; 
             document.getElementById('charCount').innerText = list.length; 
             let favs = getFavs();
 
-            if(list.length === 0) { listDiv.innerHTML = "<p style='width: 100%; text-align: center; color: var(--brown-dark);'>Không tìm thấy 🥲</p>"; return; }
+            if(list.length === 0) { listDiv.innerHTML = "<p style='width: 100%; text-align: center; color: var(--brown-dark); grid-column: 1/-1;'>Không tìm thấy 🥲</p>"; return; }
             
             list.forEach(char => {
                 let div = document.createElement('div'); div.className = "char-card"; 
                 let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
                 let isFav = favs.includes(char.id);
-                let currentView = getViews(char.id, char.baseViews);
+                
+                // Hiển thị huy hiệu (Badge) nếu có
+                let badgeHtml = char.badge ? `<div class="char-badge">${char.badge}</div>` : '';
                 
                 div.innerHTML = `
+                    ${badgeHtml}
                     <div class="card-header">
                         <div class="char-name">${char.name}</div>
                         <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav(${char.id}, event)">${isFav ? '❤️' : '🤍'}</button>
                     </div>
                     <div class="char-tags-mini">${tagsHtml}</div>
                     <div class="card-footer">
-                        <div class="char-views">👁️ <span id="view-${char.id}">${currentView}</span></div>
                         <button class="char-action" onclick="openModal(${char.id}, event)">Xem hồ sơ</button>
                     </div>
                 `;
-                // Cho phép bấm cả khung để mở
                 div.onclick = (e) => { if(e.target.tagName !== 'BUTTON') openModal(char.id, e); };
                 listDiv.appendChild(div);
             });
@@ -378,27 +338,31 @@
 
         function searchChar() {
             let input = document.getElementById('searchInput').value.toLowerCase();
+            let sortType = document.getElementById('sortSelect').value;
+
+            // 1. Lọc
             let filtered = characters.filter(char => {
                 let matchText = char.name.toLowerCase().includes(input) || char.tags.join(" ").toLowerCase().includes(input);
                 let matchFilter = (currentFilter === "All") ? true : char.tags.includes(currentFilter);
                 return matchText && matchFilter;
             });
+
+            // 2. Sắp xếp
+            if (sortType === 'az') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortType === 'za') {
+                filtered.sort((a, b) => b.name.localeCompare(a.name));
+            } // Nếu default thì giữ nguyên thứ tự khai báo trong code
+
             renderCharacters(filtered);
         }
 
-        /* ------ MODAL CHARACTER ------ */
+        /* ------ MODAL & COPY LINK ------ */
         let currentChar = null;
         function openModal(id, event) {
             if(event) event.stopPropagation();
             let char = characters.find(c => c.id === id);
             currentChar = char; 
-            
-            // Tăng lượt xem thực tế
-            incrementView(char.id);
-            // Cập nhật số hiển thị bên ngoài (nếu đang ở trang 2)
-            let viewSpan = document.getElementById(`view-${char.id}`);
-            if(viewSpan) viewSpan.innerText = getViews(char.id, char.baseViews);
-
             document.getElementById('charModal').style.display = "flex"; 
             document.getElementById('modalName').innerText = char.name;
             document.getElementById('modalBackstory').innerText = char.backstory; 
@@ -406,15 +370,24 @@
             document.getElementById('passInput').value = ""; 
             document.getElementById('passError').style.display = "none"; 
             document.getElementById('chatLinkSection').style.display = "none";
+            document.querySelector('.modal-copy-btn').innerText = "🔗 Copy link chia sẻ";
         }
         function closeModal() { document.getElementById('charModal').style.display = "none"; }
+        
         function checkPassword() {
             let input = document.getElementById('passInput').value;
             if (input === currentChar.pass) { document.getElementById('passError').style.display = "none"; document.getElementById('chatLinkSection').style.display = "block"; document.getElementById('modalLink').href = currentChar.link; } 
             else { document.getElementById('passError').style.display = "block"; document.getElementById('chatLinkSection').style.display = "none"; }
         }
 
-        /* ------ TƯỜNG IDEA CƠ BẢN ------ */
+        function copyCharLink() {
+            // Giả lập copy link của nhân vật (thực tế lấy link chat của nhân vật)
+            navigator.clipboard.writeText(currentChar.link).then(() => {
+                document.querySelector('.modal-copy-btn').innerText = "✅ Đã copy link!";
+            });
+        }
+
+        /* ------ TƯỜNG IDEA ------ */
         function openIdeaForm() { document.getElementById('ideaModal').style.display = "flex"; }
         function closeIdeaForm() { document.getElementById('ideaModal').style.display = "none"; }
         function loadIdeas() {
@@ -423,7 +396,7 @@
             if(ideas.length === 0) { feed.innerHTML = "<p style='text-align: center; color: var(--brown-pastel); margin-top:20px;'>Chưa có ý tưởng nào 🌰</p>"; return; }
             ideas.forEach(idea => {
                 let div = document.createElement('div'); div.className = "idea-post";
-                div.innerHTML = `<strong>[${idea.cat}]</strong> <span>${idea.text}</span>`;
+                div.innerHTML = `<strong style="color: var(--brown-dark);">[${idea.cat}]</strong> <span style="color: #444;">${idea.text}</span>`;
                 feed.appendChild(div);
             });
         }
