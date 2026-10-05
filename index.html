@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= CẤU HÌNH GIAO DIỆN (CSS) ================= */
+        /* ================= CẤU HÌNH GIAO DIỆN CHUNG ================= */
         :root {
             --color-title: #9A704F; 
             --color-sub: #C49A75;   
@@ -18,24 +18,18 @@
         }
 
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            box-sizing: border-box; margin: 0; padding: 0;
             font-family: 'Nunito', sans-serif;
         }
 
         body {
             background-image: url('https://i.pinimg.com/originals/7e/94/db/7e94db5560ea776c9c34e6e295412c58.gif');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
+            background-size: cover; background-position: center;
+            background-attachment: fixed; background-repeat: no-repeat;
+            overflow-x: hidden; position: relative; min-height: 100vh;
         }
 
-        /* Các Nút Cố Định (Nhạc, Góp Idea) */
+        /* Nút Góc (Nhạc, Góp Idea) */
         #music-btn {
             position: fixed; bottom: 20px; left: 20px;
             background-color: var(--btn-bg); color: var(--btn-text);
@@ -52,26 +46,29 @@
         }
         #music-btn:hover, #idea-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
 
-        /* Khung quản lý trang */
+        /* Quản lý Trang */
         .page {
             display: none; min-height: 100vh; padding: 15px;
             flex-direction: column; align-items: center; justify-content: center;
-            position: relative;
         }
         .page.active { display: flex; }
-        
-        /* Chỉnh riêng Trang 3 (Tường) hiển thị dạng khối dài dọc */
         #page3.active { justify-content: flex-start; padding-top: 80px; }
 
-        /* KHUNG CHỨA TRANG 1 & 2 */
-        .container {
+        /* Nút Trở Lại Chung */
+        .back-btn {
+            position: absolute; top: 20px; left: 15px;
+            background: rgba(255, 255, 255, 0.9); border: 2px solid var(--color-title);
+            color: var(--color-title); padding: 8px 15px; border-radius: 20px;
+            cursor: pointer; font-weight: bold; transition: 0.2s; z-index: 100; box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+        .back-btn:hover { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+
+        /* ================= TRANG 1: TRANG CHỦ ================= */
+        .home-container {
             text-align: center; z-index: 10; width: 95%; max-width: 700px;
             background: transparent; padding: 35px 15px; transform: translateY(-5%); 
         }
-        .page2-container { transform: translateY(0); margin-top: 50px; padding: 30px 15px; }
-
-        /* Typography Trang Chủ */
-        .title {
+        .home-title {
             color: var(--color-title); font-size: min(8.5vw, 2.8rem); 
             margin: 5px 0 10px 0; white-space: nowrap; 
             text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; 
@@ -80,23 +77,13 @@
             color: var(--white); font-size: min(4.5vw, 1.4rem); margin-bottom: 25px; 
             white-space: nowrap; font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.6);
         }
-        .small-text {
-            color: var(--white); font-style: italic; margin-bottom: 20px;
-            font-size: 1.1rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-        }
-
-        /* Nút Bấm Chính */
         .btn-main {
             background-color: var(--btn-bg); color: var(--btn-text);
             border: none; padding: 14px 35px; font-size: 1.2rem;
             border-radius: 30px; cursor: pointer; font-weight: bold;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); transition: 0.3s;
-            text-decoration: none; display: inline-block;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); transition: 0.3s; display: inline-block;
         }
         .btn-main:hover { transform: translateY(-3px); filter: brightness(1.1); }
-        .btn-main.small { padding: 10px 20px; font-size: 1rem; }
-
-        /* Mạng Xã Hội */
         .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 8px; flex-wrap: nowrap; width: 100%; }
         .social-btn {
             flex: 1; padding: 10px 0; border-radius: 20px; text-decoration: none;
@@ -106,111 +93,106 @@
         .social-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
         .facebook { background-color: #1877F2; } .discord { background-color: #5865F2; } .ngl { background-color: #FF4F79; }
 
-        /* TRANG 2 (KHO NHÂN VẬT) */
-        .back-btn {
-            position: absolute; top: 20px; left: 15px;
-            background: rgba(255, 255, 255, 0.9); border: 2px solid var(--color-title);
-            color: var(--color-title); padding: 8px 15px; border-radius: 20px;
-            cursor: pointer; font-weight: bold; transition: 0.2s; z-index: 100; box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        /* ================= TRANG 2: KHO CHARACTER (THIẾT KẾ RỘNG & XỊN XÒ) ================= */
+        .archive-container { 
+            width: 98%; max-width: 1000px; /* Rộng rãi tối đa */
+            margin-top: 50px; padding: 20px 10px; text-align: center;
         }
-        .back-btn:hover { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
 
+        /* Chữ Hộp bánh quy cực kỳ đẹp mắt, chống tràn, viền nâu ruột kem */
+        .archive-title {
+            color: var(--btn-text); 
+            font-size: min(7.5vw, 2.5rem); 
+            margin-bottom: 10px; line-height: 1.4;
+            white-space: normal; /* Không bao giờ bị tràn lỗi nữa */
+            word-wrap: break-word;
+            /* Tạo viền chữ (stroke) màu nâu đậm cực rõ và sắc nét */
+            text-shadow: 2px 2px 0px var(--btn-bg), -2px -2px 0px var(--btn-bg), 
+                         2px -2px 0px var(--btn-bg), -2px 2px 0px var(--btn-bg), 
+                         0 5px 15px rgba(0,0,0,0.6); 
+        }
+
+        .archive-desc {
+            color: var(--white); font-style: italic; margin-bottom: 20px;
+            font-size: 1.1rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+        }
+
+        .stat-text {
+            font-size: 1.05rem; color: var(--btn-bg); background: rgba(255,255,255,0.95);
+            display: inline-block; padding: 6px 20px; border-radius: 20px;
+            font-weight: bold; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Thanh Tìm Kiếm Trải Dài */
+        .search-box { width: 100%; margin-bottom: 20px; }
         .search-box input {
-            width: 100%; max-width: 400px; padding: 12px 20px; border-radius: 25px;
-            border: 2px solid var(--color-sub); outline: none; font-size: 1rem;
-            margin-bottom: 25px; background: rgba(255, 255, 255, 0.95); color: var(--color-title); font-weight: bold;
+            width: 100%; max-width: 700px; padding: 15px 30px; border-radius: 35px;
+            border: 3px solid rgba(255, 255, 255, 0.6); outline: none; font-size: 1.1rem;
+            background: rgba(253, 245, 239, 0.95); color: var(--color-title); font-weight: bold;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); text-align: center; transition: 0.3s;
         }
+        .search-box input:focus { border-color: var(--btn-bg); transform: scale(1.02); }
 
-        .character-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; width: 100%; }
+        /* Bảng Nút Lọc (Filters) */
+        .filter-container {
+            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+            margin-bottom: 30px; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.85); border: 1px solid var(--color-sub);
+            color: var(--color-title); padding: 8px 18px; border-radius: 20px;
+            cursor: pointer; font-size: 0.9rem; font-weight: bold; transition: 0.2s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
+
+        /* Lưới Thẻ Nhân Vật Mới */
+        .character-list { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 20px; width: 100%; 
+        }
         .char-card {
-            background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 15px;
-            cursor: pointer; box-shadow: 0 6px 15px rgba(0,0,0,0.2); color: var(--color-title);
-            font-weight: bold; font-size: 1.2rem; border: 2px dashed var(--color-sub); transition: 0.3s;
+            background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px;
+            cursor: pointer; box-shadow: 0 6px 15px rgba(0,0,0,0.2); border: 2px dashed var(--color-sub);
+            transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 12px;
         }
-        .char-card:hover { transform: scale(1.05); background: var(--bg-cream); border-color: var(--color-title); }
+        .char-card:hover { transform: translateY(-5px); border-color: var(--color-title); box-shadow: 0 10px 25px rgba(0,0,0,0.3); background: #fff; }
+        
+        .char-name { font-size: 1.4rem; color: var(--color-title); font-weight: 800; text-align: center; }
+        .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+        .mini-tag { background: var(--bg-cream); color: var(--btn-bg); padding: 5px 12px; border-radius: 12px; font-size: 0.8rem; border: 1px solid #eee; font-weight: bold; }
+        .char-action { margin-top: 5px; font-size: 0.9rem; color: var(--white); background: var(--color-sub); padding: 6px 18px; border-radius: 15px; font-weight: bold; transition: 0.2s; }
+        .char-card:hover .char-action { background: var(--btn-bg); }
 
-        /* ================= TƯỜNG Ý TƯỞNG (TRANG 3 MỚI - RỘNG RÃI, NHIỀU TÍNH NĂNG) ================= */
-        .wall-container {
-            width: 100%; max-width: 800px; margin: 0 auto;
-            background: rgba(253, 245, 239, 0.95); /* Màu kem đục nhẹ */
-            border-radius: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-            overflow: hidden; border: 2px solid #fff;
-        }
-
-        .wall-header {
-            background: var(--bg-cream); padding: 35px 20px;
-            text-align: center; border-bottom: 2px dashed var(--color-sub);
-        }
-
-        /* Lỗi tràn chữ đã được fix bằng white-space: normal */
-        .wall-title {
-            color: var(--color-title); font-size: min(7vw, 2.2rem);
-            margin-bottom: 10px; line-height: 1.3;
-            white-space: normal; /* CHÌA KHÓA SỬA LỖI TRÀN CHỮ */
-            word-wrap: break-word; text-shadow: none;
-        }
-
+        /* ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= */
+        .wall-container { width: 100%; max-width: 800px; margin: 0 auto; background: rgba(253, 245, 239, 0.95); border-radius: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; border: 2px solid #fff; }
+        .wall-header { background: var(--bg-cream); padding: 35px 20px; text-align: center; border-bottom: 2px dashed var(--color-sub); }
+        .wall-title { color: var(--color-title); font-size: min(7vw, 2.2rem); margin-bottom: 10px; line-height: 1.3; white-space: normal; word-wrap: break-word; }
         .wall-desc { color: #666; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; font-weight: 600;}
-        
-        .wall-stats {
-            margin-top: 15px; font-size: 0.9rem; color: var(--color-sub);
-            font-weight: bold; background: #fff; display: inline-block;
-            padding: 5px 15px; border-radius: 20px; border: 1px solid var(--color-sub);
-        }
-
+        .wall-stats { margin-top: 15px; font-size: 0.9rem; color: var(--color-sub); font-weight: bold; background: #fff; display: inline-block; padding: 5px 15px; border-radius: 20px; border: 1px solid var(--color-sub); }
         .idea-feed { padding: 25px 20px; display: flex; flex-direction: column; gap: 20px; min-height: 300px; }
-
-        /* Thẻ ý tưởng rộng rãi hơn */
-        .idea-post {
-            background: #ffffff; border-radius: 20px; padding: 20px;
-            text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid #eee; position: relative;
-        }
-
-        .idea-post-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 12px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px;
-        }
+        .idea-post { background: #ffffff; border-radius: 20px; padding: 20px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .idea-post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
         .idea-author { display: flex; align-items: center; gap: 10px; font-weight: bold; color: var(--color-title); font-size: 1.1rem; }
-        .idea-avatar { font-size: 1.8rem; }
-        
-        /* Thời gian thực */
         .idea-time { font-size: 0.85rem; color: #999; font-weight: 600; background: #f9f9f9; padding: 3px 10px; border-radius: 10px; }
-        
         .idea-text { color: #444; line-height: 1.6; font-size: 1rem; word-wrap: break-word; }
         .idea-cat { color: var(--btn-bg); font-weight: 800; }
-
-        /* Nút xoá dữ liệu (Tính năng thêm) */
         .clear-btn { background: transparent; border: none; color: #ff7675; text-decoration: underline; font-size: 0.8rem; cursor: pointer; margin-top: 20px; display: block; width: 100%; text-align: center; }
 
-        /* ================= MODAL & FORM ================= */
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); z-index: 2000;
-            justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: var(--white); width: 90%; max-width: 500px; padding: 30px;
-            border-radius: 20px; position: relative; max-height: 90vh; overflow-y: auto;
-            border: 3px solid var(--color-title); box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
+        /* ================= MODAL CHUNG & FORM ================= */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: var(--bg-cream); width: 90%; max-width: 500px; padding: 30px; border-radius: 20px; position: relative; max-height: 90vh; overflow-y: auto; border: 4px solid var(--btn-bg); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--color-sub); transition: 0.2s; }
         .close-btn:hover { color: var(--color-title); transform: scale(1.2); }
-
-        /* Form Ý Tưởng */
         .input-group { margin-bottom: 15px; text-align: left;}
         .input-group label { font-weight: bold; color: var(--color-title); display: block; margin-bottom: 8px; }
-        .input-group select, .input-group textarea {
-            width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--color-sub);
-            outline: none; font-size: 1rem; font-family: inherit; background: #fff;
-        }
+        .input-group select, .input-group textarea { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--color-sub); outline: none; font-size: 1rem; font-family: inherit; background: #fff; }
         .input-group textarea { height: 150px; resize: none; line-height: 1.5; }
         .input-group select:focus, .input-group textarea:focus { border-color: var(--color-title); }
-
-        /* Modal Info Character */
         .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; justify-content: center; }
-        .tag { background: var(--color-sub); color: var(--white); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; }
-        .info-section { text-align: left; margin-bottom: 20px; background: var(--bg-cream); padding: 15px; border-radius: 10px; color: #555; line-height: 1.5; }
+        .tag { background: var(--btn-bg); color: var(--white); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; }
+        .info-section { text-align: left; margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 10px; color: #555; line-height: 1.5; border: 1px solid #eee;}
         .info-section h3 { color: var(--color-title); font-size: 1rem; margin-bottom: 8px; border-bottom: 1px dashed var(--color-sub); padding-bottom: 5px; }
         .pass-section { margin-top: 25px; }
         .pass-section input { padding: 12px; border-radius: 10px; border: 2px solid var(--color-sub); margin-right: 10px; outline: none; font-size: 1rem; width: 100%; margin-bottom: 10px; }
@@ -225,10 +207,10 @@
 
     <button id="idea-btn" onclick="goToPage3()">💡 Tường Idea</button>
 
-    <!-- ================= TRANG 1: TRANG CHỦ ================= -->
+    <!-- ================= TRANG 1 ================= -->
     <div id="page1" class="page active">
-        <div class="container">
-            <h1 class="title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
+        <div class="home-container">
+            <h1 class="home-title">𝑩Á𝑵𝑯 𝑸𝑼𝒀 𝑩Ơ</h1>
             <h2 class="subtitle">Welcome to Bơ’s little archive</h2>
             
             <button class="btn-main" onclick="goToPage2()">Vào kho bánh 🍪</button>
@@ -241,51 +223,52 @@
         </div>
     </div>
 
-    <!-- ================= TRANG 2: KHO CHARACTER ================= -->
+    <!-- ================= TRANG 2: KHO CHARACTER MỚI ================= -->
     <div id="page2" class="page">
         <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
-        <div class="container page2-container">
-            <h1 class="title" style="font-size: min(8vw, 2.2rem);">HỘP BÁNH QUY CỦA BƠ</h1>
-            <p class="small-text">Mỗi chiếc bánh là một câu chuyện Bơ gửi gắm</p>
+        <div class="archive-container">
+            <!-- Tiêu đề mới không tràn chữ, màu mới -->
+            <h1 class="archive-title">HỘP BÁNH QUY CỦA BƠ ࣪˖ Ი𐑼 ⋆</h1>
+            <p class="archive-desc">Mỗi chiếc bánh là một câu chuyện Bơ gửi gắm</p>
             
+            <!-- Đếm số lượng nhân vật -->
+            <div class="stat-text">Kho hiện có: <span id="charCount">0</span> chiếc bánh 🍪</div>
+            
+            <!-- Bộ lọc (Sẽ tự động tạo nút dựa vào tags của nhân vật) -->
+            <div class="filter-container" id="filterContainer"></div>
+
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 Tìm chồng..." onkeyup="searchChar()">
+                <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm anh chồng yêu thích..." onkeyup="searchChar()">
             </div>
+            
             <div class="character-list" id="charList"></div>
         </div>
     </div>
 
-    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG (GIAO DIỆN FULL) ================= -->
+    <!-- ================= TRANG 3: TƯỜNG Ý TƯỞNG ================= -->
     <div id="page3" class="page">
         <button class="back-btn" onclick="goToPage1()">🔙 Trở lại</button>
 
         <div class="wall-container">
-            <!-- Header Tường -->
             <div class="wall-header">
-                <!-- Chữ đã fix rớt dòng -->
                 <h2 class="wall-title">Babi thả ý tưởng, Bơ thả chữ ❀</h2>
                 <p class="wall-desc">Đừng ngại ngùng nha, ý tưởng của nàng chính là nguồn cảm hứng của Bơ đó!</p>
-                <button class="btn-main" onclick="openIdeaForm()">+ Góp hạt cho Bơ</button>
+                <button class="btn-main" style="padding: 10px 25px; font-size: 1rem;" onclick="openIdeaForm()">+ Góp hạt cho Bơ</button>
                 <br>
                 <div class="wall-stats">Tổng số hạt: <span id="ideaCount">0</span> 🌰</div>
             </div>
 
-            <!-- Khu vực hiện ý tưởng -->
-            <div class="idea-feed" id="ideaFeed">
-                <!-- Data load bằng JS -->
-            </div>
-            
+            <div class="idea-feed" id="ideaFeed"></div>
             <button class="clear-btn" onclick="clearIdeas()">Làm sạch tường (Xoá data máy)</button>
         </div>
     </div>
 
     <!-- ================= MODAL NHẬP IDEA ================= -->
     <div id="ideaModal" class="modal">
-        <div class="modal-content" style="background: var(--bg-cream);">
+        <div class="modal-content">
             <span class="close-btn" onclick="closeIdeaForm()">&times;</span>
-            <h2 class="title" style="margin-top: 0; font-size: 1.8rem; text-align: center; text-shadow: none;">Góp Idea Cho Bơ 🌰</h2>
-            
+            <h2 class="home-title" style="margin-top: 0; font-size: 1.8rem; text-align: center; text-shadow: none;">Góp Idea Cho Bơ 🌰</h2>
             <div class="input-group">
                 <label>Thể loại nàng muốn:</label>
                 <select id="ideaCategory">
@@ -295,12 +278,10 @@
                     <option value="Gl">Gl (Girl x Girl)</option>
                 </select>
             </div>
-
             <div class="input-group">
                 <label>Nội dung ý tưởng:</label>
                 <textarea id="ideaText" placeholder="Nữ chính đi du lịch miền núi, lỡ đạp lên giày..."></textarea>
             </div>
-            
             <button class="btn-main" style="width: 100%; font-size: 1.1rem;" onclick="submitIdea()">Đăng Lên Tường ✨</button>
         </div>
     </div>
@@ -309,7 +290,7 @@
     <div id="charModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modalName" class="title" style="margin-top: 0; font-size: 2rem; text-shadow: none;">Tên Nhân Vật</h2>
+            <h2 id="modalName" class="home-title" style="margin-top: 0; font-size: 2rem; text-shadow: none; text-align: center;">Tên Nhân Vật</h2>
             <div id="modalTags" class="tags"></div>
             
             <div class="info-section">
@@ -323,8 +304,8 @@
 
             <div class="pass-section">
                 <input type="password" id="passInput" placeholder="Nhập pass để chat...">
-                <button class="btn-main small" style="width: 100%;" onclick="checkPassword()">Mở Khóa Chat</button>
-                <p id="passError" style="color: #ff4757; font-weight: bold; display: none; margin-top: 10px;">Sai pass rồi, thử lại nhé 🥺!</p>
+                <button class="btn-main" style="width: 100%; padding: 10px;" onclick="checkPassword()">Mở Khóa Chat</button>
+                <p id="passError" style="color: #ff4757; font-weight: bold; display: none; margin-top: 10px; text-align: center;">Sai pass rồi, thử lại nhé 🥺!</p>
             </div>
 
             <div id="chatLinkSection" style="display: none; margin-top: 25px; text-align: center;">
@@ -335,24 +316,26 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
-        // DATA NHÂN VẬT 
+        // DATA NHÂN VẬT CỦA BẠN (Sửa thông tin, thêm nhân vật vào đây, hệ thống lọc sẽ tự động lấy tags)
         const characters = [
-            { id: 1, name: "Taehyung Tổng Tài", tags: ["Lạnh lùng", "Tổng tài", "Ngọt sủng"], backstory: "Anh ta là người thừa kế...", first: "Cô lại làm đổ cà phê?", pass: "bo123", link: "https://link-chat-cua-ban.com/1" },
-            { id: 2, name: "Sói Xám Dịu Dàng", tags: ["Dịu dàng", "Thú nhân"], backstory: "Một con sói lang thang...", first: "Đừng sợ, tôi ở đây.", pass: "bocute", link: "https://link-chat-cua-ban.com/2" }
+            { id: 1, name: "Taehyung Tổng Tài", tags: ["Bg", "Lạnh lùng", "Tổng tài", "Ngọt sủng"], backstory: "Anh ta là người thừa kế...", first: "Cô lại làm đổ cà phê?", pass: "bo123", link: "https://link-chat-cua-ban.com/1" },
+            { id: 2, name: "Sói Xám Dịu Dàng", tags: ["Gb", "Dịu dàng", "Thú nhân"], backstory: "Một con sói lang thang...", first: "Đừng sợ, tôi ở đây.", pass: "bocute", link: "https://link-chat-cua-ban.com/2" },
+            { id: 3, name: "Cún Con Nũng Nịu", tags: ["Bl", "Đáng yêu", "Học đường"], backstory: "Đàn em khoá dưới luôn bám đuôi...", first: "Tiền bối ơi, đợi em với!", pass: "123", link: "https://link-chat-cua-ban.com/3" }
         ];
 
-        /* ------ CHUYỂN TRANG ------ */
+        /* ------ HỆ THỐNG CHUYỂN TRANG ------ */
         function hideAllPages() {
             document.getElementById('page1').classList.remove('active');
             document.getElementById('page2').classList.remove('active');
             document.getElementById('page3').classList.remove('active');
         }
-
         function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); document.getElementById('idea-btn').style.display = 'block'; }
         
         function goToPage2() { 
             hideAllPages(); document.getElementById('page2').classList.add('active'); 
-            document.getElementById('idea-btn').style.display = 'none'; renderCharacters(characters); 
+            document.getElementById('idea-btn').style.display = 'none'; 
+            renderFilters(); // Tạo nút lọc tự động
+            searchChar();    // Hiển thị tất cả nhân vật
         }
 
         function goToPage3() { 
@@ -370,22 +353,66 @@
             isPlaying = !isPlaying;
         }
 
-        /* ------ TÌM KIẾM NHÂN VẬT ------ */
+        /* ------ HỆ THỐNG KHO NHÂN VẬT MỚI (LỌC & TÌM KIẾM) ------ */
+        let currentFilter = "All";
+
+        // Hàm tự động tạo nút lọc dựa vào tags có sẵn
+        function renderFilters() {
+            let allTags = new Set();
+            characters.forEach(c => c.tags.forEach(t => allTags.add(t)));
+            let filterContainer = document.getElementById('filterContainer');
+            
+            // Nút "Tất cả" mặc định
+            filterContainer.innerHTML = `<button class="filter-btn active" onclick="filterByTag('All', this)">Tất cả</button>`;
+            
+            // Render các nút tags khác
+            Array.from(allTags).sort().forEach(tag => {
+                let btn = document.createElement('button');
+                btn.className = "filter-btn";
+                btn.innerText = tag;
+                btn.onclick = function() { filterByTag(tag, this); };
+                filterContainer.appendChild(btn);
+            });
+        }
+
+        function filterByTag(tag, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = tag;
+            searchChar(); 
+        }
+
         function renderCharacters(list) {
             const listDiv = document.getElementById('charList'); listDiv.innerHTML = ""; 
-            if(list.length === 0) { listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--white); font-style: italic;'>Không tìm thấy chồng yêu 🥲</p>"; return; }
+            document.getElementById('charCount').innerText = list.length; // Cập nhật số đếm bánh
+            
+            if(list.length === 0) { listDiv.innerHTML = "<p style='grid-column: 1 / -1; color: var(--white); font-style: italic; font-size: 1.1rem; padding: 20px;'>Không tìm thấy bé nào khớp với yêu cầu 🥲</p>"; return; }
+            
             list.forEach(char => {
-                let div = document.createElement('div'); div.className = "char-card"; div.innerText = char.name;
+                let div = document.createElement('div'); div.className = "char-card"; 
+                // Render tags mini lên trên thẻ
+                let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
+                
+                div.innerHTML = `
+                    <div class="char-name">${char.name}</div>
+                    <div class="char-tags-mini">${tagsHtml}</div>
+                    <div class="char-action">📖 Xem hồ sơ</div>
+                `;
                 div.onclick = () => openModal(char); listDiv.appendChild(div);
             });
         }
+
         function searchChar() {
             let input = document.getElementById('searchInput').value.toLowerCase();
-            let filtered = characters.filter(char => char.name.toLowerCase().includes(input) || char.tags.join(" ").toLowerCase().includes(input));
+            let filtered = characters.filter(char => {
+                let matchText = char.name.toLowerCase().includes(input) || char.tags.join(" ").toLowerCase().includes(input);
+                let matchFilter = (currentFilter === "All") ? true : char.tags.includes(currentFilter);
+                return matchText && matchFilter;
+            });
             renderCharacters(filtered);
         }
 
-        /* ------ MODAL NHÂN VẬT ------ */
+        /* ------ MODAL CHI TIẾT NHÂN VẬT ------ */
         let currentChar = null;
         function openModal(char) {
             currentChar = char; document.getElementById('charModal').style.display = "flex"; document.getElementById('modalName').innerText = char.name;
@@ -395,17 +422,16 @@
             document.getElementById('passInput').value = ""; document.getElementById('passError').style.display = "none"; document.getElementById('chatLinkSection').style.display = "none";
         }
         function closeModal() { document.getElementById('charModal').style.display = "none"; }
+        
         function checkPassword() {
             let input = document.getElementById('passInput').value;
             if (input === currentChar.pass) { document.getElementById('passError').style.display = "none"; document.getElementById('chatLinkSection').style.display = "block"; document.getElementById('modalLink').href = currentChar.link; } 
             else { document.getElementById('passError').style.display = "block"; document.getElementById('chatLinkSection').style.display = "none"; }
         }
 
-        /* ------ HỆ THỐNG TƯỜNG IDEA MỚI (TÍNH NĂNG ĐẦY ĐỦ) ------ */
+        /* ------ TƯỜNG IDEA ------ */
         function openIdeaForm() { document.getElementById('ideaModal').style.display = "flex"; }
         function closeIdeaForm() { document.getElementById('ideaModal').style.display = "none"; }
-
-        // Hàm tạo thời gian thực format chuẩn
         function getCurrentTime() {
             let now = new Date();
             let h = now.getHours().toString().padStart(2, '0');
@@ -414,64 +440,29 @@
             let mon = (now.getMonth() + 1).toString().padStart(2, '0');
             return `${h}:${m} - ${d}/${mon}`;
         }
-
         function loadIdeas() {
-            const feed = document.getElementById('ideaFeed');
-            feed.innerHTML = ""; 
+            const feed = document.getElementById('ideaFeed'); feed.innerHTML = ""; 
             let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            
-            // Cập nhật bộ đếm
             document.getElementById('ideaCount').innerText = ideas.length;
-
-            if(ideas.length === 0) {
-                feed.innerHTML = "<p style='color: #888; text-align: center; font-style: italic; font-size: 1.1rem; padding: 40px 0;'>Tường đang trống, babi hãy là người góp hạt đầu tiên nhé! 🌰</p>";
-                return;
-            }
-
+            if(ideas.length === 0) { feed.innerHTML = "<p style='color: #888; text-align: center; font-style: italic; font-size: 1.1rem; padding: 40px 0;'>Tường đang trống, babi hãy là người góp hạt đầu tiên nhé! 🌰</p>"; return; }
             ideas.forEach(idea => {
-                let card = document.createElement('div');
-                card.className = "idea-post";
-                card.innerHTML = `
-                    <div class="idea-post-header">
-                        <div class="idea-author">
-                            <span class="idea-avatar">👤</span> Ẩn danh 🫧
-                        </div>
-                        <div class="idea-time">🕰️ ${idea.time}</div>
-                    </div>
-                    <div class="idea-text">
-                        <span class="idea-cat">[${idea.cat}]</span> ${idea.text}
-                    </div>
-                `;
+                let card = document.createElement('div'); card.className = "idea-post";
+                card.innerHTML = `<div class="idea-post-header"><div class="idea-author"><span class="idea-avatar">👤</span> Ẩn danh 🫧</div><div class="idea-time">🕰️ ${idea.time}</div></div><div class="idea-text"><span class="idea-cat">[${idea.cat}]</span> ${idea.text}</div>`;
                 feed.appendChild(card);
             });
         }
-
         function submitIdea() {
             let cat = document.getElementById('ideaCategory').value;
             let text = document.getElementById('ideaText').value.trim();
-
             if(text === "") { alert("Babi ơi, quên nhập chữ mất tiêu rồi kìa!"); return; }
-
             let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            
-            // Lưu kèm thời gian thực
             ideas.unshift({ cat: cat, text: text, time: getCurrentTime() });
-            
             localStorage.setItem('bo_ideas', JSON.stringify(ideas));
-
-            document.getElementById('ideaText').value = "";
-            closeIdeaForm();
-            loadIdeas(); // Render lại feed ngay lập tức
+            document.getElementById('ideaText').value = ""; closeIdeaForm(); loadIdeas(); 
         }
+        function clearIdeas() { if(confirm("Bạn có chắc chắn muốn xoá hết tất cả các ý tưởng không?")) { localStorage.removeItem('bo_ideas'); loadIdeas(); } }
 
-        function clearIdeas() {
-            if(confirm("Bạn có chắc chắn muốn xoá hết tất cả các ý tưởng trên tường không?")) {
-                localStorage.removeItem('bo_ideas');
-                loadIdeas();
-            }
-        }
-
-        // Click ra ngoài để đóng Modal
+        // Bấm ra ngoài đóng khung
         window.onclick = function(event) {
             if (event.target == document.getElementById('charModal')) closeModal();
             if (event.target == document.getElementById('ideaModal')) closeIdeaForm();
