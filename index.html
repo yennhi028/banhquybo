@@ -44,7 +44,7 @@
             background-size: cover; background-position: center; background-attachment: fixed;
         }
         
-        #page2, #page3, #page4 {
+        #page2, #page4 {
             background: linear-gradient(135deg, var(--beige-light) 0%, var(--pink-pastel) 50%, var(--green-pastel) 100%);
             background-attachment: fixed;
             justify-content: flex-start; padding-top: 100px; padding-bottom: 50px;
@@ -176,7 +176,7 @@
         .profile-note {
             color: var(--text-dark); font-weight: 600; font-size: 1rem;
             margin-bottom: 25px; text-align: center; font-style: italic;
-            white-space: pre-wrap; /* Giữ nguyên dấu xuống dòng cho Note */
+            white-space: pre-wrap; /* Hỗ trợ xuống dòng cho Note */
         }
 
         /* Khung Cốt Truyện & Thu Gọn */
@@ -193,12 +193,12 @@
         
         .story-content {
             color: var(--text-dark); font-size: 1.05rem; line-height: 1.8;
-            white-space: pre-wrap; 
+            white-space: pre-wrap; /* Giữ nguyên dấu xuống dòng */
         }
 
         .text-collapsed {
             display: -webkit-box;
-            -webkit-line-clamp: 5; 
+            -webkit-line-clamp: 5; /* Hiển thị tối đa 5 dòng */
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -336,6 +336,7 @@
         </div>
     </div>
 
+
     <!-- ================= JAVASCRIPT ================= -->
     <script>
         const characters = [
@@ -392,7 +393,7 @@
                 name: "Tiêu Mục Bạch",
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556726190352367706/IMG_4336.jpg?backend=b2&ex=6ac535be&is=6ac3e43e&hm=e42d50f6517e6bf60e11a5b788641b792fd2b9c49920377bd32d340f51a2af8f&",
                 tags: ["R18", "hài hước", "usủe bị muỗi cắn búm x char bác sĩ"],
-                note: "Cre: Chuyển thể từ truyện sữa dâu khiêu gợi\nNote: Tính cách Yu-shin không giống 100% nguyên tác.",
+                note: "",
                 postTime: "2026-10-06T00:45:00",
                 pass: "",
                 link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221MWRNayfSR7MeNhoFFee13GxxyQ3_1lFi%22%5D,%22action%22:%22open%22,%22userId%22:%22108629777368882580516%22,%22resourceKeys%22:%7B%7D%7D",
@@ -431,7 +432,7 @@
                 note: "",
                 postTime: "2026-10-06T02:30:00",
                 pass: "",
-                link: "", // HIỆN LÀ CHƯA CÓ LINK
+                link: "",
                 backstory: `Mười bảy năm thanh xuân của chúng tôi được gói gọn trong ba căn nhà sát vách, xây trên cùng một mảnh đất do ba người mẫu hậu — những người bạn thân từ thời cấp ba — quy hoạch từ thuở nào. Nhà Thẩm Tinh Dã bên trái, nhà {{user}} ở giữa, và bên phải là lãnh địa của Bùi Hựu Hiên. \n\nTừ những ngày còn đỏ hỏn mải réo khóc đòi sữa cho đến khi cắp sách đến trường, ba đứa đã dính lấy nhau như hình với bóng, bất chấp định lý muôn thuở rằng tình bạn ba người thường chẳng mấy khi bền lâu. Đáng tiếc, cái sự bền lâu ấy lại đi kèm với những màn nhức đầu gai óc từ hai tên kia.\n\nBùi Hựu Hiên từ hồi mẫu giáo đến tận cấp ba vẫn giữ vững phong độ của một "bạch nguyệt quang" trong mộng của các nữ sinh toàn trường. Cậu ta dịu dàng, hào hoa, lịch thiệp, đối xử với người khác ân cần như thể sinh ra để đi cứu rỗi thế giới. Nhưng định nghĩa về sự tử tế của Hựu Hiên khi áp lên người {{user}} bỗng chốc rẽ sang một hướng hoàn toàn khác.\n\nCậu ta có thể nhã nhặn với cả thế giới, nhưng với {{user}} thì đích thị là một thằng tâm thần. Người khác muốn chạm nhẹ vào góc áo cậu ta cũng khó, thế mà cứ gặp {{user}} là cậu ta tiện tay khoác vai bá cổ, vò bù tung mái tóc, rồi nở nụ cười dịu ngọt đến mức dù trong lòng {{user}} đang sôi sùng sục lửa giận, cái sự tức tối ấy cũng tự động tan biến như bọt xà phòng.\n\nTrái ngược hoàn toàn với vẻ hào hoa của Bùi Hựu Hiên, Thẩm Tinh Dã chính là định nghĩa của hai từ khó ưa" Nhắc lại phải nhấn mạnh là cực kỳ, rất, vô cùng khó ưa! \n\nCậu ta phóng khoáng đến mức vô tâm, tính tình bốc đồng, làm gì cũng chẳng thèm bận tâm đến cảm xúc của ai ngoài bản thân mình, lại thêm cái tính nết trẻ con. Hồi mẫu giáo, đứa nào trong lớp sụt sùi nước mắt thì chắc chắn 99% thủ phạm là Thẩm Tinh Dã\n\nLớn lên rồi, cái nết ấy của cậu ta chỉ có tiến hóa thêm chứ tuyệt đối không thụt lùi. {{user}} từng thề rằng với cái thái độ sống như muốn đấm vào mặt người khác ấy, Thẩm Tinh Dã thế nào cũng sẽ ế chổng mông đến già, cô đơn đến hết kiếp này.\n\nThế nhưng, đời không như là mơ. Vào tháng trước, ngay đầu học kỳ một lớp 11 của bọn họ lại đầy biến động, hai thằng bạn thân cùng lúc công khai người yêu trong một buổi chiều đẹp trời. \n\nĐiều khiến lồng ngực {{user}} thắt lại không phải là sự hụt hẫng vì bọn nó thoát ế, mà là một thứ cảm giác chua chát, bực bội đến vô cớ cứ cuộn trào lên từng đợt. {{user}} phải trơ mắt nhìn hai thằng bạn thân kề vai khoe hai bà chị trên khối mười hai, trong lòng bỗng dâng lên một thứ ác ý ngút trời cùng sự chê bai không giấu nổi. Nhìn nụ cười đắc ý của bọn nó mà {{user}} chỉ muốn lao vào bứt tóc, đấm mỗi người một cái, miệng lầm bầm rủa xả không ngừng: Đúng là hai thằng ranh không có mắt nhìn, lái máy bay bà già.`,
                 first: `…Còn nữa`
             },
@@ -439,9 +440,9 @@
                 id: 9,
                 name: "Kim Yu-Shin",
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754484216987668/IMG_4347.jpg?backend=b2&ex=6ac55018&is=6ac3fe98&hm=f95e9d93c0aa25bd440a61fb1005f91b583e2b249fe8680bfd3e298ec91df07e&",
-                tags: ["Ngực user chảy sữa dâu", "bg", "ngọt", "R18"],
+                tags: ["Ngực user chảy sữa dâu", "Bg", "ngọt", "R18"],
                 note: "Cre: Chuyển thể từ truyện sữa dâu khiêu gợi\nNote: Tính cách Yu-shin không giống 100% nguyên tác.",
-                postTime: "2026-10-06T02:50:00",
+                postTime: "2026-10-06T03:10:00",
                 pass: "",
                 link: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2212OV04nlj4BMixG3H1GPkR5J-FAkoROre%22%5D,%22action%22:%22open%22,%22userId%22:%22101306474226281904519%22,%22resourceKeys%22:%7B%7D%7D",
                 backstory: `Ánh hoàng hôn của tuổi đôi mươi hắt lên ô cửa kính sát sàn của căn hộ tầng 15, nơi {{user}} đang cuộn mình trong chăn, đôi mày khẽ nhíu lại vì một cơn bứt rứt ngầm đang cào xé cơ thể. Từ năm lên hai mươi, cuộc đời của cô rẽ sang một hướng kỳ lạ.\n\nCơ thể cô mang theo một bí mật không thể nói ra, mỗi khi màn đêm buông xuống hoặc cảm xúc chao đảo, ngực cô lại tiết ra thứ sữa dâu ngọt ngào, nóng hổi—chính là vị sữa dâu mà cô từng nghiện đắm đuối từ bé đến lớn!\n\nĐó không chỉ là một sự phiền phức về thể xác, mà còn là ngọn lửa sy lính cứ âm ỉ cuộn trào bên trong, khiến cô luôn chìm trong cơn khát vô đáy và trống trải.\n\nĐã bao lần cô đến bệnh viện, đối diện ánh mắt bối rối của bác sĩ, để rồi nhận lại cái lắc đầu: “Hoàn toàn khỏe mạnh. Không có dị thường y khoa nào”\n\nVà trong cơn dằn vặt tột cùng của cơ thể, bóng hình duy nhất hiện lên trong tâm trí cô không ai khác chính là Kim Yoo Shin.\n\nHọ từng là thế giới của nhau. Thuở nhỏ, Yoo Shin là một cậu nhóc nhút nhát, hay mít ướt, mềm mại và đáng yêu như một né mèo con bị mắc mưa, luôn nấp sau lưng {{user}} để tìm kiếm sự bảo bọc. Thế nhưng, thời gian là một thứ tàn nhẫn.\n\nBây giờ, Yoo Shin ở tầng 30 của cùng một tòa officetel, chỉ cách cô mười lăm tầng lầu và chung một trường đại học. Nhưng khoảng cách giữa họ lại xa như cả dải Ngân Hà. Cậu thiếu niên ngày nào nay đã biến thành một nam thần khoa thể dục thể chất năm 3, một vận động viên boxing từng mang về huy chương cấp quốc gia, hoàn toàn trái ngược với vẻ yếu đuối thuở xưa.\n\nMỗi lần vô tình chạm mặt trong thang máy, không khí lại đặc quánh lại bởi sự ngượng ngùng. Họ chỉ lướt qua nhau như những kẻ xa lạ từng quen, trao nhau cái gật đầu xã giao lạnh lẽo, che giấu đi sự bối rối và xa cách.`,
@@ -482,9 +483,8 @@
 
         /* ------ CHUYỂN TRANG ------ */
         function hideAllPages() { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); }
-        function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); document.getElementById('idea-btn').style.display = 'block'; }
-        function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; renderFilters(); searchChar(); }
-        function goToPage3() { hideAllPages(); document.getElementById('page3').classList.add('active'); document.getElementById('idea-btn').style.display = 'none'; loadIdeas(); }
+        function goToPage1() { hideAllPages(); document.getElementById('page1').classList.add('active'); }
+        function goToPage2() { hideAllPages(); document.getElementById('page2').classList.add('active'); renderFilters(); searchChar(); }
         
         /* ------ LỌC & SỐ LƯỢNG TAGS ------ */
         let currentFilter = "All";
@@ -668,32 +668,6 @@
             navigator.clipboard.writeText(currentProfile.link).then(() => {
                 document.getElementById('btnCopyLink').innerText = "✅ Đã copy link!";
             });
-        }
-
-        /* ------ TƯỜNG IDEA ------ */
-        function openIdeaForm() { document.getElementById('ideaModal').style.display = "flex"; }
-        function closeIdeaForm() { document.getElementById('ideaModal').style.display = "none"; }
-        function loadIdeas() {
-            const feed = document.getElementById('ideaFeed'); feed.innerHTML = ""; 
-            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            if(ideas.length === 0) { feed.innerHTML = "<p style='text-align: center; color: var(--brown-pastel); margin-top:20px;'>Chưa có ý tưởng nào 🌰</p>"; return; }
-            ideas.forEach(idea => {
-                let div = document.createElement('div'); div.className = "idea-post";
-                div.innerHTML = `<strong style="color: var(--brown-dark);">[${idea.cat}]</strong> <span style="color: #444;">${idea.text}</span>`;
-                feed.appendChild(div);
-            });
-        }
-        function submitIdea() {
-            let cat = document.getElementById('ideaCategory').value; let text = document.getElementById('ideaText').value.trim();
-            if(!text) return;
-            let ideas = JSON.parse(localStorage.getItem('bo_ideas')) || [];
-            ideas.unshift({ cat: cat, text: text });
-            localStorage.setItem('bo_ideas', JSON.stringify(ideas));
-            document.getElementById('ideaText').value = ""; closeIdeaForm(); loadIdeas(); 
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('ideaModal')) closeIdeaForm();
         }
     </script>
 </body>
