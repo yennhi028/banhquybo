@@ -104,7 +104,7 @@
 
         /* ================= TRANG 2: KHO CHARACTER ================= */
         .archive-container { 
-            width: 100%; /* Đổi từ 98% sang 100% để mở rộng không gian tối đa */
+            width: 100%; /* Mở rộng không gian tối đa */
             padding: 0 5px; 
             max-width: 1200px; margin: 0 auto; text-align: center; position: relative;
         }
@@ -152,7 +152,7 @@
         .view-btn { border: none; background: transparent; padding: 8px 12px; border-radius: 10px; cursor: pointer; font-size: 1.1rem; transition: 0.2s; opacity: 0.5;}
         .view-btn.active { background: var(--beige-light); opacity: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
 
-        /* ================= LƯỚI THẺ NHÂN VẬT ================= */
+        /* ================= LƯỚI THẺ NHÂN VẬT (2 CỘT CHO ĐIỆN THOẠI) ================= */
         .character-list { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); /* ÉP BUỘC HIỂN THỊ 2 CỘT 1 DÒNG TRÊN ĐIỆN THOẠI */
@@ -367,7 +367,6 @@
         <div class="current-song" id="currentSongName">Đang tải nhạc...</div>
         
         <div class="music-controls">
-            <!-- Nút bấm lùi và tiến đều chuyển bài ngẫu nhiên -->
             <button class="music-btn" onclick="playRandomSong()">⏮</button>
             <button class="music-btn play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
             <button class="music-btn" onclick="playRandomSong()">⏭</button>
@@ -793,15 +792,22 @@
             document.getElementById('profileBackstory').classList.add('text-collapsed'); document.getElementById('profileFirst').classList.add('text-collapsed');
             document.getElementById('btnMoreBackstory').innerText = "Hiển thị toàn bộ ▾"; document.getElementById('btnMoreFirst').innerText = "Hiển thị toàn bộ ▾";
 
-            // --- HỆ THỐNG ĐẾM LƯỢT XEM THẬT (Gọi API) ---
+            // --- HỆ THỐNG ĐẾM LƯỢT XEM THẬT (ĐÃ FIX LỖI CACHE & GẠCH DƯỚI) ---
             let viewsEl = document.getElementById('profileViews');
             viewsEl.innerText = "•ﻌ• Đang tải..."; // Hiển thị lúc chờ mạng
             
-            // Dùng CounterAPI để cộng 1 lượt xem thật lưu trên mạng
-            fetch(`https://api.counterapi.dev/v1/bo_archive_2026/char_${id}/up`)
+            // Ép trình duyệt luôn tải số mới bằng cache: 'no-store' và thêm Time Stamp
+            fetch(`https://api.counterapi.dev/v1/boarchive2026/char${id}/up?t=${Date.now()}`, {
+                method: 'GET',
+                cache: 'no-store'
+            })
                 .then(response => response.json())
                 .then(data => {
-                    viewsEl.innerText = `•ﻌ• ${data.count} lượt xem`;
+                    if(data && data.count !== undefined) {
+                        viewsEl.innerText = `•ﻌ• ${data.count} lượt xem`;
+                    } else {
+                        viewsEl.innerText = `•ﻌ• 0 lượt xem`;
+                    }
                 })
                 .catch(error => {
                     // Nếu mạng lag hoặc lỗi thì báo không tải được
