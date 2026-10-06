@@ -147,22 +147,32 @@
         .view-btn { border: none; background: transparent; padding: 8px 12px; border-radius: 10px; cursor: pointer; font-size: 1.1rem; transition: 0.2s; opacity: 0.5;}
         .view-btn.active { background: var(--beige-light); opacity: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
 
-        /* Lưới Thẻ Nhân Vật Mới (Có Ảnh) */
+        /* ================= HIỂN THỊ 2 CỘT TRÊN MOBILE ================= */
         .character-list { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 25px; width: 100%; padding-bottom: 30px; 
+            grid-template-columns: repeat(2, 1fr); /* Mặc định chia 2 cột cho mobile */
+            gap: 12px; 
+            width: 100%; padding-bottom: 30px; 
             transition: 0.3s ease-in-out;
         }
 
+        /* Khi dùng PC, ipad lớn thì có thể thêm nhiều cột hơn */
+        @media (min-width: 768px) {
+            .character-list {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        /* Chế độ List ngang (Mở rông ra 1 cột) */
         .character-list.list-view {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
             max-width: 800px; margin: 0 auto;
         }
 
         .char-card { 
             background: rgba(255, 255, 255, 0.95); 
-            border-radius: 20px; overflow: hidden;
+            border-radius: 18px; overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.06); 
             border: 2px solid var(--white); 
             display: flex; flex-direction: column; 
@@ -171,12 +181,14 @@
         }
         @keyframes fadeInCard { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         
-        .char-card:hover { transform: translateY(-8px); border-color: var(--brown-pastel); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+        .char-card:hover { transform: translateY(-5px); border-color: var(--brown-pastel); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
         
         .char-img-wrapper {
-            position: relative; width: 100%; height: 220px; overflow: hidden;
+            position: relative; width: 100%; height: 160px; overflow: hidden; /* Giảm chiều cao ảnh trên mobile */
             background-color: var(--beige-light);
         }
+        @media (min-width: 768px) { .char-img-wrapper { height: 220px; } }
+        
         .char-img {
             width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
         }
@@ -184,54 +196,54 @@
         
         .img-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%);
             pointer-events: none;
         }
 
         .fav-btn {
-            position: absolute; top: 12px; right: 12px;
+            position: absolute; top: 8px; right: 8px;
             background: rgba(255,255,255,0.85); border: none;
-            border-radius: 50%; width: 35px; height: 35px;
+            border-radius: 50%; width: 28px; height: 28px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; cursor: pointer; backdrop-filter: blur(4px);
+            font-size: 0.9rem; cursor: pointer; backdrop-filter: blur(4px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.2s; z-index: 10;
         }
         .fav-btn:hover { transform: scale(1.1); background: #fff; }
         .fav-btn.favorited { color: #ff4757; }
 
         .badges-container {
-            position: absolute; bottom: 12px; left: 12px;
-            display: flex; gap: 6px; z-index: 10;
+            position: absolute; bottom: 8px; left: 8px;
+            display: flex; gap: 4px; z-index: 10;
         }
         .badge {
-            padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;
+            padding: 3px 8px; border-radius: 10px; font-size: 0.65rem; font-weight: 800;
             background: rgba(255,255,255,0.9); color: var(--text-dark);
             box-shadow: 0 2px 5px rgba(0,0,0,0.2); backdrop-filter: blur(2px);
         }
         .badge.alert { background: var(--red-alert); color: #fff; }
 
-        .char-info { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1;}
-        .char-name { font-size: 1.4rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2;}
-        .char-time { font-size: 0.8rem; color: #888; font-weight: 600; font-style: italic;}
-        .char-tags-mini { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
-        .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 4px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--white);}
+        /* Tinh chỉnh size chữ trên mobile cho vừa 2 cột */
+        .char-info { padding: 12px; display: flex; flex-direction: column; gap: 6px; flex: 1;}
+        .char-name { font-size: 1.05rem; color: var(--brown-dark); font-weight: 800; line-height: 1.2;}
+        .char-time { font-size: 0.7rem; color: #888; font-weight: 600; font-style: italic;}
+        .char-tags-mini { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+        .mini-tag { background: var(--beige-light); color: var(--brown-dark); padding: 3px 8px; border-radius: 8px; font-size: 0.65rem; font-weight: 700; border: 1px solid var(--white);}
         
         .char-note-mini { 
-            font-size: 0.85rem; color: var(--text-dark); font-weight: 600; font-style: italic; 
+            font-size: 0.75rem; color: var(--text-dark); font-weight: 600; font-style: italic; 
             margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-            background: rgba(243, 233, 224, 0.5); padding: 8px; border-radius: 10px;
+            background: rgba(243, 233, 224, 0.5); padding: 6px; border-radius: 8px;
         }
         
-        .card-footer { display: flex; justify-content: flex-end; align-items: center; margin-top: auto; padding-top: 10px;}
-        .char-action { font-size: 0.9rem; color: var(--white); background: var(--brown-dark); border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;}
-        .char-card:hover .char-action { background: #7a583d; transform: scale(1.05);}
+        .card-footer { display: flex; justify-content: center; align-items: center; margin-top: auto; padding-top: 10px;}
+        .char-action { font-size: 0.8rem; color: var(--white); background: var(--brown-dark); border: none; padding: 8px 10px; width: 100%; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; text-align: center;}
+        .char-card:hover .char-action { background: #7a583d; transform: scale(1.03);}
 
-        .character-list.list-view .char-card { flex-direction: row; height: 180px; align-items: stretch; }
-        .character-list.list-view .char-img-wrapper { width: 180px; height: 100%; }
-        .character-list.list-view .char-info { justify-content: center; }
-        @media (max-width: 600px) {
-            .character-list.list-view .char-card { flex-direction: column; height: auto; }
-            .character-list.list-view .char-img-wrapper { width: 100%; height: 200px; }
+        /* List View */
+        .character-list.list-view .char-card { flex-direction: row; height: auto; align-items: stretch; }
+        .character-list.list-view .char-img-wrapper { width: 120px; height: auto; min-height: 120px; }
+        @media (min-width: 600px) {
+            .character-list.list-view .char-img-wrapper { width: 180px; }
         }
 
         /* ================= TRANG 4: HỒ SƠ CHI TIẾT NHÂN VẬT ================= */
@@ -381,6 +393,7 @@
                     </div>
                     <div class="sort-box">
                         <select id="sortSelect" onchange="searchChar()">
+                            <option value="custom" selected>Mặc định (Xếp theo ý Bơ)</option>
                             <option value="newest">Mới nhất</option>
                             <option value="oldest">Cũ nhất</option>
                             <option value="az">Tên: A - Z</option>
@@ -440,14 +453,12 @@
     <script>
         /* ================= HỆ THỐNG MUSIC PLAYER ================= */
         const playListSongs = [
-            { name: "Mỹ nhân ngư", src: "snaptik.vn_7681308722055875858.mp3" },
-            { name: "Dòng thác thời gian", src: "snaptik.vn_7687606496569462036.mp3" },
-            { name: "Biển đảo và em", src: "snaptik.vn_7678480025296899349.mp3" },
             { name: "Một lời đồn", src: "snaptik.vn_7638236693891681556.mp3" },
-            { name: "Summertime Sadness", src: "snaptik.vn_7471733173227883783.mp3" },
+            { name: "Đừng yêu nữa em mệt rồi", src: "snaptik.vn_7683516664788405525.mp3" },
             { name: "Say my name", src: "snaptik.vn_7663602013598453012.mp3" },
             { name: "Shape of You", src: "snaptik.vn_7562495638060010770.mp3" },
-            { name: "Hẹn em dưới pháo hoa", src: "snaptik.vn_7688702704675245330.mp3" }
+            { name: "Hẹn em dưới pháo hoa", src: "snaptik.vn_7688702704675245330.mp3" },
+            { name: "Summertime Sadness", src: "snaptik.vn_7471733173227883783.mp3" }
         ];
 
         let currentSongIndex = -1;
@@ -459,21 +470,17 @@
             audioObj = document.getElementById('bg-audio');
             renderPlaylistUI();
             
-            // Random bài hát đầu tiên
             currentSongIndex = Math.floor(Math.random() * playListSongs.length);
             loadSong(currentSongIndex);
             
-            // Tự động nhảy bài Random khi hết nhạc
             audioObj.addEventListener('ended', playRandomSong);
 
-            // Xử lý Autoplay
             let playPromise = audioObj.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
                     isPlaying = true;
                     updatePlayState();
                 }).catch(error => {
-                    // Nếu trình duyệt chặn, chờ user click 1 phát bất kỳ là Play luôn
                     const unlockAudio = () => {
                         if (!userInteracted && !isPlaying) {
                             audioObj.play();
@@ -493,7 +500,6 @@
             audioObj.src = playListSongs[index].src;
             document.getElementById('currentSongName').innerText = playListSongs[index].name;
             
-            // Làm nổi bật bài đang hát trong list
             document.querySelectorAll('.playlist li').forEach((li, i) => {
                 if(i === index) li.classList.add('active');
                 else li.classList.remove('active');
@@ -518,7 +524,7 @@
             
             if(isPlaying) {
                 playPauseBtn.innerText = "⏸";
-                musicToggleBtn.classList.add('playing'); // Cứ hát là quay tròn
+                musicToggleBtn.classList.add('playing'); 
             } else {
                 playPauseBtn.innerText = "▶";
                 musicToggleBtn.classList.remove('playing');
@@ -556,68 +562,66 @@
             });
         }
 
-        // Kích hoạt máy nhạc ngay khi Web load xong
         window.addEventListener('DOMContentLoaded', initMusicPlayer);
 
 
-        /* ================= DỮ LIỆU NHÂN VẬT ================= */
+        /* ================= DỮ LIỆU NHÂN VẬT & CÀI ĐẶT THỨ TỰ (order) ================= */
         const characters = [
             { 
-                id: 1, 
-                name: "Cố Triết Vũ", 
+                id: 1, name: "Cố Triết Vũ", order: 1,
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556715988764991508/IMG_4228.jpg?backend=b2&ex=6ac52c3e&is=6ac3dabe&hm=e576ac1c8d82ef0586fa700a9214267d8f21a616092e4691c4b927617fdaadec&",
                 tags: ["Bg", "bạn trai chó điên", "có plot ẩn", "R18", "nghiện bú ti user"], 
                 note: "Note: Char không sạch, nghiện thuốc.",
                 postTime: "2026-10-05T20:30:00", pass: "", link: "", backstory: `Bạn trai tôi là chó điên...`, first: `Thế nhưng, con chó điên này thi thoảng lại làm tôi không thể ngừng yêu...` 
             },
             {
-                id: 2, name: "Hạ Sâm Niên",
+                id: 2, name: "Hạ Sâm Niên", order: 2,
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556720658778562642/IMG_4144.png?backend=b2&ex=6ac53097&is=6ac3df17&hm=228885cb4918a07359de2e9ee564f2389a94ac598986b8d292e020f10da9e996&",
                 tags: ["Bg", "Cún con tâm cơ", "hồng hài nhi", "ngọt", "nũng nịu", "txvt"],
                 note: "Note: Có lệnh nsfw (ăn ẻm khi trên 18 nha)", postTime: "2026-10-06T00:05:00", pass: "", link: "#", backstory: `Em và Hạ Sâm Niên quen nhau...`, first: `Hôm nay em tan học sớm...`
             },
             {
-                id: 3, name: "Thẩm Sơ Triều x Lục Dã Xuyên",
+                id: 3, name: "Thẩm Sơ Triều x Lục Dã Xuyên", order: 3,
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556761065889730691/IMG_4349.jpg?backend=b2&ex=6ac55639&is=6ac404b9&hm=1a13ed1393cba4681b86d64ca46d0a4b693adb10ac690e8f38b1cf977fe7898b&", 
                 tags: ["NP (hoặc không)", "user đơn phương", "Sơ Triều gay", "ngọt (?)"],
                 note: "", postTime: "2026-10-06T00:20:00", pass: "", link: "", backstory: `Thẩm Sơ Triều — ba chữ ấy...`, first: `Đã tròn một tháng kể từ ngày...`
             },
             {
-                id: 4, name: "Ruslan Antonovich Morozov",
+                id: 4, name: "Ruslan Antonovich Morozov", order: 4,
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556725163708514465/IMG_4335.jpg?backend=b2&ex=6ac534c9&is=6ac3e349&hm=e50f8262d17de2064879c8c28153bb237feb525c0f044cea3517d6482174d3aa&",
                 tags: ["R18", "trai Nga", "bố x con gái (cảnh báo côn trùng riu)", "Bg", "mafia"],
                 note: "Note: char bị bệnh nghiện seg, không sạch", postTime: "2026-10-06T00:30:00", pass: "", link: "#", backstory: `Trong những căn phòng kín...`, first: `Thời gian trôi đi...`
             },
             {
-                id: 5, name: "Tiêu Mục Bạch",
+                id: 5, name: "Tiêu Mục Bạch", order: 5,
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556726190352367706/IMG_4336.jpg?backend=b2&ex=6ac535be&is=6ac3e43e&hm=e42d50f6517e6bf60e11a5b788641b792fd2b9c49920377bd32d340f51a2af8f&",
                 tags: ["R18", "hài hước", "usủe bị muỗi cắn búm x char bác sĩ"],
                 note: "", postTime: "2026-10-06T00:45:00", pass: "", link: "#", backstory: `Nói tóm tắt về hai mươi...`, first: `Người ta hay bảo ngủ...`
             },
             {
-                id: 6, name: "Cố Hoài Tự",
+                id: 6, name: "Cố Hoài Tự", order: 6,
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754478542094456/IMG_4348.jpg?backend=b2&ex=6ac55016&is=6ac3fe96&hm=61ff2d26cd575bb7e2b2c4437be68eb8f3a1039ed7e13ae9ec0f422c2db6ba41&",
                 tags: ["Dark Romance", "R18", "văn nhã bại hoại", "toxic love", "yandere", "ngọt (?)"],
                 note: "", postTime: "2026-10-06T02:00:00", pass: "", link: "#", backstory: `Mùa đông năm ấy...`, first: `Gió đêm thổi qua...`
             },
             {
-                id: 7, name: "Cố Thanh Viễn",
-                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754494920855632/IMG_4345.jpg?backend=b2&ex=6ac5501a&is=6ac3fe9a&hm=f72d75c2ed2f2a10d6008752aa6060375f89ef8eeed790b53be62baeaeb00981&",
-                tags: ["Size gap", "char trẻ trâu (thích bắt chước tổng tài)", "ngọt (?)"],
-                note: "Note: Anh này luỵ tình chúa, siu đáng iu", postTime: "2026-10-06T02:15:00", pass: "", link: "#", backstory: `Bầu trời tháng tám...`, first: `Mùi mỡ bò xèo xèo...`
+                id: 9, name: "Kim Yu-Shin", order: 7,
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754484216987668/IMG_4347.jpg?backend=b2&ex=6ac55018&is=6ac3fe98&hm=f95e9d93c0aa25bd440a61fb1005f91b583e2b249fe8680bfd3e298ec91df07e&",
+                tags: ["Ngực user chảy sữa dâu", "Bg", "ngọt", "R18"],
+                note: "Cre: Chuyển thể từ truyện sữa dâu khiêu gợi\nNote: Tính cách Yu-shin không giống 100% nguyên tác.",
+                postTime: "2026-10-06T03:10:00", pass: "", link: "#", backstory: `Ánh hoàng hôn của tuổi...`, first: `Chiều hôm ấy, định mệnh...`
             },
             {
-                id: 8, name: "Bùi Hựu Hiên x Thẩm Tinh Dã",
+                id: 8, name: "Bùi Hựu Hiên x Thẩm Tinh Dã", order: 8,
                 image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754489892143226/IMG_4346.jpg?backend=b2&ex=6ac55019&is=6ac3fe99&hm=4cc978cb78b694301c69718230cb9194a672e412a88684ab3af8e8827f56bfa5&",
                 tags: ["Thanh mai trúc mã", "user bạch liên hoa", "ngọt", "size gap"],
                 note: "", postTime: "2026-10-06T02:30:00", pass: "", link: "", backstory: `Mười bảy năm thanh xuân...`, first: `…Còn nữa`
             },
             {
-                id: 9, name: "Kim Yu-Shin",
-                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754484216987668/IMG_4347.jpg?backend=b2&ex=6ac55018&is=6ac3fe98&hm=f95e9d93c0aa25bd440a61fb1005f91b583e2b249fe8680bfd3e298ec91df07e&",
-                tags: ["Ngực user chảy sữa dâu", "Bg", "ngọt", "R18"],
-                note: "Cre: Chuyển thể từ truyện sữa dâu khiêu gợi\nNote: Tính cách Yu-shin không giống 100% nguyên tác.",
-                postTime: "2026-10-06T03:10:00", pass: "", link: "#", backstory: `Ánh hoàng hôn của tuổi...`, first: `Chiều hôm ấy, định mệnh...`
+                id: 7, name: "Cố Thanh Viễn", order: 9,
+                image: "https://cdn.discordapp.com/attachments/1547359339063419013/1556754494920855632/IMG_4345.jpg?backend=b2&ex=6ac5501a&is=6ac3fe9a&hm=f72d75c2ed2f2a10d6008752aa6060375f89ef8eeed790b53be62baeaeb00981&",
+                tags: ["Size gap", "char trẻ trâu (thích bắt chước tổng tài)", "ngọt (?)"],
+                note: "Note: Anh này luỵ tình chúa, siu đáng iu", postTime: "2026-10-06T02:15:00", pass: "", link: "#", backstory: `Bầu trời tháng tám...`, first: `Mùi mỡ bò xèo xèo...`
             }
         ];
 
@@ -686,7 +690,9 @@
                 let tagsHtml = char.tags.map(t => `<span class="mini-tag">#${t}</span>`).join('');
                 let badgesHtml = '';
                 
-                if(char.tags.some(t => t.toUpperCase().includes('R18') || t.toUpperCase().includes('NSFW'))) badgesHtml += `<span class="badge alert">🔞 R18+</span>`;
+                if(char.tags.some(t => t.toUpperCase().includes('R18') || t.toUpperCase().includes('NSFW'))) {
+                    badgesHtml += `<span class="badge alert">🔞 R18+</span>`;
+                }
                 
                 let isFav = favorites.includes(char.id);
                 div.innerHTML = `
@@ -718,6 +724,7 @@
             });
 
             filtered.sort((a, b) => {
+                if (sortType === 'custom') return a.order - b.order;
                 if (sortType === 'newest') return new Date(b.postTime) - new Date(a.postTime);
                 if (sortType === 'oldest') return new Date(a.postTime) - new Date(b.postTime);
                 if (sortType === 'az') return a.name.localeCompare(b.name);
