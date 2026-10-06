@@ -267,7 +267,20 @@
         }
 
         .profile-img { width: 100%; max-width: 350px; border-radius: 20px; border: 5px solid var(--white); box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 20px; object-fit: cover;}
-        .profile-name { color: var(--brown-dark); font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 5px; text-shadow: 1px 1px 0px #fff; }
+        
+        /* Box chứa Tên và Lượt xem cùng 1 dòng */
+        .profile-title-wrapper {
+            display: flex; align-items: center; justify-content: center;
+            flex-wrap: wrap; gap: 10px; margin-bottom: 5px; width: 100%;
+        }
+        .profile-name { color: var(--brown-dark); font-size: 2.2rem; font-weight: 800; text-align: center; text-shadow: 1px 1px 0px #fff; margin-bottom: 0;}
+        .view-badge {
+            background: var(--pink-pastel); color: var(--red-alert);
+            border: 2px solid #fff; padding: 4px 12px; border-radius: 20px;
+            font-size: 0.95rem; font-weight: 800; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: inline-block; white-space: nowrap;
+        }
+
         .profile-time { font-size: 0.95rem; color: #888; font-weight: 600; font-style: italic; margin-bottom: 15px; text-align: center; }
         .profile-note { color: var(--text-dark); font-weight: 600; font-size: 1rem; margin-bottom: 25px; text-align: center; font-style: italic; white-space: pre-wrap; }
 
@@ -429,7 +442,12 @@
         <div class="profile-container">
             <img id="profileImage" src="" alt="Profile Image" class="profile-img">
             
-            <h1 id="profileName" class="profile-name">Tên Nhân Vật</h1>
+            <!-- TIÊU ĐỀ NẰM CÙNG DÒNG VỚI LƯỢT XEM -->
+            <div class="profile-title-wrapper">
+                <h1 id="profileName" class="profile-name">Tên Nhân Vật</h1>
+                <div id="profileViews" class="view-badge">•ﻌ• Đang tải...</div>
+            </div>
+            
             <div id="profileTime" class="profile-time"></div>
             
             <div id="profileTags" class="char-tags-mini" style="justify-content: center; margin-bottom: 10px;"></div>
@@ -774,6 +792,22 @@
             document.getElementById('profileBackstory').innerText = char.backstory; document.getElementById('profileFirst').innerText = char.first;
             document.getElementById('profileBackstory').classList.add('text-collapsed'); document.getElementById('profileFirst').classList.add('text-collapsed');
             document.getElementById('btnMoreBackstory').innerText = "Hiển thị toàn bộ ▾"; document.getElementById('btnMoreFirst').innerText = "Hiển thị toàn bộ ▾";
+
+            // --- HỆ THỐNG ĐẾM LƯỢT XEM THẬT (Gọi API) ---
+            let viewsEl = document.getElementById('profileViews');
+            viewsEl.innerText = "•ﻌ• Đang tải..."; // Hiển thị lúc chờ mạng
+            
+            // Dùng CounterAPI để cộng 1 lượt xem thật lưu trên mạng
+            fetch(`https://api.counterapi.dev/v1/bo_archive_2026/char_${id}/up`)
+                .then(response => response.json())
+                .then(data => {
+                    viewsEl.innerText = `•ﻌ• ${data.count} lượt xem`;
+                })
+                .catch(error => {
+                    // Nếu mạng lag hoặc lỗi thì báo không tải được
+                    viewsEl.innerText = "•ﻌ• Lỗi mạng";
+                });
+            // ---------------------------------------------
 
             let passInput = document.getElementById('profilePass'), passError = document.getElementById('profilePassError'), btnChat = document.getElementById('btnChat'), noLinkText = document.getElementById('noLinkText');
             btnChat.classList.remove('disabled'); btnChat.style.display = "block"; passInput.style.display = "none"; passError.style.display = "none"; noLinkText.style.display = "none";
